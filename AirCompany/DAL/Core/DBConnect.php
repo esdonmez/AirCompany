@@ -8,11 +8,15 @@ class DBConnect
 
 
     public function __construct() {
-        $this.connection = new mysqli(SERVER, USER, PASS, DBNAME);
+        $this.connection = new mysqli(DB_HOST, DB_USER, DB_PASS);
 
         if ($this->connection->connect_error) {
 	 			die("Error connection.: " . $this->connection->connect_error);
 	 	}
+        
+        else {
+            echo"connection";
+        }
         
 	 	$this->connection->set_charset("utf8");
     }
