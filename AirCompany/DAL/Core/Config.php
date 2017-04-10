@@ -1,8 +1,9 @@
 <?php
 
-define("SERVER","localhost");
-define("DBNAME","DBNAME");
-define("USER","Username");
-define("PASS","Password");
+define("DB_HOST","localhost");
+define("DN_NAME","AirCompanyDB");
+define("DB_USER","root");
+define("DB_PASS","2255");
+define("", "");
 
 ?>
