@@ -1,37 +1,50 @@
 <?php
 
-include("Config.php");
+include("DBConfig.php");
 
 class DBConnect
-{   
+{
+    private static $_instance;
     private $connection;
+	private $_host = "localhost";
+	private $_username = "root";
+	private $_password = "2255";
+	private $_database = "AirCompanyDB";
 
+    
+    public function DBConnect() {
+		$this->_connection = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
 
-    public function __construct() {
-        $this.connection = new mysqli(DB_HOST, DB_USER, DB_PASS);
-
-        if ($this->connection->connect_error) {
-	 			die("Error connection.: " . $this->connection->connect_error);
-	 	}
-        
-        else {
-            echo"connection";
-        }
-        
-	 	$this->connection->set_charset("utf8");
-    }
+		if(mysqli_connect_error()) {
+			trigger_error("Failed to conencto to MySQL: " . mysql_connect_error(), E_USER_ERROR);
+		}
+	}
 
     public function __destruct(){
          $this->connection->close();
     }
 
 
-    public function get($query){
-        $result = $this->connection->query($query);
+    public static function getInstance() {
+		if(!self::$_instance) {
+			self::$_instance = new self();
+		}
+        
+		return self::$_instance;
+	}
+
+    public function get($sql){   
+        $result = mysqli_query($connection, $sql);
+        echo $sql;
+        while($row = mysqli_fetch_assoc($result)) {
+            echo "Name: " . $row["Name"];
+        }
+           
+        echo"test";
         return $result;
     }
 
-    public function execute($query){
-        return ($this->connection->query($query) == TRUE);
+    public function execute($sql){
+        return ($this->connection->query($sql) == TRUE);
     }
 }
