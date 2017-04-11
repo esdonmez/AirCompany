@@ -13,11 +13,13 @@ class DBConnect
 
     
     public function DBConnect() {
-		$this->_connection = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
+		$this->connection = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
 
-		if(mysqli_connect_error()) {
-			trigger_error("Failed to conencto to MySQL: " . mysql_connect_error(), E_USER_ERROR);
+		if ($this->connection->connect_error) {
+			die("Bağlantı hatası: " . $this->connection->connect_error);
 		}
+
+		$this->connection->set_charset("utf8");
 	}
 
     public function __destruct(){
@@ -34,13 +36,7 @@ class DBConnect
 	}
 
     public function get($sql){   
-        $result = mysqli_query($connection, $sql);
-        echo $sql;
-        while($row = mysqli_fetch_assoc($result)) {
-            echo "Name: " . $row["Name"];
-        }
-           
-        echo"test";
+        $result = $this->connection->query($sql);
         return $result;
     }
 
