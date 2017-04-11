@@ -1,7 +1,7 @@
 <?php
 
-include("PlaneDAL.php");
+include("CheckinDAL.php");
 
-$db = new PlaneDAL();
+$db = new CheckinDAL();
 
 ?>
