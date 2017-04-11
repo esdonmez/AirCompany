@@ -9,8 +9,6 @@ class UserBO
     public $Email;
 
     public $Password;
-
-    public $IsAdmin;
 }
 
 ?>
