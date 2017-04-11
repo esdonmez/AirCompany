@@ -11,7 +11,6 @@ class PlaneDAL
     public function PlaneDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->DeletePlane();
     }
 
 
@@ -36,6 +35,7 @@ class PlaneDAL
 
     public function UpdatePlane(){
         $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name='Elif' WHERE Id='1'");
+        return response;
     }
 
     public function DeletePlane(){
