@@ -2,15 +2,41 @@
 
 class PlaneBO
 {
-    public $Id;
+    private $Id;
+    private $Name;
+    private $Capacity;
+    private $Status;
+    private $RegistrationNumber;
 
-    public $Name;
 
-    public $Capacity;
+    public function PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber){
+        $this->Id = $Id;
+        $this->Name = $Name;
+        $this->Capacity = $Capacity;
+        $this->Status = $Status;
+        $this->RegistrationNumber = $RegistrationNumber;
+    }
 
-    public $RegistrationNumber;
 
-    public $Status;
+    public function getId(){
+        return $this->Id;
+    }
+
+    public function getName(){
+        return $this->Name;
+    }
+
+    public function getCapacity(){
+        return $this->Capacity;
+    }
+
+    public function getStatus(){
+        return $this->Status;
+    }
+
+    public function getRegistrationNumber(){
+        return $this->RegistrationNumber;
+    }
 }
 
 ?>
