@@ -2,7 +2,6 @@
 
 include("../BO/AirportBO.php");
 include("Core/DBConnect.php");
-include("AirportTest.php");
 
 class AirportDAL
 {
@@ -12,7 +11,6 @@ class AirportDAL
     public function AirportDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->UpdateAirport();
     }
 
 
