@@ -2,7 +2,6 @@
 
 class DBConnect
 {
-    private static $_instance;
     private $connection;
 	private $_host = "localhost";
 	private $_username = "root";
@@ -10,7 +9,7 @@ class DBConnect
 	private $_database = "AirCompanyDB";
 
     
-    public function DBConnect() {
+    public function __construct() {
 		$this->connection = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
 
 		if ($this->connection->connect_error) {
@@ -23,15 +22,6 @@ class DBConnect
     public function __destruct(){
          $this->connection->close();
     }
-
-
-    public static function getInstance() {
-		if(!self::$_instance) {
-			self::$_instance = new self();
-		}
-        
-		return self::$_instance;
-	}
 
     public function get($sql){   
         $result = $this->connection->query($sql);

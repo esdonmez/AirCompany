@@ -1,13 +1,4 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-<?php
-    function __autoload($class_name) {
-        require('../BAL/'.$class_name.'.php');
-    }
-?>
-
+<?php include("../BAL/AirportBAL.php") ?>
 <!DOCTYPE html>
 <html>
 
@@ -515,10 +506,10 @@ ini_set('display_errors', 1);
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3 id='planeCount'>
-                                <?php
-                                    $model = new PlaneBAL();
-                                    echo $model->GetPlanesCount();                               
-                                ?> 
+                                <?php 
+                                    $model = new AirportBAL();
+                                    echo $model->GetAirportsCount();                               
+                                ?>  
                                 </h3>
                                 <p>Planes</p>
                             </div>
