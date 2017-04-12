@@ -2,16 +2,22 @@
 
 class AirportBO
 {
+    private $Id;
     private $Code;
     private $Name;
     private $City;
 
-    public function AirportBO($Code, $Name, $City){
+    public function AirportBO($Id, $Code, $Name, $City){
+        $this->Id = $Id;
         $this->Code = $Code;
         $this->Name = $Name;
         $this->City = $City;
     }
 
+
+    public function getId(){
+        return $this->Id;
+    }
 
     public function getCode(){
 		return $this->Code;

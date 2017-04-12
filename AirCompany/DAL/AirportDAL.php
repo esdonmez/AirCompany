@@ -11,21 +11,31 @@ class AirportDAL
     public function AirportDAL()
     {
         $this->dbConnect = new DBConnect();
+<<<<<<< HEAD
+=======
+        $this->GetAirportsCount();
+>>>>>>> b21652f880d9df0c0d3bdae43af0770d660122f2
     }
 
 
     public function GetAirports(){
-        $response = $this->dbConnect->get("SELECT Code, Name, City FROM AirportTable");
+        $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable");
         $airports = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new AirportBO($data["Code"], $data["Name"], $data["City"]);
+            $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
             array_push($airports, $model);
         }
 
         return $airports;
     }
 
+    public function GetAirportsCount(){
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM AirportTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
+    }
+    
     public function AddAirport(){
         $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ('48', 'Bodrum-Milas', 'Muğla')");
         return $response;

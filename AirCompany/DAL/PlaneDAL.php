@@ -15,7 +15,7 @@ class PlaneDAL
 
 
     public function GetPlanes(){
-        $response = $this->dbConnect->get("SELECT Name, Capacity, RegistrationNumber, Status FROM PlaneTable");
+        $response = $this->dbConnect->get("SELECT Id, Name, Capacity, RegistrationNumber, Status FROM PlaneTable");
         $planes = array();
 
         while($data = $response->fetch_assoc()) {
@@ -23,8 +23,17 @@ class PlaneDAL
             array_push($planes, $model);
         }
 
+<<<<<<< HEAD
         echo $planes[0]->getName();
+=======
+>>>>>>> b21652f880d9df0c0d3bdae43af0770d660122f2
         return $planes;
+    }
+
+    public function GetPlanesCount(){
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM PlaneTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
     }
 
     public function AddPlane(){
@@ -39,7 +48,6 @@ class PlaneDAL
 
     public function DeletePlane(){
         $response = $this->dbConnect->execute("DELETE FROM PlaneTable WHERE Id='1'");
-        echo $response;
         return $response;
     }
 }

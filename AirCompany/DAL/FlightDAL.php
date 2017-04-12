@@ -23,8 +23,17 @@ class FlightDAL
             array_push($flights, $model);
         }
 
+<<<<<<< HEAD
         echo $flights[0]->getFlightNumber();
+=======
+>>>>>>> b21652f880d9df0c0d3bdae43af0770d660122f2
         return $flights;
+    }
+
+    public function GetFlightsCount(){
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM FlightTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
     }
 
     public function AddFlight(){
