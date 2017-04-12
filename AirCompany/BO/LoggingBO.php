@@ -3,15 +3,15 @@
 class LoggingBO
 {
     private $Id;
-    private $Table;
+    private $Entity;
     private $Operation;
     private $CreateDate;
 
 
-    public function LogBO($Id, $Table, $Operation, $CreateDate)
+    public function LoggingBO($Id, $Entity, $Operation, $CreateDate)
     {
         $this->Id = $Id;
-        $this->Table = $Table;
+        $this->Entity = $Entity;
         $this->Operation = $Operation;
         $this->CreateDate = $CreateDate;
     }
@@ -21,8 +21,8 @@ class LoggingBO
         return $this->Id;
     }
 
-    public function getTable(){
-        return $this->Table;
+    public function getEntity(){
+        return $this->Entity;
     }
 
     public function getOperation(){
