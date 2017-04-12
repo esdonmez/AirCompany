@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/CheckinBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/CheckinBO.php");
+require_once("Core/DBConnect.php");
 
 class CheckinDAL
 {

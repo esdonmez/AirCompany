@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/FlightBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/FlightBO.php");
+require_once("Core/DBConnect.php");
 
 class FlightDAL
 {

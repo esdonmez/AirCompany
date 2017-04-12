@@ -1,5 +1,6 @@
 <?php 
-    include("../BAL/AirportBAL.php"); 
+    include("../BAL/AirportBAL.php");
+    include("../BAL/PlaneBAL.php");
 ?>
 
 <!DOCTYPE html>
@@ -238,8 +239,8 @@
                             <div class="inner">
                                 <h3 id='planeCount'>
                                 <?php 
-                                    $model = new AirportBAL();
-                                    echo $model->GetAirportsCount();                               
+                                    $model = new PlaneBAL();
+                                    echo $model->GetPlanesCount();                               
                                 ?>  
                                 </h3>
                                 <p>Planes</p>

@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/LoggingBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/LoggingBO.php");
+require_once("Core/DBConnect.php");
 
 class LoggingDAL
 {

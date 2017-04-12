@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/AirportBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/AirportBO.php");
+require_once("Core/DBConnect.php");
 
 class AirportDAL
 {

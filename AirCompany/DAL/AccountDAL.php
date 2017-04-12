@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/AccountBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/AccountBO.php");
+require_once("Core/DBConnect.php");
 
 class AccountDAL
 {

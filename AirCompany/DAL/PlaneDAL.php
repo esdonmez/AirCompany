@@ -1,7 +1,7 @@
 <?php
 
-include("../BO/PlaneBO.php");
-include("Core/DBConnect.php");
+require_once("../BO/PlaneBO.php");
+require_once("Core/DBConnect.php");
 
 class PlaneDAL
 {
