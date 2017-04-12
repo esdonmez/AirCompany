@@ -1,7 +1,7 @@
 <?php
 
-include("CheckinDAL.php");
+include("FlightDAL.php");
 
-$db = new CheckinDAL();
+$db = new FlightDAL();
 
 ?>

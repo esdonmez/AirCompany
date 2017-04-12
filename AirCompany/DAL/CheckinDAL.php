@@ -16,21 +16,20 @@ class CheckinDAL
 
 
     public function GetCheckins(){
-        $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked");
+        $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked FROM CheckinTable");
         $checkins = array();
 
         while($data = $response->fetch_assoc()){
             $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
             array_push($checkins, $model);
         }
-
         echo $checkins[0]->getPNR();
 
         return $checkins;
     }
 
     public function AddCheckin(){
-        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat) VALUES (1, 'L2PBSQ', '17F')");
+        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES (6, 'L2PBSQ', '17F', 1)");
         return $response;
     }
 
@@ -40,7 +39,7 @@ class CheckinDAL
     }
 
     public function DeleteCheckin(){
-        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId='1'");
+        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId='11'");
         return $response;
     }
 }

@@ -11,6 +11,7 @@ class PlaneDAL
     public function PlaneDAL()
     {
         $this->dbConnect = new DBConnect();
+        $this->AddPlane();
     }
 
 

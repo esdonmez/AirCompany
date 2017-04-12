@@ -11,6 +11,7 @@ class AirportDAL
     public function AirportDAL()
     {
         $this->dbConnect = new DBConnect();
+        $this->AddAirport();
     }
 
 
