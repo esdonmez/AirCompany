@@ -14,7 +14,7 @@ class PlaneBAL
 
 
     public function GetPlanes(){
-        return $this->planeDAL->GetPlanes();
+        return $this->planeDal->GetPlanes();
     }
 
     public function GetPlanesCount(){
