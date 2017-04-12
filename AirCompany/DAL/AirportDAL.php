@@ -11,7 +11,7 @@ class AirportDAL
     public function AirportDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->AddAirport();
+        $this->GetAirportsCount();
     }
 
 
@@ -25,6 +25,12 @@ class AirportDAL
         }
 
         return $airports;
+    }
+
+    public function GetAirportsCount(){
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM AirportTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
     }
     
     public function AddAirport(){

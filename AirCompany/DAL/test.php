@@ -1,7 +1,7 @@
 <?php
 
-include("FlightDAL.php");
+include("AirportDAL.php");
 
-$db = new FlightDAL();
+$db = new AirportDAL();
 
 ?>

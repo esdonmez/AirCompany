@@ -28,6 +28,12 @@ class CheckinDAL
         return $checkins;
     }
 
+    public function GetCheckinsCount(){
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM CheckinTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
+    }
+
     public function AddCheckin(){
         $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES (6, 'L2PBSQ', '17F', 1)");
         return $response;
