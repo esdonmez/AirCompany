@@ -485,8 +485,13 @@
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3 id='airportCount'><?php echo "38" ?></h3>
-
+                                <h3 id='airportCount'>
+                                <?php 
+                                    include("../BAL/AirportBAL.php");
+                                    $model = new AirportBAL();
+                                    echo $model->GetAirportsCount();                               
+                                ?>                               
+                                </h3>
                                 <p>Airports</p>
                             </div>
                             <div class="icon">
@@ -500,8 +505,13 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3 id='planeCount'><?php echo "18" ?></h3>
-
+                                <h3 id='planeCount'>
+                                <?php 
+                                    include("../BAL/PlaneBAL.php");
+                                    $model = new PlaneBAL();
+                                    echo $model->GetPlanesCount();                               
+                                ?> 
+                                </h3>
                                 <p>Planes</p>
                             </div>
                             <div class="icon">
@@ -516,11 +526,7 @@
                         <div class="small-box bg-yellow">
                             <div class="inner">
                                 <h3 id='flightCount'>
-                                <?php 
-                                    include("../BAL/AirportBAL.php");
-                                    $model = new AirportBAL();
-                                    echo $model->GetAirportsCount();                               
-                                ?>                            
+                        
                                 </h3>
                                 <p>Flights</p>
                             </div>
