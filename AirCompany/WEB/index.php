@@ -302,13 +302,13 @@
                             <?php 
                             $model = new AirportBAL();
                             foreach($model->GetAirports() as $data): ?>
-                                <tr>
+                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getCode(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCity(); ?></td>
                                 </tr>
-                            <?php endforeach; ?>               
+                            <?php endforeach; ?>            
                         </table>
                         </div>
                         <!-- /.box-body -->
@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr>
+                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
@@ -398,7 +398,7 @@
                             <?php 
                             $model = new FlightBAL();
                             foreach($model->GetFlights() as $data): ?>
-                                <tr>
+                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getFlightNumber(); ?></td>
                                     <td><?php echo $data->getPlaneId(); ?></td>
@@ -449,7 +449,7 @@
                             <?php 
                             $model = new CheckinBAL();
                             foreach($model->GetCheckins() as $data): ?>
-                                <tr>
+                                <tr onClick="tableClick('<?php echo $data->getCheckId();?>')">
                                     <td><?php echo $data->getCheckId(); ?></td>
                                     <td><?php echo $data->getFlightId(); ?></td>
                                     <td><?php echo $data->getPNR(); ?></td>
@@ -540,6 +540,12 @@
     </div>
     <!-- ./wrapper -->
 
+    <script type="text/javascript">
+        function tableClick(id)
+        {
+            alert(id);
+        }
+    </script> 
     <!-- jQuery 2.2.3 -->
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
