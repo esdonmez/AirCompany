@@ -395,58 +395,23 @@
                             <th>IsTwoWay</th>
                             <th>IsActive</th>
                             </tr>
-                            <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-primary">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
+                            <?php 
+                            $model = new FlightBAL();
+                            foreach($model->GetFlights() as $data): ?>
+                                <tr>
+                                    <td><?php echo $data->getId(); ?></td>
+                                    <td><?php echo $data->getFlightNumber(); ?></td>
+                                    <td><?php echo $data->getPlaneId(); ?></td>
+                                    <td><?php echo $data->getDepartureId(); ?></td>
+                                    <td><?php echo $data->getDestinationId(); ?></td>
+                                    <td><?php echo $data->getDepartureTime(); ?></td>
+                                    <td><?php echo $data->getArrivalTime(); ?></td>
+                                    <td><?php echo $data->getPrice(); ?></td>
+                                    <td><?php echo $data->getGate(); ?></td>
+                                    <td><?php echo $data->getIsTwoWay(); ?></td>
+                                    <td><?php echo $data->getIsActive(); ?></td>
+                                </tr>
+                            <?php endforeach; ?>   
                         </table>
                         </div>
                         <!-- /.box-body -->
@@ -481,34 +446,17 @@
                             <th>Seat</th>
                             <th>IsChecked</th>
                             </tr>
-                            <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-primary">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
+                            <?php 
+                            $model = new CheckinBAL();
+                            foreach($model->GetCheckins() as $data): ?>
+                                <tr>
+                                    <td><?php echo $data->getCheckId(); ?></td>
+                                    <td><?php echo $data->getFlightId(); ?></td>
+                                    <td><?php echo $data->getPNR(); ?></td>
+                                    <td><?php echo $data->getSeat(); ?></td>
+                                    <td><?php echo $data->getIsChecked(); ?></td>
+                                </tr>
+                            <?php endforeach; ?>   
                         </table>
                         </div>
                         <!-- /.box-body -->
