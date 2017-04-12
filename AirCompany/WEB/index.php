@@ -543,7 +543,7 @@
     <script type="text/javascript">
         function tableClick(id)
         {
-            window.open("http://localhost/aircompany/AirCompany/WEB/views/AirportView.php", _self");
+            window.open("http://localhost/aircompany/AirCompany/WEB/views/AirportView.php", "_self");
         }
     </script> 
     <!-- jQuery 2.2.3 -->
