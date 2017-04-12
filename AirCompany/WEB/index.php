@@ -515,8 +515,13 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3 id='flightCount'><?php echo "200" ?></h3>
-
+                                <h3 id='flightCount'>
+                                <?php 
+                                    include("../DAL/AirportDAL.php");
+                                    $model = new AirportDAL();
+                                    echo $model->GetAirportsCount();                               
+                                ?>                            
+                                </h3>
                                 <p>Flights</p>
                             </div>
                             <div class="icon">
