@@ -1,13 +1,13 @@
 <?php
 
-class UserBO
+class AccountBO
 {
     private $Id;
     private $NameSurname;
     private $Email;
 
 
-    public function UserBO($Id, $NameSurname, $Email)
+    public function AccountBO($Id, $NameSurname, $Email)
     {
         $this->Id = $Id;
         $this->NameSurname = $NameSurname;
