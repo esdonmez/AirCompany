@@ -12,6 +12,7 @@ class FlightBAL
         $this->flightDal = new FlightDAL();
     }
 
+
     public function GetFlights(){
         return $this->flightDal->GetFlights();
     }

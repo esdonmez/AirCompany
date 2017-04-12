@@ -27,7 +27,7 @@ class CheckinDAL
     }
 
     public function GetCheckinsCount(){
-        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM CheckinTable");
+        $response = $this->dbConnect->get("SELECT COUNT(CheckId) AS size FROM CheckinTable");
         $data = $response->fetch_assoc();
         return $data["size"];
     }

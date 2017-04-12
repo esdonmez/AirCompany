@@ -1,6 +1,8 @@
 <?php 
-    include("../BAL/AirportBAL.php");
     include("../BAL/PlaneBAL.php");
+    include("../BAL/AirportBAL.php");
+    include("../BAL/FlightBAL.php");
+    include("../BAL/CheckinBAL.php");
 ?>
 
 <!DOCTYPE html>
@@ -255,7 +257,12 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3 id='flightCount'><?php echo "2000" ?></h3>
+                                <h3 id='flightCount'>
+                                <?php 
+                                    $model = new FlightBAL();
+                                    echo $model->GetFlightsCount();                               
+                                ?>  
+                                </h3>
                                 <p>Flights</p>
                             </div>
                             <div class="icon">
@@ -269,8 +276,12 @@
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
-                                <h3 id='checkinCount'><?php echo "2000" ?></h3>
-
+                                <h3 id='checkinCount'>
+                                <?php 
+                                    $model = new CheckinBAL();
+                                    echo $model->GetCheckinsCount();                               
+                                ?>  
+                                </h3>
                                 <p>Checkins</p>
                             </div>
                             <div class="icon">
