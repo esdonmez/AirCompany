@@ -11,7 +11,6 @@ class FlightDAL
     public function FlightDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->GetFlights();
     }
 
 
@@ -25,7 +24,6 @@ class FlightDAL
         }
 
         echo $flights[0]->getFlightNumber();
-
         return $flights;
     }
 

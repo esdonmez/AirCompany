@@ -11,7 +11,6 @@ class CheckinDAL
     public function CheckinDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->AddCheckin();
     }
 
 
@@ -23,8 +22,8 @@ class CheckinDAL
             $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
             array_push($checkins, $model);
         }
+        
         echo $checkins[0]->getPNR();
-
         return $checkins;
     }
 

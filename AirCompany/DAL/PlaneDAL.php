@@ -11,7 +11,6 @@ class PlaneDAL
     public function PlaneDAL()
     {
         $this->dbConnect = new DBConnect();
-        $this->AddPlane();
     }
 
 
@@ -25,7 +24,6 @@ class PlaneDAL
         }
 
         echo $planes[0]->getName();
-
         return $planes;
     }
 
