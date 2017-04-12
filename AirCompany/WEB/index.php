@@ -381,38 +381,33 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
+                  <th>Code</th>
+                  <th>Name</th>
+                  <th>City</th>
                 </tr>
                 <tr>
                   <td>183</td>
                   <td>John Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>219</td>
                   <td>Alexander Pierce</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>657</td>
                   <td>Bob Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>175</td>
                   <td>Mike Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
               </table>
             </div>
@@ -443,10 +438,10 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Capacity</th>
+                  <th>Registration Number</th>
                   <th>Status</th>
-                  <th>Reason</th>
                 </tr>
                 <tr>
                   <td>183</td>
@@ -505,16 +500,28 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
+                  <th>Flight Number</th>
+                  <th>Plane ID</th>
+                  <th>Departure ID</th>
+                  <th>Destination ID</th>
+                  <th>Departure Time</th>
+                  <th>Arrival Time</th>
+                  <th>Price</th>
+                  <th>Gate</th>
+                  <th>IsTwoWay</th>
+                  <th>IsActive</th>
                 </tr>
                 <tr>
                   <td>183</td>
                   <td>John Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                   <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
@@ -523,6 +530,12 @@
                   <td>11-7-2014</td>
                   <td><span class="label label-warning">Pending</span></td>
                   <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>657</td>
@@ -530,12 +543,24 @@
                   <td>11-7-2014</td>
                   <td><span class="label label-primary">Approved</span></td>
                   <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>175</td>
                   <td>Mike Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-danger">Denied</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                   <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
               </table>
@@ -567,10 +592,10 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
+                  <th>Flight ID</th>
+                  <th>PNR</th>
+                  <th>Seat</th>
+                  <th>IsChecked</th>
                 </tr>
                 <tr>
                   <td>183</td>
@@ -629,38 +654,33 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
+                  <th>Entity</th>
+                  <th>Operation</th>
+                  <th>Create Date</th>
                 </tr>
                 <tr>
                   <td>183</td>
                   <td>John Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>219</td>
                   <td>Alexander Pierce</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>657</td>
                   <td>Bob Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
                 <tr>
                   <td>175</td>
                   <td>Mike Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
                 </tr>
               </table>
             </div>
