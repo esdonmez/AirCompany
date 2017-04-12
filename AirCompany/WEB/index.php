@@ -172,10 +172,10 @@
                     </li>
                 
                     <li class="header">TABLES</li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
+                    <li><a href="../WEB/views/AirportView.php"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
+                    <li><a href="../WEB/views/PlaneView.php"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
+                    <li><a href="../WEB/views/FlightView.php"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
+                    <li><a href="../WEB/views/CheckinView.php"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -209,7 +209,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="#" class="small-box-footer">Add new airport <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/views/AirportView.php" class="small-box-footer">Add new airport <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -228,7 +228,7 @@
                             <div class="icon">
                                 <i class="ion ion-paper-airplane"></i>
                             </div>
-                            <a href="#" class="small-box-footer">Add new plane <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/views/PlaneView.php" class="small-box-footer">Add new plane <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -247,7 +247,7 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="#" class="small-box-footer">Add new flight <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/views/FlightView.php" class="small-box-footer">Add new flight <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -266,7 +266,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="#" class="small-box-footer">Add new checkin <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/views/CheckinView.php" class="small-box-footer">Add new checkin <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -302,7 +302,7 @@
                             <?php 
                             $model = new AirportBAL();
                             foreach($model->GetAirports() as $data): ?>
-                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="AirportTableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getCode(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="PlaneTableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
@@ -398,7 +398,7 @@
                             <?php 
                             $model = new FlightBAL();
                             foreach($model->GetFlights() as $data): ?>
-                                <tr onClick="tableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="FlightTableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getFlightNumber(); ?></td>
                                     <td><?php echo $data->getPlaneId(); ?></td>
@@ -449,7 +449,7 @@
                             <?php 
                             $model = new CheckinBAL();
                             foreach($model->GetCheckins() as $data): ?>
-                                <tr onClick="tableClick('<?php echo $data->getCheckId();?>')">
+                                <tr onClick="CheckinTableClick('<?php echo $data->getCheckId();?>')">
                                     <td><?php echo $data->getCheckId(); ?></td>
                                     <td><?php echo $data->getFlightId(); ?></td>
                                     <td><?php echo $data->getPNR(); ?></td>
@@ -541,9 +541,21 @@
     <!-- ./wrapper -->
 
     <script type="text/javascript">
-        function tableClick(id)
+        function CheckinTableClick(id)
+        {
+            window.open("../WEB/views/CheckinView.php", "_self");
+        }
+        function AirportTableClick(id)
         {
             window.open("../WEB/views/AirportView.php", "_self");
+        }
+        function PlaneTableClick(id)
+        {
+            window.open("../WEB/views/PlaneView.php", "_self");
+        }
+        function FlightTableClick(id)
+        {
+            window.open("../WEB/views/FlightView.php", "_self");
         }
     </script> 
     <!-- jQuery 2.2.3 -->

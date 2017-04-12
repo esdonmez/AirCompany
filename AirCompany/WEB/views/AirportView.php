@@ -179,7 +179,7 @@
             <section class="content">
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Airport Table</h3>
+                    <h3 class="box-title"><b>Airport Table</b></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
