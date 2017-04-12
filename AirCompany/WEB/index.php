@@ -1,4 +1,7 @@
-<?php include("../BAL/AirportBAL.php") ?>
+<?php 
+    include("../BAL/AirportBAL.php"); 
+?>
+
 <!DOCTYPE html>
 <html>
 

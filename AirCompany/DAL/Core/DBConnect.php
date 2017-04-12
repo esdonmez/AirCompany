@@ -5,7 +5,7 @@ class DBConnect
     private $connection;
 	private $_host = "localhost";
 	private $_username = "root";
-	private $_password = "root";
+	private $_password = "2255";
 	private $_database = "AirCompanyDB";
 
     
@@ -23,6 +23,7 @@ class DBConnect
          $this->connection->close();
     }
 
+
     public function get($sql){   
         $result = $this->connection->query($sql);
         return $result;
@@ -32,3 +33,5 @@ class DBConnect
         return ($this->connection->query($sql) == TRUE);
     }
 }
+
+?>
