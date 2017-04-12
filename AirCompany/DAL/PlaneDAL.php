@@ -16,7 +16,7 @@ class PlaneDAL
 
 
     public function GetPlanes(){
-        $response = $this->dbConnect->get("SELECT Name, Capacity, RegistrationNumber, Status FROM PlaneTable");
+        $response = $this->dbConnect->get("SELECT Id, Name, Capacity, RegistrationNumber, Status FROM PlaneTable");
         $planes = array();
 
         while($data = $response->fetch_assoc()) {
