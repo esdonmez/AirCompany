@@ -11,10 +11,6 @@ class AirportDAL
     public function AirportDAL()
     {
         $this->dbConnect = new DBConnect();
-<<<<<<< HEAD
-=======
-        $this->GetAirportsCount();
->>>>>>> b21652f880d9df0c0d3bdae43af0770d660122f2
     }
 
 
