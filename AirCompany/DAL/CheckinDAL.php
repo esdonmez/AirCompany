@@ -23,7 +23,6 @@ class CheckinDAL
             array_push($checkins, $model);
         }
         
-        echo $checkins[0]->getPNR();
         return $checkins;
     }
 
