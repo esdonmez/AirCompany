@@ -517,8 +517,8 @@
                             <div class="inner">
                                 <h3 id='flightCount'>
                                 <?php 
-                                    include("../DAL/AirportDAL.php");
-                                    $model = new AirportDAL();
+                                    include("../BAL/AirportBAL.php");
+                                    $model = new AirportBAL();
                                     echo $model->GetAirportsCount();                               
                                 ?>                            
                                 </h3>
