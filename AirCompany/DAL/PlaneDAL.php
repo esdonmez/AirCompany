@@ -19,7 +19,7 @@ class PlaneDAL
         $planes = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new PlaneBO($data["Id"], $data["Name"], $data["Capacity"], $data["RegistrationNumber"], $data["Status"]);
+            $model = new PlaneBO($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
             array_push($planes, $model);
         }
 
