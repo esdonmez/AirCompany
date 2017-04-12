@@ -2,13 +2,30 @@
 
 class UserBO
 {
-    public $Id;
+    private $Id;
+    private $NameSurname;
+    private $Email;
 
-    public $NameSurname;
 
-    public $Email;
+    public function UserBO($Id, $NameSurname, $Email)
+    {
+        $this->Id = $Id;
+        $this->NameSurname = $NameSurname;
+        $this->Email = $Email;
+    }
 
-    public $Password;
+    
+    public function getId(){
+        return $this->Id;
+    }
+
+    public function getNameSurname(){
+        return $this->NameSurname;
+    }
+
+    public function getEmail(){
+        return $this->Email;
+    }
 }
 
 ?>
