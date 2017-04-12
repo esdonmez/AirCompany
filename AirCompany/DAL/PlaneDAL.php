@@ -11,6 +11,7 @@ class PlaneDAL
     public function PlaneDAL()
     {
         $this->dbConnect = new DBConnect();
+        $this->AddPlane();
     }
 
 
@@ -33,7 +34,7 @@ class PlaneDAL
     }
 
     public function AddPlane(){
-        $response = $this->dbConnect->execute("INSERT INTO PlaneTable (Name, RegistrationNumber, Status) VALUES ('Seray', '12345', 'ucusta')");
+        $response = $this->dbConnect->execute("INSERT INTO PlaneTable (Name, RegistrationNumber, Status) VALUES ('bayar', '1dd45', 'ucusta')");
         return $response;
     }
 

@@ -13,10 +13,25 @@ class PlaneBAL
     }
 
 
+    public function GetPlanes(){
+        return $this->planeDAL->GetPlanes();
+    }
+
     public function GetPlanesCount(){
         return $this->planeDal->GetPlanesCount();
     }
 
+    public function Addplane(){
+        $response = $this->planeDal->AddPlane();
+    }
+
+    public function UpdatePlane(){
+        $resposne = $this->planeDal->UpdatePlane();
+    }
+
+    public function DeletePlane(){
+        $response = $this->planeDal->DeletePlane();
+    }
 }
 
 ?>
