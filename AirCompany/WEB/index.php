@@ -1,3 +1,13 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+<?php
+    function __autoload($class_name) {
+        require('../BAL/'.$class_name.'.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -487,7 +497,6 @@
                             <div class="inner">
                                 <h3 id='airportCount'>
                                 <?php 
-                                    include("../BAL/AirportBAL.php");
                                     $model = new AirportBAL();
                                     echo $model->GetAirportsCount();                               
                                 ?>                               
@@ -506,8 +515,7 @@
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3 id='planeCount'>
-                                <?php 
-                                    include("../BAL/PlaneBAL.php");
+                                <?php
                                     $model = new PlaneBAL();
                                     echo $model->GetPlanesCount();                               
                                 ?> 
@@ -583,8 +591,7 @@
 
                                 <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
                                     <div class="btn-group" data-toggle="btn-toggle">
-                                        <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i>
-                  </button>
+                                        <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
                                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
                                     </div>
                                 </div>

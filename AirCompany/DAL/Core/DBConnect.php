@@ -1,14 +1,12 @@
 <?php
 
-include("DBConfig.php");
-
 class DBConnect
 {
     private static $_instance;
     private $connection;
 	private $_host = "localhost";
 	private $_username = "root";
-	private $_password = "2255";
+	private $_password = "root";
 	private $_database = "AirCompanyDB";
 
     
