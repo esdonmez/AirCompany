@@ -13,10 +13,13 @@ class AirportBAL
     }
 
 
+    public function GetAirports(){
+        return $this->airportDal->GetAirports();
+    }
+
     public function GetAirportsCount(){
         return $this->airportDal->GetAirportsCount();
     }
-
 }
 
 ?>

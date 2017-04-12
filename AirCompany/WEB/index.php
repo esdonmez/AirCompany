@@ -314,35 +314,22 @@
                         <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                            <th>ID</th>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>City</th>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>City</th>
                             </tr>
-                            <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            </tr>
-                            <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            </tr>
-                            <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-primary">Approved</span></td>
-                            </tr>
-                            <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                            </tr>
+
+                            <?php 
+                            $model = new AirportBAL();
+                            foreach($model->GetAirports() as $data): ?>
+                                <tr>
+                                    <td><?php echo $data->getId(); ?></td>
+                                    <td><?php echo $data->getCode(); ?></td>
+                                    <td><?php echo $data->getName(); ?></td>
+                                    <td><?php echo $data->getCity(); ?></td>
+                                </tr>
+                            <?php endforeach; ?>               
                         </table>
                         </div>
                         <!-- /.box-body -->
@@ -371,40 +358,24 @@
                         <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Capacity</th>
-                            <th>Registration Number</th>
-                            <th>Status</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Capacity</th>
+                                <th>Registration Number</th>
+                                <th>Status</th>
                             </tr>
-                            <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-primary">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
-                            <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                            <td>Bacon ipsum dolor sit amet.</td>
-                            </tr>
+
+                            <?php 
+                            $model = new PlaneBAL();
+                            foreach($model->GetPlanes() as $data): ?>
+                                <tr>
+                                    <td><?php echo $data->getId(); ?></td>
+                                    <td><?php echo $data->getName(); ?></td>
+                                    <td><?php echo $data->getCapacity(); ?></td>
+                                    <td><?php echo $data->getRegistrationNumber(); ?></td>
+                                    <td><?php echo $data->getStatus(); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </table>
                         </div>
                         <!-- /.box-body -->
