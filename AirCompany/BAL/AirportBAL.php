@@ -17,8 +17,24 @@ class AirportBAL
         return $this->airportDal->GetAirports();
     }
 
+    public function GetAirport($id){
+        return $this->airportDal->GetAirport($id);
+    }
+
     public function GetAirportsCount(){
         return $this->airportDal->GetAirportsCount();
+    }
+
+    public function AddAirport(){
+        $response = $this->airportDal->AddAirport();
+    }
+
+    public function UpdateAirport(){
+        $resposne = $this->airportDal->UpdateAirport();
+    }
+
+    public function DeleteAirport(){
+        $response = $this->airportDal->DeleteAirport();
     }
 }
 

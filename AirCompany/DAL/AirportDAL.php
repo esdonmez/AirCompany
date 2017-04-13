@@ -26,6 +26,15 @@ class AirportDAL
         return $airports;
     }
 
+    public function GetAirport($id){
+        $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable WHERE Id=$id");
+
+        $data = $response->fetch_assoc();
+        $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
+
+        return $model;
+    }
+
     public function GetAirportsCount(){
         $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM AirportTable");
         $data = $response->fetch_assoc();
