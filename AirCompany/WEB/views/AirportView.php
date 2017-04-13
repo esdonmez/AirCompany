@@ -1,6 +1,6 @@
 <?php 
-	include("./BAL/AirportBAL.php");            
-    include("./BO/AirportBO.php");
+	include("../BAL/AirportBAL.php");            
+    include("../BO/AirportBO.php");
 ?>
 
 <!DOCTYPE html>
@@ -178,24 +178,20 @@
             </section>
             <!-- /.sidebar -->
         </aside>
-
-        <?php 
-            session_start(); 
-            $id = $_SESSION['id']; 
-        ?>
         
         <?php 
 	        $errorMessage = "";
-	
-	        if(isset($_POST["Id"]) && isset($_POST["Code"]) && isset($_POST["Name"]) && isset($_POST["City"])) {
-		        $Id = trim($_POST["Id"]);
+            
+	        if(isset($_POST["Code"]) && isset($_POST["Name"]) && isset($_POST["City"])) {
+		        $Id = 0;
 		        $Code = trim($_POST["Code"]);
                 $Name = trim($_POST["Name"]);
                 $City = trim($_POST["City"]);
 		
                 $errorMessage = "";
                 $model = new AirportBO($Id, $Code, $Name, $City);
-                $result = AirportBAL::AddAirport($model);
+                $airport = new AirportBAL();
+                $result = $airport.AddAirport($model);
                 if(!$result) {
                     $errorMessage = "Yeni kullanıcı kaydı başarısız!";
                 }

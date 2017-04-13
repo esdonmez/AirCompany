@@ -39,7 +39,7 @@ class PlaneDAL
 
     public function UpdatePlane($model){
         $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name=$model->getName(), RegistrationNumber=$model->getRegistrationNumber(), Status=$model->getStatus() WHERE Id=$model->getId()");
-        return response;
+        return $response;
     }
 
     public function DeletePlane($id){
