@@ -21,12 +21,12 @@ class PlaneBAL
         return $this->planeDal->GetPlanesCount();
     }
 
-    public function Addplane(){
-        $response = $this->planeDal->AddPlane();
+    public function Addplane($model){
+        $response = $this->planeDal->AddPlane($model);
     }
 
-    public function UpdatePlane(){
-        $resposne = $this->planeDal->UpdatePlane();
+    public function UpdatePlane($model){
+        $resposne = $this->planeDal->UpdatePlane($model);
     }
 
     public function DeletePlane($id){

@@ -42,7 +42,7 @@ class AirportDAL
     }
     
     public function AddAirport($model){
-        $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ($model->getCode(), $model->getName(), $model->getCity()");
+        $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ($model->getCode(), $model->getName(), $model->getCity())");
         return $response;
     }
 
