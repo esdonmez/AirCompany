@@ -41,13 +41,13 @@ class AirportDAL
         return $data["size"];
     }
     
-    public function AddAirport(){
-        $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ('48', 'Bodrum-Milas', 'Muğla')");
+    public function AddAirport($model){
+        $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ($model->getCode(), $model->getName(), $model->getCity()");
         return $response;
     }
 
-    public function UpdateAirport(){
-        $response = $this->dbConnect->execute("UPDATE AirportTable SET Name='Bodrum-Milas' WHERE Code='48'");
+    public function UpdateAirport($model){
+        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code=$model->getCode(), Name=$model->getName(), City=$model->getCity()  WHERE Id=$model->getId()");
         return $response;
     }
 
