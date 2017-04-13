@@ -173,6 +173,8 @@
             </section>
             <!-- /.sidebar -->
         </aside>
+
+        <?php $id=$_POST['id']  ?? ''; ?>
         
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -187,7 +189,7 @@
                         <!-- text input -->
                         <div class="form-group">
                         <label>Id</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." disabled>
+                        <input type="text" class="form-control" value="<?php echo $id; ?>" disabled>
                         </div>
                         <div class="form-group">
                         <label>Code</label>

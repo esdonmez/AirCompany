@@ -547,7 +547,15 @@
         }
         function AirportTableClick(id)
         {
-            window.open("../WEB/views/AirportView.php", "_self");
+            $.ajax(
+            { 
+                type : 'POST', 
+                url: '../WEB/views/AirportView.php', 
+                data: { 'id' : id }, 
+                success: function (data) {
+                    window.open("../WEB/views/AirportView.php", "_self");
+                }            
+            });
         }
         function PlaneTableClick(id)
         {
