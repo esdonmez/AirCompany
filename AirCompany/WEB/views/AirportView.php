@@ -1,3 +1,8 @@
+<?php 
+	include("./BAL/AirportBAL.php");            
+    include("./BO/AirportBO.php");
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -174,8 +179,29 @@
             <!-- /.sidebar -->
         </aside>
 
-        <?php $id=$_POST['id']  ?? ''; ?>
+        <?php 
+            session_start(); 
+            $id = $_SESSION['id']; 
+        ?>
         
+        <?php 
+	        $errorMessage = "";
+	
+	        if(isset($_POST["Id"]) && isset($_POST["Code"]) && isset($_POST["Name"]) && isset($_POST["City"])) {
+		        $Id = trim($_POST["Id"]);
+		        $Code = trim($_POST["Code"]);
+                $Name = trim($_POST["Name"]);
+                $City = trim($_POST["City"]);
+		
+                $errorMessage = "";
+                $model = new AirportBO($Id, $Code, $Name, $City);
+                $result = AirportBAL::AddAirport($model);
+                if(!$result) {
+                    $errorMessage = "Yeni kullanıcı kaydı başarısız!";
+                }
+            }
+        ?>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <section class="content">
@@ -185,23 +211,23 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                    <form role="form">
+                    <form role="form" method="POST" action="<?php $_PHP_SELF ?>">
                         <!-- text input -->
                         <div class="form-group">
                         <label>Id</label>
-                        <input type="text" class="form-control" value="<?php echo $id; ?>" disabled>
+                        <input type="text" name="Id" class="form-control" value="<?php echo $id; ?>" disabled>
                         </div>
                         <div class="form-group">
                         <label>Code</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" name="Code" class="form-control" placeholder="Enter ...">
                         </div>
                         <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" name="Name" class="form-control" placeholder="Enter ...">
                         </div>
                         <div class="form-group">
                         <label>City</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" name="City" class="form-control" placeholder="Enter ...">
                         </div>
 
                         <!-- radio -->
@@ -232,6 +258,11 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-default">Delete</button>
                         <button type="submit" class="btn btn-info pull-right">Save</button>
+                        <?php 
+						    if(isset($errorMeesage)) {
+								echo "<br>" . "<span style='color: red;'>" . $errorMeesage . "</span>";
+						    }
+						?>
                     </div>
                 </div>
                 <!-- /.box -->
