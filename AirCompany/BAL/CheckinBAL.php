@@ -21,18 +21,17 @@ class CheckinBAL
         return $this->checkinDal->GetCheckinsCount();
     }
 
-    public function AddCheckin(){
-        $response = $this->checkinDal->AddCheckin();
+    public function AddCheckin($model){
+        $response = $this->checkinDal->AddCheckin($model);
     }
 
-    public function UpdateCheckin(){
-        $resposne = $this->checkinDal->UpdateCheckin();
+    public function UpdateCheckin($model){
+        $resposne = $this->checkinDal->UpdateCheckin($model);
     }
 
     public function DeleteCheckin($CheckId){
         $response = $this->checkinDal->DeleteCheckin($CheckId);
     }
-
 }
 
 ?>

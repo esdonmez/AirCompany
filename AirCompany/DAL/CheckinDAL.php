@@ -32,13 +32,13 @@ class CheckinDAL
         return $data["size"];
     }
 
-    public function AddCheckin(){
-        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES (6, 'L2PBSQ', '17F', 1)");
+    public function AddCheckin($model){
+        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ($model->getFlightId(), $model->getPNR(), $model->getSeat(), $model->getIsChecked())");
         return $response;
     }
 
-    public function UpdateCheckin(){
-        $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='21A'");
+    public function UpdateCheckin($model){
+        $response = $this->dbConnect->execute("UPDATE CheckinTable SET FlightId=$model->getFlightId(), PNR=$model->getPNR(), Seat=$model->getSeat(), IsChecked=$model->getIsChecked() WHERE CheckId=$model->getCheckId()");
         return $response;
     }
 

@@ -38,7 +38,7 @@ class FlightDAL
     }
 
     public function UpdateFlight(){
-        $response = $this->dbConnect->execute("DELETE FROM FlightTable WHERE FlightNumber='AA9523'");
+        $response = $this->dbConnect->execute("UPDATE"); 
         return $response;
     }
 
