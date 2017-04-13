@@ -29,8 +29,8 @@ class PlaneBAL
         $resposne = $this->planeDal->UpdatePlane();
     }
 
-    public function DeletePlane(){
-        $response = $this->planeDal->DeletePlane();
+    public function DeletePlane($id){
+        $response = $this->planeDal->DeletePlane($id);
     }
 }
 

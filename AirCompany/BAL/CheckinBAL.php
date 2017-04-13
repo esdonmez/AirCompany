@@ -29,8 +29,8 @@ class CheckinBAL
         $resposne = $this->checkinDal->UpdateCheckin();
     }
 
-    public function DeleteCheckin(){
-        $response = $this->checkinDal->DeleteCheckin();
+    public function DeleteCheckin($CheckId){
+        $response = $this->checkinDal->DeleteCheckin($CheckId);
     }
 
 }

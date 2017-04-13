@@ -29,8 +29,8 @@ class FlightBAL
         $resposne = $this->flightDal->UpdateFlight();
     }
 
-    public function DeleteFlight(){
-        $response = $this->flightDal->DeleteFlight();
+    public function DeleteFlight($FlightNumber){
+        $response = $this->flightDal->DeleteFlight($FlightNumber);
     }
 }
 

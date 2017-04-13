@@ -42,8 +42,8 @@ class CheckinDAL
         return $response;
     }
 
-    public function DeleteCheckin(){
-        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId='11'");
+    public function DeleteCheckin($CheckId){
+        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId=$CheckId");
         return $response;
     }
 }

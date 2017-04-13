@@ -51,8 +51,8 @@ class AirportDAL
         return $response;
     }
 
-    public function DeleteAirport(){
-        $response = $this->dbConnect->execute("DELETE FROM AirportTable WHERE Code='48'");
+    public function DeleteAirport($id){
+        $response = $this->dbConnect->execute("DELETE FROM AirportTable WHERE Code=$id");
         return $response;
     }
 }

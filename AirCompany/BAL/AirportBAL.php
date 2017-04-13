@@ -33,8 +33,8 @@ class AirportBAL
         $resposne = $this->airportDal->UpdateAirport();
     }
 
-    public function DeleteAirport(){
-        $response = $this->airportDal->DeleteAirport();
+    public function DeleteAirport($id){
+        $response = $this->airportDal->DeleteAirport($id);
     }
 }
 
