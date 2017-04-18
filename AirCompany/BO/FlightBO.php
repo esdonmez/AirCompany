@@ -11,11 +11,10 @@ class FlightBO
     private $ArrivalDateTime;
     private $Price;
     private $Gate;
-    private $IsTwoWay;
     private $IsActive;
 
 
-    public function FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsTwoWay, $IsActive){
+    public function FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive){
         $this->Id = $Id;
         $this->FlightNumber = $FlightNumber;
         $this->PlaneId = $PlaneId;
@@ -25,7 +24,6 @@ class FlightBO
         $this->ArrivalDateTime = $ArrivalDateTime;
         $this->Price = $Price;
         $this->Gate = $Gate;
-        $this->IsTwoWay = $IsTwoWay;
         $this->IsActive = $IsActive;
     }
 
@@ -64,10 +62,6 @@ class FlightBO
 
     public function getGate(){
         return $this->Gate;
-    }
-
-    public function getIsTwoWay(){
-        return $this->IsTwoWay;
     }
 
     public function getIsActive(){

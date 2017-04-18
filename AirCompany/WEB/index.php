@@ -392,7 +392,6 @@
                             <th>Arrival Time</th>
                             <th>Price</th>
                             <th>Gate</th>
-                            <th>IsTwoWay</th>
                             <th>IsActive</th>
                             </tr>
                             <?php 
@@ -408,7 +407,6 @@
                                     <td><?php echo $data->getArrivalTime(); ?></td>
                                     <td><?php echo $data->getPrice(); ?></td>
                                     <td><?php echo $data->getGate(); ?></td>
-                                    <td><?php echo $data->getIsTwoWay(); ?></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
                                 </tr>
                             <?php endforeach; ?>   
