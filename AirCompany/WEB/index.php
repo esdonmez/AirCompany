@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr onClick="PlaneTableClick('<?php session_start(); $_SESSION['id'] = $data->getId();?>')">
+                                <tr onClick="PlaneTableClick('<?php $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
