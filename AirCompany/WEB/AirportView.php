@@ -2,7 +2,7 @@
 	require_once("../BAL/AirportBAL.php");            
     require_once("../BO/AirportBO.php");
 
-	if(isset($_POST["code"]) && isset($_POST["name"]) && isset($_POST["city"])) {
+	if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
 	    $Id = 0;
 		$Code = trim($_POST["code"]);
         $Name = trim($_POST["name"]);
