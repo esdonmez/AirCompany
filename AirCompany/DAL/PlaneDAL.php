@@ -33,12 +33,21 @@ class PlaneDAL
     }
 
     public function AddPlane($model){
-        $response = $this->dbConnect->execute("INSERT INTO PlaneTable (Name, RegistrationNumber, Status) VALUES ($model->getName(), $model->getRegistrationNumber(), $model->getStatus())");
+        $name = $model->getName();
+        $registrationnumber = $model->getRegistrationNumber();
+        $status = $model->getStatus();
+
+        $response = $this->dbConnect->execute("INSERT INTO PlaneTable (Name, RegistrationNumber, Status) VALUES ('$name', '$registrationnumber', '$status')");
         return $response;
     }
 
     public function UpdatePlane($model){
-        $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name=$model->getName(), RegistrationNumber=$model->getRegistrationNumber(), Status=$model->getStatus() WHERE Id=$model->getId()");
+        $id = $model->getId();
+        $name = $model->getName();
+        $registrationnumber = $model->getRegistrationNumber();
+        $status = $model->getStatus();
+
+        $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name='$name', RegistrationNumber='$registrationnumber', Status='$status' WHERE Id='$id");
         return $response;
     }
 
