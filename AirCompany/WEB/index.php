@@ -172,10 +172,10 @@
                     </li>
                 
                     <li class="header">TABLES</li>
-                    <li><a href="../WEB/AirportView.php"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
-                    <li><a href="../WEB/PlaneView.php"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
-                    <li><a href="../WEB/FlightView.php"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
-                    <li><a href="../WEB/CheckinView.php"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -302,7 +302,7 @@
                             <?php 
                             $model = new AirportBAL();
                             foreach($model->GetAirports() as $data): ?>
-                                <tr onClick="AirportTableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="AirportTableClick('<?php session_start(); $_SESSION['id'] = $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getCode(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr onClick="PlaneTableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="PlaneTableClick('<?php session_start(); $_SESSION['id'] = $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
@@ -545,29 +545,6 @@
         }
         function AirportTableClick(id)
         {
-            var hash = location.hash;
-            window.location.href = '../WEB/AirportView.php?val='+id;
-            /*$.ajax({ // start an ajax POST 
-					type	: "post",
-					url		: "AirportView.php",
-					data	:  { 
-						"id"	: id
-					},
-					success : function(reply) { // when ajax executed successfully
-						console.log(reply);
-						if(retType == "json") {
-							$("#divCallResult").html( JSON.stringify(reply) );
-						}
-						else {
-							$("#divCallResult").html( new XMLSerializer().serializeToString(reply) );
-						}
-						
-					},
-					error   : function(err) { // some unknown error happened
-						console.log(err);
-						alert(" There is an error! Please try again. " + err); 
-					}
-				});*/
             window.open("../WEB/AirportView.php", "_self");
         }
         function PlaneTableClick(id)
@@ -579,6 +556,7 @@
             window.open("../WEB/FlightView.php", "_self");
         }
     </script> 
+
     <!-- jQuery 2.2.3 -->
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -616,8 +594,6 @@
     <script src="dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body> 
 
 </html>
