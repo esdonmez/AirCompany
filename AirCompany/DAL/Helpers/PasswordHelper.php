@@ -3,7 +3,7 @@
 class PasswordHelper
 {
 
-    public function PasswordHelper()
+    public function __construct()
     {
 
     }

@@ -6,7 +6,7 @@ class ResultModel
     private $Message;
 
 
-    public function ResultModel($IsSuccess, $Message)
+    public function __construct($IsSuccess, $Message)
     {
         $this->IsSuccess = $IsSuccess;
         $this->Message = $Message;

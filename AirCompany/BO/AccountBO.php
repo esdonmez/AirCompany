@@ -7,7 +7,7 @@ class AccountBO
     private $Email;
 
 
-    public function AccountBO($Id, $NameSurname, $Email)
+    public function __construct($Id, $NameSurname, $Email)
     {
         $this->Id = $Id;
         $this->NameSurname = $NameSurname;

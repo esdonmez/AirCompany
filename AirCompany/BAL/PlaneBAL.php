@@ -7,7 +7,7 @@ class PlaneBAL
     private $planeDal;
 
 
-    public function PlaneBAL()
+    public function __construct()
     {
         $this->planeDal = new PlaneDAL();
     }

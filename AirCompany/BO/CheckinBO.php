@@ -8,7 +8,7 @@ class CheckinBO
     private $Seat;
     private $IsChecked;
 
-    public function CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked){
+    public function __construct($CheckId, $FlightId, $PNR, $Seat, $IsChecked){
         $this->CheckId = $CheckId;
         $this->FlightId = $FlightId;
         $this->PNR = $PNR;

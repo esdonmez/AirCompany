@@ -8,7 +8,7 @@ class CheckinDAL
     private $dbConnect;
 
 
-    public function CheckinDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

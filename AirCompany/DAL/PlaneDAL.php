@@ -8,7 +8,7 @@ class PlaneDAL
     private $dbConnect;
 
 
-    public function PlaneDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

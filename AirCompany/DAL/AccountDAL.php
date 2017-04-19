@@ -8,7 +8,7 @@ class AccountDAL
     private $dbConnect;
 
 
-    public function AccountDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

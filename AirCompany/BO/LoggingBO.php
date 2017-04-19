@@ -8,7 +8,7 @@ class LoggingBO
     private $CreateDate;
 
 
-    public function LoggingBO($Id, $Entity, $Operation, $CreateDate)
+    public function __construct($Id, $Entity, $Operation, $CreateDate)
     {
         $this->Id = $Id;
         $this->Entity = $Entity;

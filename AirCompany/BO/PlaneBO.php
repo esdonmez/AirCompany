@@ -9,7 +9,7 @@ class PlaneBO
     private $RegistrationNumber;
 
 
-    public function PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber){
+    public function __construct($Id, $Name, $Capacity, $Status, $RegistrationNumber){
         $this->Id = $Id;
         $this->Name = $Name;
         $this->Capacity = $Capacity;

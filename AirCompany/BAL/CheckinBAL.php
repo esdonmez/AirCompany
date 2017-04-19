@@ -7,7 +7,7 @@ class CheckinBAL
     private $checkinDal;
 
 
-    public function CheckinBAL()
+    public function __construct()
     {
         $this->checkinDal = new CheckinDAL();
     }

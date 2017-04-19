@@ -7,7 +7,7 @@ class AirportBAL
     private $airportDal;
 
 
-    public function AirportBAL()
+    public function __construct()
     {
         $this->airportDal = new AirportDAL();
     }

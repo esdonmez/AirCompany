@@ -14,7 +14,7 @@ class FlightBO
     private $IsActive;
 
 
-    public function FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive){
+    public function __construct($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive){
         $this->Id = $Id;
         $this->FlightNumber = $FlightNumber;
         $this->PlaneId = $PlaneId;

@@ -8,7 +8,7 @@ class FlightDAL
     private $dbConnect;
 
 
-    public function FlightDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

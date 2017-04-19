@@ -8,7 +8,7 @@ class AirportDAL
     private $dbConnect;
 
 
-    public function AirportDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

@@ -7,7 +7,7 @@ class FlightBAL
     private $flightDal;
 
 
-    public function FlightBAL()
+    public function __construct()
     {
         $this->flightDal = new FlightDAL();
     }

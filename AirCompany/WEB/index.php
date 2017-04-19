@@ -172,10 +172,10 @@
                     </li>
                 
                     <li class="header">TABLES</li>
-                    <li><a href="../WEB/views/AirportView.php"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
-                    <li><a href="../WEB/views/PlaneView.php"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
-                    <li><a href="../WEB/views/FlightView.php"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
-                    <li><a href="../WEB/views/CheckinView.php"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
+                    <li><a href="../WEB/AirportView.php"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
+                    <li><a href="../WEB/PlaneView.php"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
+                    <li><a href="../WEB/FlightView.php"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
+                    <li><a href="../WEB/CheckinView.php"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -209,7 +209,7 @@
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="../WEB/views/AirportView.php" class="small-box-footer">Add new airport <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/AirportView.php" class="small-box-footer">Add new airport <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -228,7 +228,7 @@
                             <div class="icon">
                                 <i class="ion ion-paper-airplane"></i>
                             </div>
-                            <a href="../WEB/views/PlaneView.php" class="small-box-footer">Add new plane <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/PlaneView.php" class="small-box-footer">Add new plane <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -247,7 +247,7 @@
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
-                            <a href="../WEB/views/FlightView.php" class="small-box-footer">Add new flight <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/FlightView.php" class="small-box-footer">Add new flight <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -266,7 +266,7 @@
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="../WEB/views/CheckinView.php" class="small-box-footer">Add new checkin <i class="fa fa-plus-circle"></i></a>
+                            <a href="../WEB/CheckinView.php" class="small-box-footer">Add new checkin <i class="fa fa-plus-circle"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -541,24 +541,26 @@
     <script type="text/javascript">
         function CheckinTableClick(id)
         {
-            window.open("../WEB/views/CheckinView.php", "_self");
+            window.open("../WEB/CheckinView.php", "_self");
         }
         function AirportTableClick(id)
         {
-            $.ajax({ type: "POST", url: "index.php",data: {id: id} });
+            var hash = location.hash;
+            window.location.href = 'index.php?val='+id;
             <?php 
+                $res=isset($_REQUEST['val'])?$_REQUEST['val']:'';
                 session_start(); 
-                $_SESSION['id'] = $_POST['id']; 
+                $_SESSION['id'] = $res; 
             ?>
-            window.open("../WEB/views/AirportView.php", "_self");
+            window.open("../WEB/AirportView.php", "_self");
         }
         function PlaneTableClick(id)
         {
-            window.open("../WEB/views/PlaneView.php", "_self");
+            window.open("../WEB/PlaneView.php", "_self");
         }
         function FlightTableClick(id)
         {
-            window.open("../WEB/views/FlightView.php", "_self");
+            window.open("../WEB/FlightView.php", "_self");
         }
     </script> 
     <!-- jQuery 2.2.3 -->

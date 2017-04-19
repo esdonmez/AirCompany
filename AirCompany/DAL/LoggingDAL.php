@@ -8,7 +8,7 @@ class LoggingDAL
     private $dbConnect;
 
 
-    public function LoggingDAL()
+    public function __construct()
     {
         $this->dbConnect = new DBConnect();
     }

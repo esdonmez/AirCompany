@@ -7,7 +7,7 @@ class AirportBO
     private $Name;
     private $City;
 
-    public function AirportBO($Id, $Code, $Name, $City){
+    public function __construct($Id, $Code, $Name, $City){
         $this->Id = $Id;
         $this->Code = $Code;
         $this->Name = $Name;
