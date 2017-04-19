@@ -1,42 +1,68 @@
 <?php
 
-include("../DAL/AirportDAL.php");
+require_once("../DAL/DBConnect.php");
+require_once("../BO/AirportBO.php");
 
 class AirportBAL
 {
-    private $airportDal;
-
+    private $dbConnect;
+    
 
     public function __construct()
     {
-        $this->airportDal = new AirportDAL();
+        $this->dbConnect = new DBConnect();
     }
 
 
     public function GetAirports(){
-        return $this->airportDal->GetAirports();
+        $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable");
+        $airports = array();
+
+        while($data = $response->fetch_assoc()) {
+            $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
+            array_push($airports, $model);
+        }
+
+        return $airports;
     }
 
     public function GetAirport($id){
-        return $this->airportDal->GetAirport($id);
+        $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable WHERE Id=$id");
+
+        $data = $response->fetch_assoc();
+        $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
+
+        return $model;
     }
 
     public function GetAirportsCount(){
-        return $this->airportDal->GetAirportsCount();
+        $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM AirportTable");
+        $data = $response->fetch_assoc();
+        return $data["size"];
     }
 
     public function AddAirport($model){
-        $response = $this->airportDal->AddAirport($model);
+        $code = $model->getCode();
+        $name = $model->getName();
+        $city = $model->getCity();
+
+        $response = $this->dbConnect->execute("INSERT INTO AirportTable (Code, Name, City) VALUES ('$code', '$name', '$city')");
         return $response;
     }
 
     public function UpdateAirport($model){
-        $resposne = $this->airportDal->UpdateAirport($model);
+        $id = $model->getId();
+        $code = $model->getCode();
+        $name = $model->getName();
+        $city = $model->getCity();
+
+        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code='$code', Name='$name', City='$city' WHERE Id='$id'");
         return $response;
     }
 
     public function DeleteAirport($id){
-        $response = $this->airportDal->DeleteAirport($id);
+        $response = $this->dbConnect->execute("DELETE FROM AirportTable WHERE Code=$id");
+        return $response;
     }
 }
 

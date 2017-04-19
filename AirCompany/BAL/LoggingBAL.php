@@ -1,12 +1,12 @@
 <?php
 
+require_once("../DAL/DBConnect.php");
 require_once("../BO/LoggingBO.php");
-require_once("Core/DBConnect.php");
 
-class LoggingDAL
+class LoggingBAL
 {
     private $dbConnect;
-
+    
 
     public function __construct()
     {
@@ -23,7 +23,7 @@ class LoggingDAL
             array_push($logs, $model);
         }
 
-        return $airports;
+        return $logs;
     }
 
     public function AddLog($model){
