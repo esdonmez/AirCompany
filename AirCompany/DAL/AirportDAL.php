@@ -51,7 +51,12 @@ class AirportDAL
     }
 
     public function UpdateAirport($model){
-        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code=$model->getCode(), Name=$model->getName(), City=$model->getCity()  WHERE Id=$model->getId()");
+        $id = $model->getId();
+        $code = $model->getCode();
+        $name = $model->getName();
+        $city = $model->getCity();
+
+        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code='$code', Name='$name', City='$city' WHERE Id='$id'");
         return $response;
     }
 
