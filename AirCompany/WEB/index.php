@@ -546,12 +546,28 @@
         function AirportTableClick(id)
         {
             var hash = location.hash;
-            window.location.href = 'index.php?val='+id;
-            <?php 
-                $res=isset($_REQUEST['val'])?$_REQUEST['val']:'';
-                session_start(); 
-                $_SESSION['id'] = $res; 
-            ?>
+            window.location.href = '../WEB/AirportView.php?val='+id;
+            /*$.ajax({ // start an ajax POST 
+					type	: "post",
+					url		: "AirportView.php",
+					data	:  { 
+						"id"	: id
+					},
+					success : function(reply) { // when ajax executed successfully
+						console.log(reply);
+						if(retType == "json") {
+							$("#divCallResult").html( JSON.stringify(reply) );
+						}
+						else {
+							$("#divCallResult").html( new XMLSerializer().serializeToString(reply) );
+						}
+						
+					},
+					error   : function(err) { // some unknown error happened
+						console.log(err);
+						alert(" There is an error! Please try again. " + err); 
+					}
+				});*/
             window.open("../WEB/AirportView.php", "_self");
         }
         function PlaneTableClick(id)
@@ -600,6 +616,8 @@
     <script src="dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body> 
 
 </html>

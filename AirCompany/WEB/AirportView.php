@@ -1,6 +1,23 @@
 <?php 
 	require_once("../BAL/AirportBAL.php");            
     require_once("../BO/AirportBO.php");
+
+	if(isset($_POST["code"]) && isset($_POST["name"]) && isset($_POST["city"])) {
+	    $Id = 0;
+		$Code = trim($_POST["code"]);
+        $Name = trim($_POST["name"]);
+        $City = trim($_POST["city"]);
+		
+        $errorMessage = "";
+        $model = new AirportBO($Id, $Code, $Name, $City);
+        $airport = new AirportBAL();
+        $result = $airport->AddAirport($model);
+
+        if($result) {
+            $errorMessage = "Yeni kullanıcı kaydı başarısız!";
+            echo $errorMeesage;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -178,28 +195,6 @@
             </section>
             <!-- /.sidebar -->
         </aside>
-        
-        <?php 
-            $id = $_POST['res'];
-            
-	        $errorMessage = "";
-            
-	        if(isset($_POST["Code"]) && isset($_POST["Name"]) && isset($_POST["City"])) {
-		        $Id = 0;
-		        $Code = trim($_POST["Code"]);
-                $Name = trim($_POST["Name"]);
-                $City = trim($_POST["City"]);
-		
-                $errorMessage = "";
-                $model = new AirportBO($Id, $Code, $Name, $City);
-                $airport = new AirportBAL();
-                $result = $airport.AddAirport($model);
-                if(!$result) {
-                    $errorMessage = "Yeni kullanıcı kaydı başarısız!";
-                    echo $errorMeesage;
-                }
-            }
-        ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -210,59 +205,30 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                    <form role="form" method="POST" action="AirportView.php">
-                        <!-- text input -->
-                        <div class="form-group">
-                        <label>Id</label>
-                        <input type="text" name="Id" class="form-control" value="<?php echo $id; ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                        <label>Code</label>
-                        <input type="text" name="Code" class="form-control" placeholder="Enter ...">
-                        </div>
-                        <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="Name" class="form-control" placeholder="Enter ...">
-                        </div>
-                        <div class="form-group">
-                        <label>City</label>
-                        <input type="text" name="City" class="form-control" placeholder="Enter ...">
-                        </div>
-
-                        <!-- radio -->
-                        <!--div class="form-group">
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            Option one is this and that&mdash;be sure to include why it's great
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Option two can be something else and selecting it will deselect option one
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                            Option three is disabled
-                            </label>
-                        </div>
-                        </div-->
-                    </form>
+                        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                            <div class="form-group">
+                                <label>Id</label>
+                                <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Code</label>
+                                <input type="text" name="code" class="form-control" placeholder="Enter ...">
+                            </div>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter ...">
+                            </div>
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" name="city" class="form-control" placeholder="Enter ...">
+                            </div>                
+                            <div class="box-footer">    
+                                <input class="btn btn-default" name="delete" value="Delete"/>               
+                                <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
+                            </div>
+                        </form>  
                     </div>
-                    <!-- /.box-body -->
-
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-default">Delete</button>
-                        <input type="submit" class="btn btn-info pull-right" value="Save"/>
-                        <?php 
-						    if(isset($errorMeesage)) {
-								echo "<br>" . "<span style='color: red;'>" . $errorMeesage . "</span>";
-						    }
-						?>
-                    </div>
+                    <!-- /.box-body -->   
                 </div>
                 <!-- /.box -->
             </section>

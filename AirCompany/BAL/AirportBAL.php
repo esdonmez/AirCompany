@@ -27,10 +27,12 @@ class AirportBAL
 
     public function AddAirport($model){
         $response = $this->airportDal->AddAirport($model);
+        return $response;
     }
 
     public function UpdateAirport($model){
         $resposne = $this->airportDal->UpdateAirport($model);
+        return $response;
     }
 
     public function DeleteAirport($id){
