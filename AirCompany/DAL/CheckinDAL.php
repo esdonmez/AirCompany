@@ -33,12 +33,23 @@ class CheckinDAL
     }
 
     public function AddCheckin($model){
-        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ($model->getFlightId(), $model->getPNR(), $model->getSeat(), $model->getIsChecked())");
+        $flightid = $model->getFlightId();
+        $pnr = $model->getPNR();
+        $seat = $model->getSeat();
+        $ischecked = $model->getIsChecked();
+
+        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ('$flightid', '$pnr', '$seat', '$ischecked')");
         return $response;
     }
 
     public function UpdateCheckin($model){
-        $response = $this->dbConnect->execute("UPDATE CheckinTable SET FlightId=$model->getFlightId(), PNR=$model->getPNR(), Seat=$model->getSeat(), IsChecked=$model->getIsChecked() WHERE CheckId=$model->getCheckId()");
+        $checkid = $model->getCheckId();
+        $flightid = $model->getFlightId();
+        $pnr = $model->getPNR();
+        $seat = $model->getSeat();
+        $ischecked = $model->getIsChecked();
+        
+        $response = $this->dbConnect->execute("UPDATE CheckinTable SET FlightId=$model->'$flightid', PNR='$pnr', Seat='$seat', IsChecked='$ischecked' WHERE CheckId='$checkid'");
         return $response;
     }
 
