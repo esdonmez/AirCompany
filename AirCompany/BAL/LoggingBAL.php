@@ -1,12 +1,12 @@
 <?php
 
+require_once("../DAL/DBConnect.php");
 require_once("../BO/LoggingBO.php");
-require_once("Core/DBConnect.php");
 
-class LoggingDAL
+class LoggingBAL
 {
     private $dbConnect;
-
+    
 
     public function __construct()
     {
@@ -23,11 +23,15 @@ class LoggingDAL
             array_push($logs, $model);
         }
 
-        return $airports;
+        return $logs;
     }
 
-    public function AddLog(){
-        $response = $this->dbConnect->execute("INSERT INTO LoggingTable (Entity, Operation, CreateDate) VALUES ('test', 'test', 'date')");
+    public function AddLog($model){
+        $entity = $model->getEntity();
+        $operation = $model->getOperation();
+        $createdate = $model->getCreateDate();
+
+        $response = $this->dbConnect->execute("INSERT INTO LoggingTable (Entity, Operation, CreateDate) VALUES ('$entity', '$operation', '$createdate')");
         return $response;
     }
 }
