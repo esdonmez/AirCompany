@@ -13,7 +13,7 @@ class DBConnect
 		$this->connection = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
 
 		if ($this->connection->connect_error) {
-			die("Bağlantı hatası: " . $this->connection->connect_error);
+			die("connection error : " . $this->connection->connect_error);
 		}
 
 		$this->connection->set_charset("utf8");
