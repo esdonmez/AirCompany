@@ -3,7 +3,7 @@
     require_once("../BO/AirportBO.php");
 
     session_start();
-    $id = $_SESSION['id'];
+    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
 
 	if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
 	    $Id = 0;
@@ -17,7 +17,7 @@
         $result = $airport->AddAirport($model);
 
         if($result) {
-            $errorMessage = "Yeni kullanıcı kaydı başarısız!";
+            $errorMessage = "Unsuccessful Record!";
             echo $errorMeesage;
         }
     }

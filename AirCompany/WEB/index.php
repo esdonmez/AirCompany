@@ -302,7 +302,7 @@
                             <?php 
                             $model = new AirportBAL();
                             foreach($model->GetAirports() as $data): ?>
-                                <tr onClick="AirportTableClick('<?php session_start(); $_SESSION['id'] = $data->getId();?>')">
+                                <tr onClick="AirportTableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getCode(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr onClick="PlaneTableClick('<?php $data->getId();?>')">
+                                <tr onClick="PlaneTableClick('<?php echo $data->getId();?>')">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
@@ -545,7 +545,19 @@
         }
         function AirportTableClick(id)
         {
-            window.open("../WEB/AirportView.php", "_self");
+            $.ajax({
+                url: 'index.php',
+                type: "POST",
+                data: ({esd: id}),
+                success: function(data){
+                    
+                }
+            });     
+
+            <?php session_start();
+                $_SESSION['id'] = $esd; ?>
+
+                window.open("../WEB/AirportView.php", "_self");
         }
         function PlaneTableClick(id)
         {
