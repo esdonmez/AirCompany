@@ -2,8 +2,7 @@
 	require_once("../BAL/AirportBAL.php");            
     require_once("../BO/AirportBO.php");
 
-    session_start();
-    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
+    $id = htmlspecialchars($_GET["id"]);
 
 	if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
 	    $Id = 0;
