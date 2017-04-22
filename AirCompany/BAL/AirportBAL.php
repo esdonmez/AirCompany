@@ -61,7 +61,7 @@ class AirportBAL
     }
 
     public function DeleteAirport($id){
-        $response = $this->dbConnect->execute("DELETE FROM AirportTable WHERE Code=$id");
+        $response = $this->dbConnect->execute("DELETE FROM AirportTable WHERE Id=$id");
         return $response;
     }
 }

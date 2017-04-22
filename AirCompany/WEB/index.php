@@ -532,9 +532,9 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2017 <a href="index.html">AdamAir</a>.</strong> All rights reserved.
-        </footer>
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2017 <a href="index.html">AdamAir</a>.</strong> All rights reserved.
+            </footer>
     </div>
     <!-- ./wrapper -->
 
