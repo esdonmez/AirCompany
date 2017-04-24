@@ -6,7 +6,7 @@ require_once("../BO/FlightBO.php");
 class FlightBAL
 {
     private $dbConnect;
-    
+
 
     public function __construct()
     {
@@ -72,8 +72,8 @@ class FlightBAL
         return $response;
     }
 
-    public function DeleteFlight($Id){
-        $response = $this->dbConnect->execute("DELETE FROM FlightTable WHERE Id=$Id");
+    public function DeleteFlight($id){
+        $response = $this->dbConnect->execute("DELETE FROM FlightTable WHERE Id=$id");
         return $response;
     }
 }
