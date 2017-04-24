@@ -2,25 +2,61 @@
 	require_once("../BAL/CheckinBAL.php");            
     require_once("../BO/CheckinBO.php");
 
-    session_start();
-    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
-
-	if(!empty($_POST["flight"])) {
-	    $CheckId = 0;
-		$FlightId = trim($_POST["flight"]);
-        $PNR = trim($_POST["pnr"]);
-        $Seat = trim($_POST["seat"]);
-		$IsChecked = trim($_POST["isChecked"]);
-
-        $errorMessage = "";
-        $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
+    if(isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
         $checkin = new CheckinBAL();
-        $result = $checkin->AddCheckin($model);
+        $model = $checkin->GetCheckin($id);
 
-        if($result) {
-            $errorMessage = "Unsuccessful Record!";
-            echo $errorMeesage;
+        $flight = $model->getFlightId();
+        $pnr = $model->getPNR();
+        $seat = $model->getSeat();
+        $isChecked = $model->getIsChecked();
+    }
+    else if(!isset($_GET['id']))
+    {
+        $id = 0;
+    }
+
+    if($_POST['submit'] == 'Delete')
+    {
+        $checkin = new CheckinBAL();
+        $result = $checkin->DeleteCheckin($id);
+        header("Location: index.php");
+    }
+    else if($_POST['submit'] == "Save")
+    {
+        if(!isset($_GET['id']) && !empty($_POST["flight"])) 
+        {
+            $CheckId = 0;
+            $FlightId = trim($_POST["flight"]);
+            $PNR = trim($_POST["pnr"]);
+            $Seat = trim($_POST["seat"]);
+            $IsChecked = trim($_POST["isChecked"]);
+
+            $errorMessage = "";
+            $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
+            $checkin = new CheckinBAL();
+            $result = $checkin->AddCheckin($model);
+
+            header("Location: index.php");
         }
+
+        else if(!empty($_POST["flight"])) 
+        {
+            $CheckId = $id;
+            $FlightId = trim($_POST["flight"]);
+            $PNR = trim($_POST["pnr"]);
+            $Seat = trim($_POST["seat"]);
+            $IsChecked = trim($_POST["isChecked"]);
+                
+            $errorMessage = "";
+            $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
+            $checkin = new CheckinBAL();
+            $result = $checkin->UpdateAirport($model);
+
+            header("Location: index.php");
+        }            
     }
 ?>
 
@@ -130,66 +166,6 @@
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header">MAIN</li>
-                    <li>
-                        <a href="pages/widgets.html">
-                            <i class="fa fa-th"></i> <span>Widgets</span>
-                            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-                        </a>
-                    </li>
-                    
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>UI Elements</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-edit"></i> <span>Forms</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Examples</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-                        </ul>
-                    </li>
-                
                     <li class="header">TABLES</li>
                     <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
@@ -205,34 +181,34 @@
             <section class="content">
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                    <h3 class="box-title"><b>Airport Table</b></h3>
+                    <h3 class="box-title"><b>Checkin Table</b></h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                        <form action=<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> method="post">
                             <div class="form-group">
                                 <label>Id</label>
                                 <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>
                             </div>
                             <div class="form-group">
                                 <label>FlightId</label>
-                                <input type="text" name="flight" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="flight" class="form-control" placeholder="Enter ..." value="<?php echo $flight; ?>">
                             </div>
                             <div class="form-group">
                                 <label>PNR</label>
-                                <input type="text" name="pnr" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="pnr" class="form-control" placeholder="Enter ..." value="<?php echo $pnr; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Seat</label>
-                                <input type="text" name="seat" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="seat" class="form-control" placeholder="Enter ..." value="<?php echo $seat; ?>">
                             </div>  
                             <div class="form-group">
                                 <label>IsChecked</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ..." value="<?php echo $isChecked; ?>">
                             </div>                
                             <div class="box-footer">    
-                                <input class="btn btn-default" name="delete" value="Delete"/>               
-                                <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
+                                <input type="submit" class="btn btn-default" name="submit" value="Delete"/>               
+                                <input type="submit" class="btn btn-info pull-right" name="submit" value="Save"/>
                             </div>
                         </form>  
                     </div>

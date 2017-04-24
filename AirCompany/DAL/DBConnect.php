@@ -5,7 +5,7 @@ class DBConnect
     private $connection;
 	private $_host = "localhost";
 	private $_username = "root";
-	private $_password = "2255";
+	private $_password = "root";
 	private $_database = "AirCompanyDB";
 
     

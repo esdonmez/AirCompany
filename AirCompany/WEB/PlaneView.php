@@ -2,25 +2,60 @@
 	require_once("../BAL/PlaneBAL.php");            
     require_once("../BO/PlaneBO.php");
 
-    session_start();
-    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
+    if(isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
+        $airport = new AirportBAL();
+        $model = $airport->GetAirport($id);
 
-	if(!empty($_POST["name"]) && !empty($_POST["capacity"]) && !empty($_POST["status"]) && !empty($_POST["registrationNumber"])) {
-	    $Id = 0;
-		$Name = trim($_POST["name"]);
-        $Capacity = trim($_POST["capacity"]);
-        $Status = trim($_POST["status"]);
-        $RegistrationNumber = trim($_POST["registrationNumber"]);
-		
-        $errorMessage = "";
-        $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
-        $plane = new PlaneBAL();
-        $result = $plane->AddPlane($model);
+        $code = $model->getCode();
+        $name = $model->getName();
+        $city = $model ->getCity();
+    }
+    else if(!isset($_GET['id']))
+    {
+        $id = 0;
+    }
 
-        if($result) {
-            $errorMessage = "Unsuccessful Record!";
-            echo $errorMeesage;
+    if($_POST['submit'] == 'Delete')
+    {
+        $airport = new AirportBAL();
+        $result = $airport->DeleteAirport($id);
+        header("Location: index.php");
+    }
+    else if($_POST['submit'] == "Save")
+    {
+        if(!isset($_GET['id']) && !empty($_POST["name"]) && !empty($_POST["capacity"]) && !empty($_POST["status"]) && !empty($_POST["registrationNumber"])) 
+        {
+            $Id = 0;
+            $Name = trim($_POST["name"]);
+            $Capacity = trim($_POST["capacity"]);
+            $Status = trim($_POST["status"]);
+            $RegistrationNumber = trim($_POST["registrationNumber"]);
+            
+            $errorMessage = "";
+            $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
+            $plane = new PlaneBAL();
+            $result = $plane->AddPlane($model);
+
+            header("Location: index.php");
         }
+
+        else if(!empty($_POST["name"]) && !empty($_POST["capacity"]) && !empty($_POST["status"]) && !empty($_POST["registrationNumber"])) 
+        {
+            $Id = $id;
+            $Name = trim($_POST["name"]);
+            $Capacity = trim($_POST["capacity"]);
+            $Status = trim($_POST["status"]);
+            $RegistrationNumber = trim($_POST["registrationNumber"]);
+            
+            $errorMessage = "";
+            $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
+            $plane = new PlaneBAL();
+            $result = $plane->UpdatePlane($model);
+
+            header("Location: index.php");
+        }            
     }
 ?>
 
@@ -130,66 +165,6 @@
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header">MAIN</li>
-                    <li>
-                        <a href="pages/widgets.html">
-                            <i class="fa fa-th"></i> <span>Widgets</span>
-                            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-                        </a>
-                    </li>
-                    
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>UI Elements</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-edit"></i> <span>Forms</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Examples</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-                        </ul>
-                    </li>
-                
                     <li class="header">TABLES</li>
                     <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
@@ -216,23 +191,23 @@
                             </div>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="name" class="form-control" placeholder="Enter ..." value="<?php echo $name; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Capacity</label>
-                                <input type="text" name="capacity" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="capacity" class="form-control" placeholder="Enter ..." value="<?php echo $capacity; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
-                                <input type="text" name="status" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="status" class="form-control" placeholder="Enter ..." value="<?php echo $status; ?>">
                             </div>    
                             <div class="form-group">
                                 <label>RegistrationNumber</label>
-                                <input type="text" name="registrationNumber" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="registrationNumber" class="form-control" placeholder="Enter ..." value="<?php echo $registrationNumber; ?>">
                             </div>             
                             <div class="box-footer">    
-                                <input class="btn btn-default" name="delete" value="Delete"/>               
-                                <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
+                                <input type="submit" class="btn btn-default" name="submit" value="Delete"/>               
+                                <input type="submit" class="btn btn-info pull-right" name="submit" value="Save"/>
                             </div>
                         </form>  
                     </div>

@@ -25,43 +25,43 @@
     }
     else if($_POST['submit'] == "Save")
     {
-            if(!isset($_GET['id']) && !empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
-            {
-                $Id = 0;
-                $Code = trim($_POST["code"]);
-                $Name = trim($_POST["name"]);
-                $City = trim($_POST["city"]);
+        if(!isset($_GET['id']) && !empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
+        {
+            $Id = 0;
+            $Code = trim($_POST["code"]);
+            $Name = trim($_POST["name"]);
+            $City = trim($_POST["city"]);
                 
-                $errorMessage = "";
-                $model = new AirportBO($Id, $Code, $Name, $City);
-                $airport = new AirportBAL();
-                $result = $airport->AddAirport($model);
+            $errorMessage = "";
+            $model = new AirportBO($Id, $Code, $Name, $City);
+            $airport = new AirportBAL();
+            $result = $airport->AddAirport($model);
 
-                if($result) {
-                    $errorMessage = "Unsuccessful Record!";
-                    echo $errorMeesage;
-                }
-                header("Location: index.php");
+            if($result) {
+                $errorMessage = "Unsuccessful Record!";
+                echo $errorMeesage;
             }
+            header("Location: index.php");
+        }
 
-            else if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
-            {
-                $Id = $id;
-                $Code = trim($_POST["code"]);
-                $Name = trim($_POST["name"]);
-                $City = trim($_POST["city"]);
+        else if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
+        {
+            $Id = $id;
+            $Code = trim($_POST["code"]);
+            $Name = trim($_POST["name"]);
+            $City = trim($_POST["city"]);
                 
-                $errorMessage = "";
-                $model = new AirportBO($Id, $Code, $Name, $City);
-                $airport = new AirportBAL();
-                $result = $airport->UpdateAirport($model);
+            $errorMessage = "";
+            $model = new AirportBO($Id, $Code, $Name, $City);
+            $airport = new AirportBAL();
+            $result = $airport->UpdateAirport($model);
 
-                if($result) {
-                    $errorMessage = "Unsuccessful Update!";
-                    echo $errorMeesage;
-                }
-                header("Location: index.php");
+            if($result) {
+                $errorMessage = "Unsuccessful Update!";
+                echo $errorMeesage;
             }
+            header("Location: index.php");
+        }            
     }
 ?>
 

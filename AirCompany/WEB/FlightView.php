@@ -2,11 +2,88 @@
 	require_once("../BAL/FlightBAL.php");            
     require_once("../BO/FlightBO.php");
 
-    session_start();
-    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
+    if(isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
+        $flight = new FlightBAL();
+        $result = $flight->GetFlight($id);
 
-	if(!empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
-        && !empty($_POST["destinationId"]) && !empty($_POST["departureDateTime"]) && !empty($_POST["arrivalDateTime"]) 
+        $flightNumber = $model->getFlightNumber();
+        $planeId = $model->getPlaneId();
+        $departureId = $model ->getDepartureId();
+        $destinationId = $model->getDestinationId();
+        $departureTime = $model->getDepartureDateTime();
+        $arrivalTime = $model ->getArrivalDateTime();
+        $price = $model->getPrice();
+        $gate = $model->getGate();
+        $isActive = $model ->getIsActive();
+    }
+    else if(!isset($_GET['id']))
+    {
+        $id = 0;
+    }
+
+    if($_POST['submit'] == 'Delete')
+    {
+        $flight = new FlightBAL();
+        $result = $flight->DeleteFlight($id);
+        header("Location: index.php");
+    }
+    else if($_POST['submit'] == "Save")
+    {
+        if(!isset($_GET['id']) && !empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
+            && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
+            && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
+        {
+            $Id = 0;
+            $FlightNumber = trim($_POST["flightNumber"]);
+            $PlaneId = trim($_POST["planeId"]);
+            $DepartureId = trim($_POST["departureId"]);
+            $DestinationId = trim($_POST["destinationId"]);
+            $DepartureDateTime = trim($_POST["departureTime"]);
+            $ArrivalDateTime = trim($_POST["arrivalTime"]);
+            $Price = trim($_POST["price"]);
+            $Gate = trim($_POST["gate"]);
+            $IsActive = trim($_POST["isActive"]);
+
+            $errorMessage = "";
+            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, 
+                                    $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $flight = new FlightBAL();
+            $result = $flight->AddFlight($model);
+
+            header("Location: index.php");
+        }
+
+        else if(!empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
+            && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
+            && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
+        {
+            $Id = $id;
+            $FlightNumber = trim($_POST["flightNumber"]);
+            $PlaneId = trim($_POST["planeId"]);
+            $DepartureId = trim($_POST["departureId"]);
+            $DestinationId = trim($_POST["destinationId"]);
+            $DepartureDateTime = trim($_POST["departureTime"]);
+            $ArrivalDateTime = trim($_POST["arrivalTime"]);
+            $Price = trim($_POST["price"]);
+            $Gate = trim($_POST["gate"]);
+            $IsActive = trim($_POST["isActive"]);
+
+            $errorMessage = "";
+            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, 
+                                    $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $flight = new FlightBAL();
+            $result = $flight->UpdateFlight($model);
+
+            header("Location: index.php");
+        }            
+    }
+
+	
+    
+    if(!empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
+        && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
         && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
     {
 	    $Id = 0;
@@ -14,8 +91,8 @@
         $PlaneId = trim($_POST["planeId"]);
         $DepartureId = trim($_POST["departureId"]);
 		$DestinationId = trim($_POST["destinationId"]);
-        $DepartureDateTime = trim($_POST["departureDateTime"]);
-        $ArrivalDateTime = trim($_POST["arrivalDateTime"]);
+        $DepartureDateTime = trim($_POST["departureTime"]);
+        $ArrivalDateTime = trim($_POST["arrivalTime"]);
         $Price = trim($_POST["price"]);
 		$Gate = trim($_POST["gate"]);
         $IsActive = trim($_POST["isActive"]);
@@ -25,11 +102,6 @@
                                 $ArrivalDateTime, $Price, $Gate, $IsActive);
         $flight = new FlightBAL();
         $result = $flight->AddFlight($model);
-
-        if($result) {
-            $errorMessage = "Unsuccessful Record!";
-            echo $errorMeesage;
-        }
     }
 ?>
 
@@ -139,66 +211,6 @@
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header">MAIN</li>
-                    <li>
-                        <a href="pages/widgets.html">
-                            <i class="fa fa-th"></i> <span>Widgets</span>
-                            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-                        </a>
-                    </li>
-                    
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>UI Elements</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                            <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                            <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                            <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                            <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                            <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-edit"></i> <span>Forms</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Examples</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-                            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
-                        </ul>
-                    </li>
-                
                     <li class="header">TABLES</li>
                     <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
@@ -225,43 +237,43 @@
                             </div>
                             <div class="form-group">
                                 <label>Flight Number</label>
-                                <input type="text" name="flight" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="flightNumber" class="form-control" placeholder="Enter ..." value="<?php echo $flightNumber; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Plane ID</label>
-                                <input type="text" name="pnr" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="planeId" class="form-control" placeholder="Enter ..." value="<?php echo $planeId; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Departure ID</label>
-                                <input type="text" name="seat" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="departureId" class="form-control" placeholder="Enter ..." value="<?php echo $departureId; ?>">
                             </div>  
                             <div class="form-group">
                                 <label>Destination ID</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="destinationId" class="form-control" placeholder="Enter ..." value="<?php echo $destinationId; ?>">
                             </div>     
                             <div class="form-group">
                                 <label>Departure Time</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="departureTime" class="form-control" placeholder="Enter ..." value="<?php echo $departureDateTime; ?>">
                             </div>     
                             <div class="form-group">
                                 <label>Arrival Time</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="arrivalTime" class="form-control" placeholder="Enter ..." value="<?php echo $arrivalDateTime; ?>">
                             </div>     
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="price" class="form-control" placeholder="Enter ..." value="<?php echo $price; ?>">
                             </div>    
                             <div class="form-group">
                                 <label>Gate</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="gate" class="form-control" placeholder="Enter ..." value="<?php echo $gate; ?>">
                             </div> 
                             <div class="form-group">
                                 <label>IsActive</label>
-                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="isActive" class="form-control" placeholder="Enter ..." value="<?php echo $isActive; ?>">
                             </div>             
                             <div class="box-footer">    
-                                <input class="btn btn-default" name="delete" value="Delete"/>               
-                                <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
+                                <input type="submit" class="btn btn-default" name="submit" value="Delete"/>               
+                                <input type="submit" class="btn btn-info pull-right" name="submit" value="Save"/>
                             </div>
                         </form>  
                     </div>
