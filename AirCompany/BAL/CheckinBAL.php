@@ -27,7 +27,7 @@ class CheckinBAL
     }
 
     public function GetCheckin($id){
-        $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked FROM CheckinTable WHERE Id=$id");
+        $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked FROM CheckinTable WHERE CheckId=$id");
         
         $data = $response->fetch_assoc();
         $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
@@ -58,7 +58,7 @@ class CheckinBAL
         $seat = $model->getSeat();
         $ischecked = $model->getIsChecked();
         
-        $response = $this->dbConnect->execute("UPDATE CheckinTable SET FlightId=$model->'$flightid', PNR='$pnr', Seat='$seat', IsChecked='$ischecked' WHERE CheckId='$checkid'");
+        $response = $this->dbConnect->execute("UPDATE CheckinTable SET FlightId=$flightid, PNR='$pnr', Seat='$seat', IsChecked='$ischecked' WHERE CheckId='$checkid'");
         return $response;
     }
 

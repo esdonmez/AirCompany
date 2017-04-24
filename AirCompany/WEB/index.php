@@ -3,6 +3,7 @@
     include("../BAL/AirportBAL.php");
     include("../BAL/FlightBAL.php");
     include("../BAL/CheckinBAL.php");
+    include("../BAL/LoggingBAL.php");
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +47,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini sidebar-collapse">
     <div class="wrapper">
 
         <header class="main-header">
@@ -60,9 +61,6 @@
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
 
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -95,31 +93,6 @@
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
-        
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p id='username'><?php echo "Onur CELIK" ?></p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                    </div>
-                </div>
-                <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu">
-                    <li class="header">TABLES</li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
-                </ul>
-            </section>
-            <!-- /.sidebar -->
-        </aside>
         
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -261,17 +234,7 @@
                     <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                        <h3 class="box-title"><b>Planes</b></h3>
-
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                            </div>
-                        </div>
+                            <h3 class="box-title"><b>Planes</b></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
@@ -307,17 +270,7 @@
                     <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                        <h3 class="box-title"><b>Flights</b></h3>
-
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                            </div>
-                        </div>
+                            <h3 class="box-title"><b>Flights</b></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
@@ -362,17 +315,7 @@
                     <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                        <h3 class="box-title"><b>Checkins</b></h3>
-
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                            </div>
-                        </div>
+                            <h3 class="box-title"><b>Checkins</b></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
@@ -407,17 +350,7 @@
                     <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                        <h3 class="box-title"><b>Loggings</b></h3>
-
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                            </div>
-                        </div>
+                            <h3 class="box-title"><b>Loggings</b></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
@@ -428,41 +361,17 @@
                             <th>Operation</th>
                             <th>Create Date</th>
                             </tr>
-                            <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            </tr>
-                            <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            </tr>
-                            <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-primary">Approved</span></td>
-                            </tr>
-                            <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-danger">Denied</span></td>
-                            </tr>
+                            <?php 
+                            $model = new LoggingBAL();
+                            foreach($model->GetLogs() as $data): ?>
+                                <tr>
+                                    <td><?php echo $data->getId(); ?></td>
+                                    <td><?php echo $data->getEntity(); ?></td>
+                                    <td><?php echo $data->getOperation(); ?></td>
+                                    <td><?php echo $data->getCreateDate(); ?></td>
+                                </tr>
+                            <?php endforeach; ?> 
                         </table>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
                         </div>
                     </div>
                     <!-- /.box -->

@@ -34,7 +34,6 @@
             $Seat = trim($_POST["seat"]);
             $IsChecked = trim($_POST["isChecked"]);
 
-            $errorMessage = "";
             $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
             $checkin = new CheckinBAL();
             $result = $checkin->AddCheckin($model);
@@ -50,10 +49,9 @@
             $Seat = trim($_POST["seat"]);
             $IsChecked = trim($_POST["isChecked"]);
                 
-            $errorMessage = "";
             $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
             $checkin = new CheckinBAL();
-            $result = $checkin->UpdateAirport($model);
+            $result = $checkin->UpdateCheckin($model);
 
             header("Location: index.php");
         }            

@@ -32,15 +32,10 @@
             $Name = trim($_POST["name"]);
             $City = trim($_POST["city"]);
                 
-            $errorMessage = "";
             $model = new AirportBO($Id, $Code, $Name, $City);
             $airport = new AirportBAL();
             $result = $airport->AddAirport($model);
 
-            if($result) {
-                $errorMessage = "Unsuccessful Record!";
-                echo $errorMeesage;
-            }
             header("Location: index.php");
         }
 
@@ -51,15 +46,10 @@
             $Name = trim($_POST["name"]);
             $City = trim($_POST["city"]);
                 
-            $errorMessage = "";
             $model = new AirportBO($Id, $Code, $Name, $City);
             $airport = new AirportBAL();
             $result = $airport->UpdateAirport($model);
 
-            if($result) {
-                $errorMessage = "Unsuccessful Update!";
-                echo $errorMeesage;
-            }
             header("Location: index.php");
         }            
     }
