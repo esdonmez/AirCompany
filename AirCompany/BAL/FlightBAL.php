@@ -27,7 +27,7 @@ class FlightBAL
     }
 
     public function GetFlight($id){
-        $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive FROM FlightTable");
+        $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive FROM FlightTable WHERE Id=$id");
         
         $data = $response->fetch_assoc();
         $model = new FlightBO($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
@@ -42,7 +42,7 @@ class FlightBAL
     }
 
     public function AddFlight($model){
-        $flightnumber = $model->getFlight();
+        $flightnumber = $model->getFlightNumber();
         $planeid = $model->getPlaneId();
         $departureid = $model->getDepartureId();
         $destinationid = $model->getDestinationId();
@@ -52,13 +52,13 @@ class FlightBAL
         $gate = $model->getGate();
         $isactive = $model->getIsActive();
 
-        $response = $this->dbConnect->execute("INSERT INTO FlightTable (FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive) VALUES ('AA9523', 1, 1, 3, '2011-01-01T15:03:01.012345Z', '2011-01-01T15:03:01.012345Z', 23.0, '236', 1, 1)");
+        $response = $this->dbConnect->execute("INSERT INTO FlightTable (FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive) VALUES ('$flightnumber', '$planeid', '$departureid', '$destinationid', '$departuredatetime', '$arrivaldatetime', '$price', '$gate', '$isactive')");
         return $response;
     }
 
-    public function UpdateFlight(){
+    public function UpdateFlight($model){
         $id = $model->getId();
-        $flightnumber = $model->getFlight();
+        $flightnumber = $model->getFlightNumber();
         $planeid = $model->getPlaneId();
         $departureid = $model->getDepartureId();
         $destinationid = $model->getDestinationId();
@@ -72,8 +72,8 @@ class FlightBAL
         return $response;
     }
 
-    public function DeleteFlight($FlightNumber){
-        $response = $this->dbConnect->execute("DELETE FROM FlightTable WHERE FlightNumber=$FlightNumber");
+    public function DeleteFlight($Id){
+        $response = $this->dbConnect->execute("DELETE FROM FlightTable WHERE Id=$Id");
         return $response;
     }
 }

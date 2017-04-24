@@ -46,9 +46,7 @@
             $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
-            $errorMessage = "";
-            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, 
-                                    $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
             $flight = new FlightBAL();
             $result = $flight->AddFlight($model);
 
@@ -70,38 +68,12 @@
             $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
-            $errorMessage = "";
-            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, 
-                                    $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
             $flight = new FlightBAL();
             $result = $flight->UpdateFlight($model);
 
             header("Location: index.php");
         }            
-    }
-
-	
-    
-    if(!empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
-        && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
-        && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
-    {
-	    $Id = 0;
-		$FlightNumber = trim($_POST["flightNumber"]);
-        $PlaneId = trim($_POST["planeId"]);
-        $DepartureId = trim($_POST["departureId"]);
-		$DestinationId = trim($_POST["destinationId"]);
-        $DepartureDateTime = trim($_POST["departureTime"]);
-        $ArrivalDateTime = trim($_POST["arrivalTime"]);
-        $Price = trim($_POST["price"]);
-		$Gate = trim($_POST["gate"]);
-        $IsActive = trim($_POST["isActive"]);
-
-        $errorMessage = "";
-        $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, 
-                                $ArrivalDateTime, $Price, $Gate, $IsActive);
-        $flight = new FlightBAL();
-        $result = $flight->AddFlight($model);
     }
 ?>
 
@@ -230,7 +202,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                        <form action=<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> method="post">
                             <div class="form-group">
                                 <label>Id</label>
                                 <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>
@@ -253,11 +225,11 @@
                             </div>     
                             <div class="form-group">
                                 <label>Departure Time</label>
-                                <input type="text" name="departureTime" class="form-control" placeholder="Enter ..." value="<?php echo $departureDateTime; ?>">
+                                <input type="text" name="departureTime" class="form-control" placeholder="Enter ..." value="<?php echo $departureTime; ?>">
                             </div>     
                             <div class="form-group">
                                 <label>Arrival Time</label>
-                                <input type="text" name="arrivalTime" class="form-control" placeholder="Enter ..." value="<?php echo $arrivalDateTime; ?>">
+                                <input type="text" name="arrivalTime" class="form-control" placeholder="Enter ..." value="<?php echo $arrivalTime; ?>">
                             </div>     
                             <div class="form-group">
                                 <label>Price</label>
