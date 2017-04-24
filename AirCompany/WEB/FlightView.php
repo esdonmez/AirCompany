@@ -1,6 +1,6 @@
 <?php 
 	require_once("../BAL/FlightBAL.php");            
-    require_once("../BO/GlightBO.php");
+    require_once("../BO/FlightBO.php");
 
     session_start();
     $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
@@ -224,21 +224,41 @@
                                 <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label>FlightId</label>
+                                <label>Flight Number</label>
                                 <input type="text" name="flight" class="form-control" placeholder="Enter ...">
                             </div>
                             <div class="form-group">
-                                <label>PNR</label>
+                                <label>Plane ID</label>
                                 <input type="text" name="pnr" class="form-control" placeholder="Enter ...">
                             </div>
                             <div class="form-group">
-                                <label>Seat</label>
+                                <label>Departure ID</label>
                                 <input type="text" name="seat" class="form-control" placeholder="Enter ...">
                             </div>  
                             <div class="form-group">
-                                <label>IsChecked</label>
+                                <label>Destination ID</label>
                                 <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
-                            </div>                
+                            </div>     
+                            <div class="form-group">
+                                <label>Departure Time</label>
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                            </div>     
+                            <div class="form-group">
+                                <label>Arrival Time</label>
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                            </div>     
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                            </div>    
+                            <div class="form-group">
+                                <label>Gate</label>
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                            </div> 
+                            <div class="form-group">
+                                <label>IsActive</label>
+                                <input type="text" name="isChecked" class="form-control" placeholder="Enter ...">
+                            </div>             
                             <div class="box-footer">    
                                 <input class="btn btn-default" name="delete" value="Delete"/>               
                                 <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
