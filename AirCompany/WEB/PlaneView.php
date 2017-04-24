@@ -5,12 +5,13 @@
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
-        $airport = new AirportBAL();
-        $model = $airport->GetAirport($id);
+        $plane = new PlaneBAL();
+        $model = $plane->GetPlane($id);
 
-        $code = $model->getCode();
         $name = $model->getName();
-        $city = $model ->getCity();
+        $capacity = $model->getCapacity();
+        $status = $model ->getStatus();
+        $registrationNumber = $model ->getRegistrationNumber();
     }
     else if(!isset($_GET['id']))
     {
@@ -19,8 +20,8 @@
 
     if($_POST['submit'] == 'Delete')
     {
-        $airport = new AirportBAL();
-        $result = $airport->DeleteAirport($id);
+        $plane = new PlaneBAL();
+        $result = $plane->DeletePlane($id);
         header("Location: index.php");
     }
     else if($_POST['submit'] == "Save")
@@ -184,7 +185,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                        <form action=<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> method="post">
                             <div class="form-group">
                                 <label>Id</label>
                                 <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>

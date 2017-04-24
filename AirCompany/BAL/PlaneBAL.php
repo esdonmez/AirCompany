@@ -61,7 +61,7 @@ class PlaneBAL
     }
 
     public function DeletePlane($id){
-        $response = $this->dbConnect->execute("DELETE FROM PlaneTable WHERE Id=$id");
+        $response = $this->dbConnect->execute("DELETE FROM PlaneTable WHERE Id='$id'");
         return $response;
     }
 }

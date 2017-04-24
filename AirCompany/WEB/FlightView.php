@@ -6,7 +6,7 @@
     {
         $id = htmlspecialchars($_GET['id']);
         $flight = new FlightBAL();
-        $result = $flight->GetFlight($id);
+        $model = $flight->GetFlight($id);
 
         $flightNumber = $model->getFlightNumber();
         $planeId = $model->getPlaneId();
