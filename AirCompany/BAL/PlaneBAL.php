@@ -53,10 +53,12 @@ class PlaneBAL
     public function UpdatePlane($model){
         $id = $model->getId();
         $name = $model->getName();
+        $capacity = $model->getCapacity();
         $registrationnumber = $model->getRegistrationNumber();
         $status = $model->getStatus();
 
-        $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name='$name', RegistrationNumber='$registrationnumber', Status='$status' WHERE Id='$id");
+        $response = $this->dbConnect->execute("UPDATE PlaneTable SET Name='$name', Capacity='$capacity', RegistrationNumber='$registrationnumber', Status='$status' WHERE Id='$id'");
+                                                
         return $response;
     }
 

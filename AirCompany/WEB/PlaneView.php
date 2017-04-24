@@ -34,7 +34,6 @@
             $Status = trim($_POST["status"]);
             $RegistrationNumber = trim($_POST["registrationNumber"]);
             
-            $errorMessage = "";
             $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
             $plane = new PlaneBAL();
             $result = $plane->AddPlane($model);
@@ -49,12 +48,9 @@
             $Capacity = trim($_POST["capacity"]);
             $Status = trim($_POST["status"]);
             $RegistrationNumber = trim($_POST["registrationNumber"]);
-            
-            $errorMessage = "";
             $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
             $plane = new PlaneBAL();
             $result = $plane->UpdatePlane($model);
-
             header("Location: index.php");
         }            
     }
