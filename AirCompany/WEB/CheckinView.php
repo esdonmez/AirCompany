@@ -99,7 +99,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini sidebar-collapse">
     <div class="wrapper">
 
         <header class="main-header">
@@ -107,16 +107,9 @@
             <a href="index.php" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>A</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Adam</b>Air</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- User Account: style can be found in dropdown.less -->
@@ -148,31 +141,6 @@
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
-        
-        <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p id='username'><?php echo "Onur CELIK" ?></p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                    </div>
-                </div>
-                <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu">
-                    <li class="header">TABLES</li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Airports</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Planes</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Flights</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Checkins</span></a></li>
-                </ul>
-            </section>
-            <!-- /.sidebar -->
-        </aside>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
