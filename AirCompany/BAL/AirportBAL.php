@@ -56,7 +56,7 @@ class AirportBAL
         $name = $model->getName();
         $city = $model->getCity();
 
-        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code='$code', Name='$name', City='$city' WHERE Id='$id'");
+        $response = $this->dbConnect->execute("UPDATE AirportTable SET Code='$code', Name='$name', City='$city' WHERE Id=$id");
         return $response;
     }
 

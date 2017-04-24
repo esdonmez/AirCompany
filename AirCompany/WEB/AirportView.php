@@ -5,39 +5,28 @@
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
+        $airport = new AirportBAL();
+        $model = $airport->GetAirport($id);
 
-        if($_POST['submit'] == 'Delete')
-        {
-            $airport = new AirportBAL();
-            $result = $airport->DeleteAirport($id);
-        }
-        else if($_POST['submit'] == "Save")
-        {
-            if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
-                $Id = trim($_POST["id"]);
-                $Code = trim($_POST["code"]);
-                $Name = trim($_POST["name"]);
-                $City = trim($_POST["city"]);
-                
-                $errorMessage = "";
-                $model = new AirportBO($Id, $Code, $Name, $City);
-                $airport = new AirportBAL();
-                $result = $airport->UpdateAirport($model);
-
-                if($result) {
-                    $errorMessage = "Unsuccessful Update!";
-                    echo $errorMeesage;
-                }
-            }
-        }
+        $code = $model->getCode();
+        $name = $model->getName();
+        $city = $model ->getCity();
     }
     else if(!isset($_GET['id']))
     {
         $id = 0;
+    }
 
-        if($_POST['submit'] == "Save")
-        {
-            if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
+    if($_POST['submit'] == 'Delete')
+    {
+        $airport = new AirportBAL();
+        $result = $airport->DeleteAirport($id);
+        header("Location: index.php");
+    }
+    else if($_POST['submit'] == "Save")
+    {
+            if(!isset($_GET['id']) && !empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
+            {
                 $Id = 0;
                 $Code = trim($_POST["code"]);
                 $Name = trim($_POST["name"]);
@@ -52,8 +41,27 @@
                     $errorMessage = "Unsuccessful Record!";
                     echo $errorMeesage;
                 }
+                header("Location: index.php");
             }
-        }
+
+            else if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) 
+            {
+                $Id = $id;
+                $Code = trim($_POST["code"]);
+                $Name = trim($_POST["name"]);
+                $City = trim($_POST["city"]);
+                
+                $errorMessage = "";
+                $model = new AirportBO($Id, $Code, $Name, $City);
+                $airport = new AirportBAL();
+                $result = $airport->UpdateAirport($model);
+
+                if($result) {
+                    $errorMessage = "Unsuccessful Update!";
+                    echo $errorMeesage;
+                }
+                header("Location: index.php");
+            }
     }
 ?>
 
@@ -249,19 +257,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Code</label>
-                                <input type="text" name="code" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="code" class="form-control" placeholder="Enter ..." value="<?php echo $code; ?>">
                             </div>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="name" class="form-control" placeholder="Enter ..." value="<?php echo $name; ?>">
                             </div>
                             <div class="form-group">
                                 <label>City</label>
-                                <input type="text" name="city" class="form-control" placeholder="Enter ...">
+                                <input type="text" name="city" class="form-control" placeholder="Enter ..." value="<?php echo $city; ?>">
                             </div>                
                             <div class="box-footer">    
                                 <input type="submit" class="btn btn-default" name="submit" value="Delete"/>
-                                <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
+                                <input type="submit" class="btn btn-info pull-right" name="submit" value="Save"/>
                             </div>
                         </form>  
                     </div>
