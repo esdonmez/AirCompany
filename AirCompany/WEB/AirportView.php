@@ -2,23 +2,57 @@
 	require_once("../BAL/AirportBAL.php");            
     require_once("../BO/AirportBO.php");
 
-    session_start();
-    $id = (isset($_SESSION["id"])) ? $_SESSION["id"] : "null";
+    if(isset($_GET['id']))
+    {
+        $id = htmlspecialchars($_GET['id']);
 
-	if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
-	    $Id = 0;
-		$Code = trim($_POST["code"]);
-        $Name = trim($_POST["name"]);
-        $City = trim($_POST["city"]);
-		
-        $errorMessage = "";
-        $model = new AirportBO($Id, $Code, $Name, $City);
-        $airport = new AirportBAL();
-        $result = $airport->AddAirport($model);
+        if($_POST['submit'] == 'Delete')
+        {
+            $airport = new AirportBAL();
+            $result = $airport->DeleteAirport($id);
+        }
+        else if($_POST['submit'] == "Save")
+        {
+            if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
+                $Id = trim($_POST["id"]);
+                $Code = trim($_POST["code"]);
+                $Name = trim($_POST["name"]);
+                $City = trim($_POST["city"]);
+                
+                $errorMessage = "";
+                $model = new AirportBO($Id, $Code, $Name, $City);
+                $airport = new AirportBAL();
+                $result = $airport->UpdateAirport($model);
 
-        if($result) {
-            $errorMessage = "Unsuccessful Record!";
-            echo $errorMeesage;
+                if($result) {
+                    $errorMessage = "Unsuccessful Update!";
+                    echo $errorMeesage;
+                }
+            }
+        }
+    }
+    else if(!isset($_GET['id']))
+    {
+        $id = 0;
+
+        if($_POST['submit'] == "Save")
+        {
+            if(!empty($_POST["code"]) && !empty($_POST["name"]) && !empty($_POST["city"])) {
+                $Id = 0;
+                $Code = trim($_POST["code"]);
+                $Name = trim($_POST["name"]);
+                $City = trim($_POST["city"]);
+                
+                $errorMessage = "";
+                $model = new AirportBO($Id, $Code, $Name, $City);
+                $airport = new AirportBAL();
+                $result = $airport->AddAirport($model);
+
+                if($result) {
+                    $errorMessage = "Unsuccessful Record!";
+                    echo $errorMeesage;
+                }
+            }
         }
     }
 ?>
@@ -134,8 +168,8 @@
                         <a href="pages/widgets.html">
                             <i class="fa fa-th"></i> <span>Widgets</span>
                             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+                                <small class="label pull-right bg-green">new</small>
+                            </span>
                         </a>
                     </li>
                     
@@ -144,8 +178,8 @@
                             <i class="fa fa-laptop"></i>
                             <span>UI Elements</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
@@ -160,8 +194,8 @@
                         <a href="#">
                             <i class="fa fa-edit"></i> <span>Forms</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
@@ -173,8 +207,8 @@
                         <a href="#">
                             <i class="fa fa-folder"></i> <span>Examples</span>
                             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
@@ -208,7 +242,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+                        <form action=<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" ?> method="post">
                             <div class="form-group">
                                 <label>Id</label>
                                 <input type="text" name="id" class="form-control" value="<?php echo $id; ?>" disabled>
@@ -226,7 +260,7 @@
                                 <input type="text" name="city" class="form-control" placeholder="Enter ...">
                             </div>                
                             <div class="box-footer">    
-                                <input class="btn btn-default" name="delete" value="Delete"/>               
+                                <input type="submit" class="btn btn-default" name="submit" value="Delete"/>
                                 <input type="submit" class="btn btn-info pull-right" name="save" value="Save"/>
                             </div>
                         </form>  

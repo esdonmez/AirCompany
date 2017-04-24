@@ -302,7 +302,7 @@
                             <?php 
                             $model = new AirportBAL();
                             foreach($model->GetAirports() as $data): ?>
-                                <tr onClick="AirportTableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="window.open('../WEB/AirportView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getCode(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
@@ -347,7 +347,7 @@
                             <?php 
                             $model = new PlaneBAL();
                             foreach($model->GetPlanes() as $data): ?>
-                                <tr onClick="PlaneTableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="window.open('../WEB/PlaneView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getName(); ?></td>
                                     <td><?php echo $data->getCapacity(); ?></td>
@@ -397,7 +397,7 @@
                             <?php 
                             $model = new FlightBAL();
                             foreach($model->GetFlights() as $data): ?>
-                                <tr onClick="FlightTableClick('<?php echo $data->getId();?>')">
+                                <tr onClick="window.open('../WEB/FlightView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getFlightNumber(); ?></td>
                                     <td><?php echo $data->getPlaneId(); ?></td>
@@ -447,7 +447,7 @@
                             <?php 
                             $model = new CheckinBAL();
                             foreach($model->GetCheckins() as $data): ?>
-                                <tr onClick="CheckinTableClick('<?php echo $data->getCheckId();?>')">
+                                <tr onClick="window.open('../WEB/CheckinView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getCheckId(); ?></td>
                                     <td><?php echo $data->getFlightId(); ?></td>
                                     <td><?php echo $data->getPNR(); ?></td>
@@ -532,42 +532,11 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2017 <a href="index.html">AdamAir</a>.</strong> All rights reserved.
-        </footer>
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2017 <a href="index.html">AdamAir</a>.</strong> All rights reserved.
+            </footer>
     </div>
     <!-- ./wrapper -->
-
-    <script type="text/javascript">
-        function CheckinTableClick(id)
-        {
-            window.open("../WEB/CheckinView.php", "_self");
-        }
-        function AirportTableClick(id)
-        {
-            $.ajax({
-                url: 'index.php',
-                type: "POST",
-                data: ({esd: id}),
-                success: function(data){
-                    
-                }
-            });     
-
-            <?php session_start();
-                $_SESSION['id'] = $esd; ?>
-
-                window.open("../WEB/AirportView.php", "_self");
-        }
-        function PlaneTableClick(id)
-        {
-            window.open("../WEB/PlaneView.php", "_self");
-        }
-        function FlightTableClick(id)
-        {
-            window.open("../WEB/FlightView.php", "_self");
-        }
-    </script> 
 
     <!-- jQuery 2.2.3 -->
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
