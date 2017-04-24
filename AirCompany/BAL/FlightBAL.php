@@ -26,6 +26,15 @@ class FlightBAL
         return $flights;
     }
 
+    public function GetFlight($id){
+        $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive FROM FlightTable");
+        
+        $data = $response->fetch_assoc();
+        $model = new FlightBO($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
+
+        return $model;
+    }
+
     public function GetFlightsCount(){
         $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM FlightTable");
         $data = $response->fetch_assoc();

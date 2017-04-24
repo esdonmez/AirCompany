@@ -26,6 +26,15 @@ class CheckinBAL
         return $checkins;
     }
 
+    public function GetCheckin($id){
+        $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked FROM CheckinTable WHERE Id=$id");
+        
+        $data = $response->fetch_assoc();
+        $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
+
+        return $model;
+    }
+
     public function GetCheckinsCount(){
         $response = $this->dbConnect->get("SELECT COUNT(CheckId) AS size FROM CheckinTable");
         $data = $response->fetch_assoc();
