@@ -26,6 +26,15 @@ class PlaneBAL
         return $planes;
     }
 
+    public function GetPlane($id){
+        $response = $this->dbConnect->get("SELECT Id, Name, Capacity, RegistrationNumber, Status FROM PlaneTable WHERE Id=$id");
+
+        $data = $response->fetch_assoc();
+        $model = new PlaneBO($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
+
+        return $model;
+    }
+
     public function GetPlanesCount(){
         $response = $this->dbConnect->get("SELECT COUNT(Id) AS size FROM PlaneTable");
         $data = $response->fetch_assoc();
