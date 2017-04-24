@@ -62,8 +62,8 @@ class CheckinBAL
         return $response;
     }
 
-    public function DeleteCheckin($CheckId){
-        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId=$CheckId");
+    public function DeleteCheckin($checkId){
+        $response = $this->dbConnect->execute("DELETE FROM CheckinTable WHERE CheckId=$checkId");
         return $response;
     }
 }
