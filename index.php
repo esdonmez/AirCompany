@@ -1,9 +1,9 @@
 <?php 
-    include("BAL/PlaneBAL.php");
-    include("BAL/AirportBAL.php");
-    include("BAL/FlightBAL.php");
-    include("BAL/CheckinBAL.php");
-    include("BAL/LoggingBAL.php");
+    include("Controllers/PlaneBAL.php");
+    include("Controllers/AirportBAL.php");
+    include("Controllers/FlightBAL.php");
+    include("Controllers/CheckinBAL.php");
+    include("Controllers/LoggingBAL.php");
 ?>
 
 <!DOCTYPE html>

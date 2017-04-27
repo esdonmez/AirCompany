@@ -1,5 +1,5 @@
 <?php 
-	require_once("BAL/CheckinBAL.php");            
+	require_once("Controllers/CheckinBAL.php");            
     require_once("Models/CheckinBO.php");
 
     if(isset($_GET['id']))

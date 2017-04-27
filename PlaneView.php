@@ -1,5 +1,5 @@
 <?php 
-	require_once("BAL/PlaneBAL.php");            
+	require_once("Controllers/PlaneBAL.php");            
     require_once("Models/PlaneBO.php");
 
     if(isset($_GET['id']))
