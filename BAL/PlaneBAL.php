@@ -1,6 +1,6 @@
 <?php
 
-require_once("DAL/DBConnect.php");
+require_once("Core/DBConnect.php");
 require_once("BO/PlaneBO.php");
 
 class PlaneBAL

@@ -1,12 +1,14 @@
 <?php
 
+include("Config.php");
+
 class DBConnect
 {
     private $connection;
-	private $_host = "localhost";
-	private $_username = "root";
-	private $_password = "2255";
-	private $_database = "AirCompanyDB";
+	private $_host = SERVER;
+	private $_username = USERNAME;
+	private $_password = PASSWORD;
+	private $_database = DBNAME;
 
     
     public function __construct() {

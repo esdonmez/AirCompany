@@ -10,8 +10,8 @@
 
         $name = $model->getName();
         $capacity = $model->getCapacity();
-        $status = $model ->getStatus();
-        $registrationNumber = $model ->getRegistrationNumber();
+        $status = $model->getStatus();
+        $registrationNumber = $model->getRegistrationNumber();
     }
     else if(!isset($_GET['id']))
     {

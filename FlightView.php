@@ -10,13 +10,13 @@
 
         $flightNumber = $model->getFlightNumber();
         $planeId = $model->getPlaneId();
-        $departureId = $model ->getDepartureId();
+        $departureId = $model->getDepartureId();
         $destinationId = $model->getDestinationId();
         $departureTime = $model->getDepartureDateTime();
-        $arrivalTime = $model ->getArrivalDateTime();
+        $arrivalTime = $model->getArrivalDateTime();
         $price = $model->getPrice();
         $gate = $model->getGate();
-        $isActive = $model ->getIsActive();
+        $isActive = $model->getIsActive();
     }
     else if(!isset($_GET['id']))
     {

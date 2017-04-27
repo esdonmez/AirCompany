@@ -10,7 +10,7 @@
 
         $code = $model->getCode();
         $name = $model->getName();
-        $city = $model ->getCity();
+        $city = $model->getCity();
     }
     else if(!isset($_GET['id']))
     {
