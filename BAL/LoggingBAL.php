@@ -1,7 +1,7 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("BO/LoggingBO.php");
+require_once("Models/LoggingBO.php");
 
 class LoggingBAL
 {

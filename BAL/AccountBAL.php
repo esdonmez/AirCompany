@@ -1,7 +1,7 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("BO/AccountBO.php");
+require_once("Models/AccountBO.php");
 require_once("/Models/LoginModel.php");
 require_once("/Models/RegisterModel.php");
 require_once("Helpers/PasswordHelper.php");

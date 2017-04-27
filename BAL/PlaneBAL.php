@@ -1,7 +1,7 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("BO/PlaneBO.php");
+require_once("Models/PlaneBO.php");
 
 class PlaneBAL
 {

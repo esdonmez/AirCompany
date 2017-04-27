@@ -1,6 +1,6 @@
 <?php 
 	require_once("BAL/FlightBAL.php");            
-    require_once("BO/FlightBO.php");
+    require_once("Models/FlightBO.php");
 
     if(isset($_GET['id']))
     {

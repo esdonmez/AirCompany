@@ -1,7 +1,7 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("BO/AirportBO.php");
+require_once("Models/AirportBO.php");
 
 class AirportBAL
 {

@@ -1,6 +1,6 @@
 <?php 
 	require_once("BAL/CheckinBAL.php");            
-    require_once("BO/CheckinBO.php");
+    require_once("Models/CheckinBO.php");
 
     if(isset($_GET['id']))
     {
