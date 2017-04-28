@@ -40,5 +40,3 @@ class AccountController
         return $model;
     }
 }
-
-?>

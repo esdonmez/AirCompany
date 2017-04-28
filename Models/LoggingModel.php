@@ -33,5 +33,3 @@ class LoggingModel
         return $this->CreateDate;
     }
 }
-
-?>

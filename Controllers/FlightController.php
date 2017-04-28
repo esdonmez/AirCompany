@@ -77,5 +77,3 @@ class FlightController
         return $response;
     }
 }
-
-?>

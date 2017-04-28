@@ -38,5 +38,3 @@ class PlaneModel
         return $this->RegistrationNumber;
     }
 }
-
-?>

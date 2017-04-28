@@ -37,5 +37,3 @@ class CheckinModel
         return $this->IsChecked;
     }
 }
-
-?>

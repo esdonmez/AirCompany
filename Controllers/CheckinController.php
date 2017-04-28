@@ -67,5 +67,3 @@ class CheckinController
         return $response;
     }
 }
-
-?>

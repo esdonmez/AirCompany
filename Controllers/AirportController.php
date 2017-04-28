@@ -65,5 +65,3 @@ class AirportController
         return $response;
     }
 }
-
-?>

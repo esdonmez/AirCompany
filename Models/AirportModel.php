@@ -31,5 +31,3 @@ class AirportModel
         return $this->City;
     }
 }
-
-?>

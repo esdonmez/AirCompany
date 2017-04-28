@@ -27,5 +27,3 @@ class AccountBO
         return $this->Email;
     }
 }
-
-?>

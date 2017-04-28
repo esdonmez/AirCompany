@@ -35,5 +35,3 @@ class LoggingController
         return $response;
     }
 }
-
-?>

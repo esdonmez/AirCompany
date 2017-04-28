@@ -68,5 +68,3 @@ class FlightModel
         return $this->IsActive;
     }
 }
-
-?>
