@@ -1,11 +1,11 @@
 <?php 
-	require_once("Controllers/FlightBAL.php");            
-    require_once("Models/FlightBO.php");
+	require_once("Controllers/FlightController.php");            
+    require_once("Models/FlightModel.php");
 
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
-        $flight = new FlightBAL();
+        $flight = new FlightController();
         $model = $flight->GetFlight($id);
 
         $flightNumber = $model->getFlightNumber();
@@ -25,7 +25,7 @@
 
     if($_POST['submit'] == 'Delete')
     {
-        $flight = new FlightBAL();
+        $flight = new FlightController();
         $result = $flight->DeleteFlight($id);
         header("Location: index.php");
     }
@@ -46,8 +46,8 @@
             $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
-            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
-            $flight = new FlightBAL();
+            $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $flight = new FlightController();
             $result = $flight->AddFlight($model);
 
             header("Location: index.php");
@@ -68,8 +68,8 @@
             $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
-            $model = new FlightBO($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
-            $flight = new FlightBAL();
+            $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
+            $flight = new FlightController();
             $result = $flight->UpdateFlight($model);
 
             header("Location: index.php");

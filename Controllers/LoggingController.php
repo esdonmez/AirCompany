@@ -1,9 +1,9 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/LoggingBO.php");
+require_once("Models/LoggingModel.php");
 
-class LoggingBAL
+class LoggingController
 {
     private $dbConnect;
     
@@ -19,7 +19,7 @@ class LoggingBAL
         $logs = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new LoggingBO($data["Id"], $data["Entity"], $data["Operation"], $data["CreateDate"]);
+            $model = new LoggingModel($data["Id"], $data["Entity"], $data["Operation"], $data["CreateDate"]);
             array_push($logs, $model);
         }
 

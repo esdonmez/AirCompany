@@ -1,11 +1,11 @@
 <?php 
-	require_once("Controllers/CheckinBAL.php");            
-    require_once("Models/CheckinBO.php");
+	require_once("Controllers/CheckinController.php");            
+    require_once("Models/CheckinModel.php");
 
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
-        $checkin = new CheckinBAL();
+        $checkin = new CheckinController();
         $model = $checkin->GetCheckin($id);
 
         $flight = $model->getFlightId();
@@ -20,7 +20,7 @@
 
     if($_POST['submit'] == 'Delete')
     {
-        $checkin = new CheckinBAL();
+        $checkin = new CheckinController();
         $result = $checkin->DeleteCheckin($id);
         header("Location: index.php");
     }
@@ -34,8 +34,8 @@
             $Seat = trim($_POST["seat"]);
             $IsChecked = trim($_POST["isChecked"]);
 
-            $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
-            $checkin = new CheckinBAL();
+            $model = new CheckinModel($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
+            $checkin = new CheckinController();
             $result = $checkin->AddCheckin($model);
 
             header("Location: index.php");
@@ -49,8 +49,8 @@
             $Seat = trim($_POST["seat"]);
             $IsChecked = trim($_POST["isChecked"]);
                 
-            $model = new CheckinBO($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
-            $checkin = new CheckinBAL();
+            $model = new CheckinModel($CheckId, $FlightId, $PNR, $Seat, $IsChecked);
+            $checkin = new CheckinController();
             $result = $checkin->UpdateCheckin($model);
 
             header("Location: index.php");

@@ -1,6 +1,6 @@
 <?php
 
-class AirportBO
+class AirportModel
 {
     private $Id;
     private $Code;

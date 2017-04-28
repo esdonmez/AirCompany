@@ -1,9 +1,9 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/CheckinBO.php");
+require_once("Models/CheckinModel.php");
 
-class CheckinBAL
+class CheckinController
 {
     private $dbConnect;
     
@@ -19,7 +19,7 @@ class CheckinBAL
         $checkins = array();
 
         while($data = $response->fetch_assoc()){
-            $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
+            $model = new CheckinModel($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
             array_push($checkins, $model);
         }
         
@@ -30,7 +30,7 @@ class CheckinBAL
         $response = $this->dbConnect->get("SELECT CheckId, FlightId, PNR, Seat, IsChecked FROM CheckinTable WHERE CheckId=$id");
         
         $data = $response->fetch_assoc();
-        $model = new CheckinBO($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
+        $model = new CheckinModel($data["CheckId"], $data["FlightId"], $data["PNR"], $data["Seat"], $data["IsChecked"]);
 
         return $model;
     }

@@ -1,6 +1,6 @@
 <?php
 
-class LoggingBO
+class LoggingModel
 {
     private $Id;
     private $Entity;

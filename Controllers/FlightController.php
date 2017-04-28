@@ -1,9 +1,9 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/FlightBO.php");
+require_once("Models/FlightModel.php");
 
-class FlightBAL
+class FlightController
 {
     private $dbConnect;
 
@@ -19,7 +19,7 @@ class FlightBAL
         $flights = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new FlightBO($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
+            $model = new FlightModel($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
             array_push($flights, $model);
         }
 
@@ -30,7 +30,7 @@ class FlightBAL
         $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive FROM FlightTable WHERE Id=$id");
         
         $data = $response->fetch_assoc();
-        $model = new FlightBO($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
+        $model = new FlightModel($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
 
         return $model;
     }

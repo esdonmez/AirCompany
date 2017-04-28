@@ -1,6 +1,6 @@
 <?php
 
-class CheckinBO
+class CheckinModel
 {
     private $CheckId;
     private $FlightId;

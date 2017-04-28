@@ -1,6 +1,6 @@
 <?php
 
-class FlightBO
+class FlightModel
 {
     private $Id;
     private $FlightNumber;

@@ -1,6 +1,6 @@
 <?php
 
-class PlaneBO
+class PlaneModel
 {
     private $Id;
     private $Name;

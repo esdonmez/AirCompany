@@ -1,9 +1,9 @@
 <?php 
-    include("Controllers/PlaneBAL.php");
-    include("Controllers/AirportBAL.php");
-    include("Controllers/FlightBAL.php");
-    include("Controllers/CheckinBAL.php");
-    include("Controllers/LoggingBAL.php");
+    include("Controllers/PlaneController.php");
+    include("Controllers/AirportController.php");
+    include("Controllers/FlightController.php");
+    include("Controllers/CheckinController.php");
+    include("Controllers/LoggingController.php");
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +107,7 @@
                             <div class="inner">
                                 <h3 id='airportCount'>
                                 <?php 
-                                    $model = new AirportBAL();
+                                    $model = new AirportController();
                                     echo $model->GetAirportsCount();                               
                                 ?>                               
                                 </h3>
@@ -126,7 +126,7 @@
                             <div class="inner">
                                 <h3 id='planeCount'>
                                 <?php 
-                                    $model = new PlaneBAL();
+                                    $model = new PlaneController();
                                     echo $model->GetPlanesCount();                               
                                 ?>  
                                 </h3>
@@ -145,7 +145,7 @@
                             <div class="inner">
                                 <h3 id='flightCount'>
                                 <?php 
-                                    $model = new FlightBAL();
+                                    $model = new FlightController();
                                     echo $model->GetFlightsCount();                               
                                 ?>  
                                 </h3>
@@ -164,7 +164,7 @@
                             <div class="inner">
                                 <h3 id='checkinCount'>
                                 <?php 
-                                    $model = new CheckinBAL();
+                                    $model = new CheckinController();
                                     echo $model->GetCheckinsCount();                               
                                 ?>  
                                 </h3>
@@ -197,7 +197,7 @@
                             </tr>
 
                             <?php 
-                            $model = new AirportBAL();
+                            $model = new AirportController();
                             foreach($model->GetAirports() as $data): ?>
                                 <tr onClick="window.open('AirportView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
@@ -232,7 +232,7 @@
                             </tr>
 
                             <?php 
-                            $model = new PlaneBAL();
+                            $model = new PlaneController();
                             foreach($model->GetPlanes() as $data): ?>
                                 <tr onClick="window.open('PlaneView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
@@ -272,7 +272,7 @@
                             <th>IsActive</th>
                             </tr>
                             <?php 
-                            $model = new FlightBAL();
+                            $model = new FlightController();
                             foreach($model->GetFlights() as $data): ?>
                                 <tr onClick="window.open('FlightView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
@@ -312,7 +312,7 @@
                             <th>IsChecked</th>
                             </tr>
                             <?php 
-                            $model = new CheckinBAL();
+                            $model = new CheckinController();
                             foreach($model->GetCheckins() as $data): ?>
                                 <tr onClick="window.open('CheckinView.php?id=<?php echo $data->getCheckId(); ?>', '_self');">
                                     <td><?php echo $data->getCheckId(); ?></td>
@@ -346,7 +346,7 @@
                             <th>Create Date</th>
                             </tr>
                             <?php 
-                            $model = new LoggingBAL();
+                            $model = new LoggingController();
                             foreach($model->GetLogs() as $data): ?>
                                 <tr>
                                     <td><?php echo $data->getId(); ?></td>

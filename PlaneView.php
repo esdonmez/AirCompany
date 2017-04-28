@@ -1,11 +1,11 @@
 <?php 
-	require_once("Controllers/PlaneBAL.php");            
-    require_once("Models/PlaneBO.php");
+	require_once("Controllers/PlaneController.php");            
+    require_once("Models/PlaneModel.php");
 
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
-        $plane = new PlaneBAL();
+        $plane = new PlaneController();
         $model = $plane->GetPlane($id);
 
         $name = $model->getName();
@@ -20,7 +20,7 @@
 
     if($_POST['submit'] == 'Delete')
     {
-        $plane = new PlaneBAL();
+        $plane = new PlaneController();
         $result = $plane->DeletePlane($id);
         header("Location: index.php");
     }
@@ -34,8 +34,8 @@
             $Status = trim($_POST["status"]);
             $RegistrationNumber = trim($_POST["registrationNumber"]);
             
-            $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
-            $plane = new PlaneBAL();
+            $model = new PlaneModel($Id, $Name, $Capacity, $Status, $RegistrationNumber);
+            $plane = new PlaneController();
             $result = $plane->AddPlane($model);
 
             header("Location: index.php");
@@ -48,8 +48,8 @@
             $Capacity = trim($_POST["capacity"]);
             $Status = trim($_POST["status"]);
             $RegistrationNumber = trim($_POST["registrationNumber"]);
-            $model = new PlaneBO($Id, $Name, $Capacity, $Status, $RegistrationNumber);
-            $plane = new PlaneBAL();
+            $model = new PlaneModel($Id, $Name, $Capacity, $Status, $RegistrationNumber);
+            $plane = new PlaneController();
             $result = $plane->UpdatePlane($model);
             header("Location: index.php");
         }            

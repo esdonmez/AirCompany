@@ -1,9 +1,9 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/AirportBO.php");
+require_once("Models/AirportModel.php");
 
-class AirportBAL
+class AirportController
 {
     private $dbConnect;
     
@@ -19,7 +19,7 @@ class AirportBAL
         $airports = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
+            $model = new AirportModel($data["Id"], $data["Code"], $data["Name"], $data["City"]);
             array_push($airports, $model);
         }
 
@@ -30,7 +30,7 @@ class AirportBAL
         $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable WHERE Id=$id");
 
         $data = $response->fetch_assoc();
-        $model = new AirportBO($data["Id"], $data["Code"], $data["Name"], $data["City"]);
+        $model = new AirportModel($data["Id"], $data["Code"], $data["Name"], $data["City"]);
 
         return $model;
     }

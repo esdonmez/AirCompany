@@ -35,5 +35,3 @@ class DBConnect
         return ($this->connection->query($sql) == TRUE);
     }
 }
-
-?>

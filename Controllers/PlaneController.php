@@ -1,9 +1,9 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/PlaneBO.php");
+require_once("Models/PlaneModel.php");
 
-class PlaneBAL
+class PlaneController
 {
     private $dbConnect;
     
@@ -19,7 +19,7 @@ class PlaneBAL
         $planes = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new PlaneBO($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
+            $model = new PlaneModel($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
             array_push($planes, $model);
         }
 
@@ -30,7 +30,7 @@ class PlaneBAL
         $response = $this->dbConnect->get("SELECT Id, Name, Capacity, RegistrationNumber, Status FROM PlaneTable WHERE Id=$id");
 
         $data = $response->fetch_assoc();
-        $model = new PlaneBO($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
+        $model = new PlaneModel($data["Id"], $data["Name"], $data["Capacity"], $data["Status"], $data["RegistrationNumber"]);
 
         return $model;
     }

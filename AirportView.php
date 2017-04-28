@@ -1,11 +1,11 @@
 <?php 
-	require_once("Controllers/AirportBAL.php");            
-    require_once("Models/AirportBO.php");
+	require_once("Controllers/AirportController.php");            
+    require_once("Models/AirportModel.php");
 
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
-        $airport = new AirportBAL();
+        $airport = new AirportController();
         $model = $airport->GetAirport($id);
 
         $code = $model->getCode();
@@ -19,7 +19,7 @@
 
     if($_POST['submit'] == 'Delete')
     {
-        $airport = new AirportBAL();
+        $airport = new AirportController();
         $result = $airport->DeleteAirport($id);
         header("Location: index.php");
     }
@@ -32,8 +32,8 @@
             $Name = trim($_POST["name"]);
             $City = trim($_POST["city"]);
                 
-            $model = new AirportBO($Id, $Code, $Name, $City);
-            $airport = new AirportBAL();
+            $model = new AirportModel($Id, $Code, $Name, $City);
+            $airport = new AirportController();
             $result = $airport->AddAirport($model);
 
             header("Location: index.php");
@@ -46,8 +46,8 @@
             $Name = trim($_POST["name"]);
             $City = trim($_POST["city"]);
                 
-            $model = new AirportBO($Id, $Code, $Name, $City);
-            $airport = new AirportBAL();
+            $model = new AirportModel($Id, $Code, $Name, $City);
+            $airport = new AirportController();
             $result = $airport->UpdateAirport($model);
 
             header("Location: index.php");

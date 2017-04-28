@@ -1,12 +1,12 @@
 <?php
 
 require_once("Core/DBConnect.php");
-require_once("Models/AccountBO.php");
-require_once("/Models/LoginModel.php");
-require_once("/Models/RegisterModel.php");
+require_once("Models/AccountModel.php");
+require_once("/Models/LoginController.php");
+require_once("/Models/RegisterController.php");
 require_once("Helpers/PasswordHelper.php");
 
-class AccountBAL
+class AccountController
 {
     private $dbConnect;
     
@@ -35,7 +35,7 @@ class AccountBAL
  
         $response = $this->dbConnect->get("SELECT Id, NameSurname, Email FROM AirportTable WHERE Email=$email && Password=$password");
         $data = $response->fetch_assoc();
-        $model = new AccountBO($data["Id"], $data["NameSurname"], $data["Email"]);
+        $model = new AccountModel($data["Id"], $data["NameSurname"], $data["Email"]);
 
         return $model;
     }
