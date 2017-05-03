@@ -28,5 +28,3 @@ class CheckinController extends ApiController
 
     }
 }
-
-?>

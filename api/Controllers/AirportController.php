@@ -38,5 +38,3 @@ class AirportController extends ApiController
 		echo json_encode($airports);
     }
 }
-
-?>
