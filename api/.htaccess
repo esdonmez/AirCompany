@@ -6,3 +6,5 @@ RewriteEngine on
 RewriteRule ^airports   RouteConfig.php?view=airports [nc,qsa]
 RewriteRule ^airports([0-9]+)/$   RouteConfig.php?view=single&id=$1 [nc,qsa]
 RewriteRule ^flights   RouteConfig.php?view=flights [nc,qsa]
+RewriteRule ^checkins   RouteConfig.php?view=checkins [nc,qsa]
+RewriteCond %{REQUEST_METHOD} POST
