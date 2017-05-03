@@ -2,10 +2,11 @@
 
 require_once("Controllers/AirportController.php");	
 require_once("Controllers/CheckinController.php");	
+require_once("Controllers/FlightController.php");
 
 switch($_GET["view"])
 {
-	case "all":
+	case "airports":
 		$controller = new AirportController();
 		$controller->GetAirports();
 		break;
@@ -15,8 +16,9 @@ switch($_GET["view"])
 		//$mobileRestHandler->getMobile($_GET["id"]);
 		break;
 
-	case "" :
-		//404 - not found;
+	case "flights":
+		$controller = new FlightController();
+		$controller->GetFlights();
 		break;
 }
 

@@ -19,8 +19,31 @@ class FlightController extends ApiController
     // [PostGet]
     // [Route("")]
     public function GetFlights(){
+        $response = $this->dbConnect->get("SELECT F.Id, F.FlightNumber, F.Gate, F.Price, F.DepartureDateTime, F.ArrivalDateTime,
+                                            A1.City as DepartureCity, A1.Code as DepartureAirportCode,
+                                            A2.City as ArrivalCity, A2.Code as ArrivalAirportCode
+                                            FROM FlightTable AS F LEFT JOIN AirportTable AS A1 ON F.DepartureId = A1.Id LEFT JOIN AirportTable AS A2 ON F.DestinationId = A2.Id");
+        $flights = array();
+        
+        while($data = $response->fetch_assoc()) 
+        {
+            $model = new FlightModel();
+            $model->Id = $data["Id"];
+            $model->FlightNumber = $data["FlightNumber"];
+            $model->DepartureCity = $data["DepartureCity"];
+            $model->DepartureDateTime = $data["DepartureDateTime"];
+            $model->DepartureAirportCode = $data["DepartureAirportCode"];
+            $model->ArrivalCity = $data["ArrivalCity"];
+            $model->ArrivalAirportCode = $data["ArrivalAirportCode"];
+            $model->ArrivalDateTime = $data["ArrivalDateTime"];
+            $model->Price = $data["Price"];
+            
+            array_push($flights, $model);
+        }
 
+		$requestContentType = $_SERVER['HTTP_ACCEPT'];
+		$this->setHttpHeaders($requestContentType, $statusCode);
+
+		echo json_encode($flights);
     }
 }
-
-?>

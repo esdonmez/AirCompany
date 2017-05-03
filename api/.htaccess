@@ -3,5 +3,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^airports   RouteConfig.php?view=all [nc,qsa]
+RewriteRule ^airports   RouteConfig.php?view=airports [nc,qsa]
 RewriteRule ^airports([0-9]+)/$   RouteConfig.php?view=single&id=$1 [nc,qsa]
+
+RewriteRule ^flights   RouteConfig.php?view=flights [nc,qsa]

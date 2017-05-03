@@ -8,7 +8,7 @@ class FlightModel
 
     public $DepartureCity;
 
-    public $DepartureTime;
+    public $DepartureDateTime;
 
     public $DepartureAirportCode;
 
@@ -16,7 +16,7 @@ class FlightModel
 
     public $ArrivalAirportCode;
 
-    public $ArrivalTime;
+    public $ArrivalDateTime;
 
     public $Price;
 }
