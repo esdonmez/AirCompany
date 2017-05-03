@@ -30,7 +30,6 @@ class AccountController
     public function Login($model){
         $email = $model->getEmail();
         $password = $model->getPassword();
- echo $password;
         $response = $this->dbConnect->get("SELECT Id, NameSurname, Email FROM UserTable WHERE Email='$email' && Password='$password'");
         $data = $response->fetch_assoc();
         $model = new AccountModel($data["Id"], $data["NameSurname"], $data["Email"]);

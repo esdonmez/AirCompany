@@ -11,6 +11,14 @@
 	if(isset($_SESSION['user'])) {
 		$user =  $_SESSION['user'];
 	}
+
+    if($_POST["submit"] == "Sign out") {
+        session_start();
+        unset($_SESSION);
+        session_destroy();
+        header("location: LoginView.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -84,9 +92,11 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <form method="post">
+                                            <input type="submit" class="btn btn-default btn-flat" name="submit" value="Sign out">
+                                        </form>
                                     </div>
-                                </li>
+                                </li>  
                             </ul>
                         </li>
                     </ul>
