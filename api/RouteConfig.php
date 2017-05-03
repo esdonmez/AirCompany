@@ -21,5 +21,3 @@ switch($_GET["view"])
 		$controller->GetFlights();
 		break;
 }
-
-?>
