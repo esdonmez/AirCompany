@@ -17,12 +17,10 @@ class AirportController
     public function GetAirports(){
         $response = $this->dbConnect->get("SELECT Id, Code, Name, City FROM AirportTable");
         $airports = array();
-
         while($data = $response->fetch_assoc()) {
             $model = new AirportModel($data["Id"], $data["Code"], $data["Name"], $data["City"]);
             array_push($airports, $model);
         }
-
         return $airports;
     }
 
