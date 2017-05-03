@@ -15,6 +15,7 @@ class FlightController extends ApiController
         $this->dbConnect = new DBConnect();
     }
 
+
     // [PostGet]
     // [Route("")]
     public function GetFlights(){

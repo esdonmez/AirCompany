@@ -15,6 +15,7 @@ class AirportController extends ApiController
         $this->dbConnect = new DBConnect();
     }
 
+
     // [HttpGet]
     // [Route("")]
     public function GetAirports(){

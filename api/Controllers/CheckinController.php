@@ -15,6 +15,7 @@ class CheckinController extends ApiController
         $this->dbConnect = new DBConnect();
     }
 
+
     // [HttpPost]
     // [Route("")]
     public function AddCheckin(){

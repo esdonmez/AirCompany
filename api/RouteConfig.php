@@ -1,7 +1,7 @@
 <?php
 
-require_once("Controller/AirportController.php");	
-require_once("Controller/CheckinController.php");	
+require_once("Controllers/AirportController.php");	
+require_once("Controllers/CheckinController.php");	
 
 switch($_GET["view"])
 {
