@@ -2,8 +2,6 @@
 
 require_once("Core/DBConnect.php");
 require_once("Models/AccountModel.php");
-require_once("/Models/LoginController.php");
-require_once("/Models/RegisterController.php");
 require_once("Helpers/PasswordHelper.php");
 
 class AccountController
@@ -32,8 +30,8 @@ class AccountController
     public function Login($model){
         $email = $model->getEmail();
         $password = $model->getPassword();
- 
-        $response = $this->dbConnect->get("SELECT Id, NameSurname, Email FROM AirportTable WHERE Email=$email && Password=$password");
+ echo $password;
+        $response = $this->dbConnect->get("SELECT Id, NameSurname, Email FROM UserTable WHERE Email='$email' && Password='$password'");
         $data = $response->fetch_assoc();
         $model = new AccountModel($data["Id"], $data["NameSurname"], $data["Email"]);
 

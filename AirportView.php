@@ -2,6 +2,13 @@
 	require_once("Controllers/AirportController.php");            
     require_once("Models/AirportModel.php");
 
+    session_start();
+	$user = "User";
+	
+	if(isset($_SESSION['user'])) {
+		$user =  $_SESSION['user'];
+	}
+
     if(isset($_GET['id']))
     {
         $id = htmlspecialchars($_GET['id']);
@@ -113,7 +120,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs"><?php echo "Onur CELIK" ?></span>
+                                <span class="hidden-xs"><?php echo $user ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -121,7 +128,7 @@
                                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                        <?php echo "Onur CELIK - Web Developer" ?>
+                                        <?php echo $user . " - Web Developer" ?>
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>

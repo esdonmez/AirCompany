@@ -1,6 +1,6 @@
 <?php
 
-class AccountBO
+class AccountModel
 {
     private $Id;
     private $NameSurname;
