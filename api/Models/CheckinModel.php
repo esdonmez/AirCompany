@@ -2,7 +2,7 @@
 
 class CheckinModel
 {
-    public $FlightId;
+    public $PNR;
 
     public $Seat;
 }
