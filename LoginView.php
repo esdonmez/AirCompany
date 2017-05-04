@@ -12,7 +12,9 @@
 
         if($result->getEmail() != "")
         {
+            $lifetime = 365*24*60*60;
             session_start();
+            setcookie(session_name(),session_id(),time()+$lifetime);
 		    $_SESSION['user'] = $result->getNameSurname();	
 		    header("location: index.php");
         }
@@ -53,7 +55,7 @@
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="<?php $_PHP_SELF ?>" method="post">
+                <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control" placeholder="Email" name="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
