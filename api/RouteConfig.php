@@ -29,18 +29,13 @@ switch($request_method)
 
 		case 'POST':
 			$controller = new CheckinController();
-			$controller->AddCheckin($_POST["FlightId"], $_POST["PNR"]);
+			if(!isset($_POST["flightId"])){
+				$controller->Checkin($_POST["pnr"]);
+			} else{
+				$controller->AddCheckin($_POST["flightId"], $_POST["pnr"]);
+			}
 			break;
-		case 'PUT':
-			// Update Product
-			$product_id=intval($_GET["product_id"]);
-			update_product($product_id);
-			break;
-		case 'DELETE':
-			// Delete Product
-			$product_id=intval($_GET["product_id"]);
-			delete_product($product_id);
-			break;
+
 		default:
 			// Invalid Request Method
 			header("HTTP/1.0 405 Method Not Allowed");
