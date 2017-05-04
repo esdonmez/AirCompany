@@ -3,8 +3,9 @@
 require_once("../Core/DBConnect.php");
 require_once("Helpers/ApiController.php");
 require_once("Models/CheckinModel.php");
+require_once("Models/ResultModel.php");
 
-// [RoutePrefix("api/checkins")]
+//[RoutePrefix("api/checkins")]
 class CheckinController extends ApiController
 {
     private $dbConnect;
@@ -16,19 +17,26 @@ class CheckinController extends ApiController
     }
 
 
-    // [HttpPost]
-    // [Route("")]
+    //[HttpPost]
     public function AddCheckin($flightid, $pnr){
         $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ('$flightid', '$pnr', 'A0', '0')");
+
+        $model = new ResultModel();
+        if($response == true){
+            $model->IsSuccess = true;
+            $model->Message = "check is added.";
+        } else{
+            $model->IsSuccess = false;
+            $model->Message = "check is not added.";
+        }
 
         $requestContentType = $_SERVER['HTTP_ACCEPT'];
 		$this->setHttpHeaders($requestContentType, $statusCode);
 
-		echo json_encode($response);
+		echo json_encode($model);
     }
 
-    // [HttpPost]
-    // [Route("")]
+    //[HttpPost]
     public function Checkin($pnr){
         $seat = "A10"; //write to define seat alg.
         $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");

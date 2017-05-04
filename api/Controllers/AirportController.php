@@ -4,7 +4,7 @@ require_once("../Core/DBConnect.php");
 require_once("Models/AirportModel.php");
 require_once("Helpers/ApiController.php");
 
-// [RoutePrefix("api/airports")]
+//[RoutePrefix("api/airports")]
 class AirportController extends ApiController
 {
     private $dbConnect;
@@ -16,8 +16,7 @@ class AirportController extends ApiController
     }
 
 
-    // [HttpGet]
-    // [Route("")]
+    //[HttpGet]
     public function GetAirports(){
         $response = $this->dbConnect->get("SELECT Id, Name, City FROM AirportTable");
         $airports = array();
