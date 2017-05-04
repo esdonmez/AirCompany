@@ -18,11 +18,12 @@ class FlightController extends ApiController
 
     // [PostGet]
     // [Route("")]
-    public function GetFlights(){
+    public function GetFlights($DepartureAirportCode, $DepartureDateTime, $ArrivalAirportCode, $ArrivalDateTime){
         $response = $this->dbConnect->get("SELECT F.Id, F.FlightNumber, F.Gate, F.Price, F.DepartureDateTime, F.ArrivalDateTime,
                                             A1.City as DepartureCity, A1.Code as DepartureAirportCode,
                                             A2.City as ArrivalCity, A2.Code as ArrivalAirportCode
-                                            FROM FlightTable AS F LEFT JOIN AirportTable AS A1 ON F.DepartureId = A1.Id LEFT JOIN AirportTable AS A2 ON F.DestinationId = A2.Id");
+                                            FROM FlightTable AS F LEFT JOIN AirportTable AS A1 ON F.DepartureId = A1.Id LEFT JOIN AirportTable AS A2 ON F.DestinationId = A2.Id
+                                            WHERE $DepartureAirportCode = A1.DepartureAirportCode AND $ArrivalAirportCode = A2.ArrivalAirportCode");
         $flights = array();
         
         while($data = $response->fetch_assoc()) 
