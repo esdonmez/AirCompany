@@ -8,36 +8,30 @@ $request_method=$_SERVER["REQUEST_METHOD"];
 switch($request_method)
 	{
 		case 'GET':
-			switch($_GET["view"])
-			{
-				case "airports":
-					$controller = new AirportController();
-					$controller->GetAirports();
-					break;
-					
-				case "single":
-					$controller = new AirportController();
-					//$mobileRestHandler->getMobile($_GET["id"]);
-					break;
-
-				case "flights":
-					$controller = new FlightController();
-					$controller->GetFlights();
-					break;
+			if($_GET["view"] == "airports"){
+				$controller = new AirportController();
+				$controller->GetAirports();
 			}
-			break;
 
 		case 'POST':
-			$controller = new CheckinController();
-			if(!isset($_POST["flightId"])){
-				$controller->Checkin($_POST["pnr"]);
-			} else{
-				$controller->AddCheckin($_POST["flightId"], $_POST["pnr"]);
+			if($_GET["view"] == "checkins" && isset($_POST["FlightId"]) && isset($_POST["PNR"])){
+				$controller = new CheckinController();
+				$controller->AddCheckin($_POST["FlightId"], $_POST["PNR"]);
 			}
+
+			if($_GET["view"] == "checkins" && !isset($_POST["FlightId"]) && isset($_POST["PNR"])){
+				$controller = new CheckinController();
+				$controller->Checkin($_POST["PNR"]);
+			}
+			
+			if($_GET["view"] == "flights" && isset($_POST["DepartureAirportCode"]) && isset($_POST["DepartureDateTime"]) && isset($_POST["ArrivalAirportCode"])){
+				$controller = new FlightController();
+				$controller->GetFlights($_POST["DepartureAirportCode"], $_POST["DepartureDateTime"], $_POST["ArrivalAirportCode"]);
+			}
+
 			break;
 
 		default:
-			// Invalid Request Method
 			header("HTTP/1.0 405 Method Not Allowed");
 			break;
 	}

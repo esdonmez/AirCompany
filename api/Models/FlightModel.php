@@ -6,15 +6,7 @@ class FlightModel
 
     public $FlightNumber;
 
-    public $DepartureCity;
-
     public $DepartureDateTime;
-
-    public $DepartureAirportCode;
-
-    public $ArrivalCity;
-
-    public $ArrivalAirportCode;
 
     public $ArrivalDateTime;
 
