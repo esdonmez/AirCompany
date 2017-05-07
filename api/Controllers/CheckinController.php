@@ -4,6 +4,7 @@ require_once("../Core/DBConnect.php");
 require_once("Helpers/ApiController.php");
 require_once("Models/CheckinModel.php");
 require_once("Models/ResultModel.php");
+require_once("Helpers/SeatHelper.php");
 
 //[RoutePrefix("api/checkins")]
 class CheckinController extends ApiController
@@ -38,7 +39,7 @@ class CheckinController extends ApiController
 
     //[HttpPost]
     public function Checkin($pnr){
-        $seat = "A10"; //write to define seat alg.
+        $seat = SeatHelper::GetSeat();
         $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
 
         $model = new CheckinModel();

@@ -19,7 +19,6 @@ class FlightController extends ApiController
 
     //[HttpPost]
     public function GetFlights($DepartureAirportCode, $DepartureDateTime, $ArrivalAirportCode){
-
         $response = $this->dbConnect->get("SELECT F.Id, F.FlightNumber, F.Gate, F.Price, F.DepartureDateTime, F.ArrivalDateTime,
                                             A1.City as DepartureCity, A1.Code as DepartureAirportCode,
                                             A2.City as ArrivalCity, A2.Code as ArrivalAirportCode
