@@ -25,6 +25,7 @@ class FlightController extends ApiController
                                             FROM FlightTable AS F LEFT JOIN AirportTable AS A1 ON F.DepartureId = A1.Id LEFT JOIN AirportTable AS A2 ON F.DestinationId = A2.Id
                                             WHERE '$DepartureAirportCode' = A1.Code AND '$ArrivalAirportCode' = A2.Code AND 
                                                     Date(F.DepartureDateTime) = '$DepartureDateTime'");
+
         $flights = array();
         $model = new FlightInfoModel();
         
