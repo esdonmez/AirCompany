@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8081
--- Generation Time: Apr 24, 2017 at 01:02 PM
+-- Generation Time: May 08, 2017 at 05:33 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -35,8 +35,7 @@ INSERT INTO `AirportTable` (`Id`, `Code`, `Name`, `City`) VALUES
 (3, 'ADB', 'Adnan Menderes', 'İzmir'),
 (4, 'IST', 'Atatürk', 'İstanbul'),
 (5, 'SAW', 'S.Gökçen', 'İstanbul'),
-(6, 'ESB', 'Esenboğa', 'Ankara'),
-(7, 'AYT', 'Antalya', 'Antalya');
+(6, 'ESB', 'Esenboğa', 'Ankara');
 
 -- --------------------------------------------------------
 
@@ -51,6 +50,14 @@ CREATE TABLE `CheckinTable` (
   `Seat` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `IsChecked` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `CheckinTable`
+--
+
+INSERT INTO `CheckinTable` (`CheckId`, `FlightId`, `PNR`, `Seat`, `IsChecked`) VALUES
+(1, 3, 'FY2395', 'A10', 1),
+(29, 3, '23WERE', 'D6', 1);
 
 -- --------------------------------------------------------
 
@@ -70,6 +77,14 @@ CREATE TABLE `FlightTable` (
   `Gate` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `IsActive` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `FlightTable`
+--
+
+INSERT INTO `FlightTable` (`Id`, `FlightNumber`, `PlaneId`, `DepartureId`, `DestinationId`, `DepartureDateTime`, `ArrivalDateTime`, `Price`, `Gate`, `IsActive`) VALUES
+(3, 'AA1234', 21, 3, 4, '2017-05-08 22:40:00', '2017-05-08 23:50:00', 80, '24', 1),
+(4, 'AA1235', 24, 3, 4, '2017-05-08 18:40:00', '2017-05-08 19:50:00', 104, '25', 1);
 
 -- --------------------------------------------------------
 
@@ -107,8 +122,7 @@ INSERT INTO `PlaneTable` (`Id`, `Name`, `Capacity`, `RegistrationNumber`, `Statu
 (22, 'Murat', 120, 'AA1002', 'ucusta'),
 (23, 'Şahin', 120, 'AA1003', 'bakımda'),
 (24, 'Doğan', 120, 'AA1004', 'uçuşta'),
-(25, 'Kanarya', 120, 'AA1005', 'bakımda'),
-(26, 'q', 120, '1', '1');
+(25, 'Kanarya', 120, 'AA1005', 'bakımda');
 
 -- --------------------------------------------------------
 
@@ -175,17 +189,17 @@ ALTER TABLE `UserTable`
 -- AUTO_INCREMENT for table `AirportTable`
 --
 ALTER TABLE `AirportTable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `CheckinTable`
 --
 ALTER TABLE `CheckinTable`
-  MODIFY `CheckId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CheckId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `FlightTable`
 --
 ALTER TABLE `FlightTable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `LoggingTable`
 --
@@ -195,7 +209,7 @@ ALTER TABLE `LoggingTable`
 -- AUTO_INCREMENT for table `PlaneTable`
 --
 ALTER TABLE `PlaneTable`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `UserTable`
 --
