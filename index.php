@@ -11,6 +11,9 @@
 	if(isset($_SESSION['user'])) {
 		$user =  $_SESSION['user'];
 	}
+    else{
+        header("location: LoginView.php");
+    }
 
     if($_POST["submit"] == "Sign out") {
         session_start();

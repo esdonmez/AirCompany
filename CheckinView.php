@@ -8,6 +8,17 @@
 	if(isset($_SESSION['user'])) {
 		$user =  $_SESSION['user'];
 	}
+    else{
+        header("location: LoginView.php");
+    }
+
+    if($_POST["submit"] == "Sign out") {
+        session_start();
+        unset($_SESSION);
+        session_destroy();
+        header("location: LoginView.php");
+        exit();
+    }
 
     if(isset($_GET['id']))
     {
