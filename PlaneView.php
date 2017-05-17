@@ -4,9 +4,11 @@
 
     session_start();
 	$user = "User";
+    $email = "Welcome";
 	
-	if(isset($_SESSION['user'])) {
+	if(isset($_SESSION['user']) && isset($_SESSION['email'])) {
 		$user =  $_SESSION['user'];
+        $email =  $_SESSION['email'];
 	}
     else{
         header("location: LoginView.php");
@@ -140,8 +142,8 @@
                                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                        <?php echo $user . " - Web Developer" ?>
-                                        <small>Member since Nov. 2012</small>
+                                        <?php echo $user ?>
+                                        <small><?php echo $email ?></small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->

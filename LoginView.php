@@ -16,6 +16,7 @@
             session_start();
             setcookie(session_name(),session_id(),time()+$lifetime);
 		    $_SESSION['user'] = $result->getNameSurname();	
+            $_SESSION['email'] = $result->getEmail();
 		    header("location: index.php");
         }
     }
