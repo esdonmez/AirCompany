@@ -4,7 +4,7 @@ require_once("../Core/DBConnect.php");
 require_once("Models/FlightModel.php");
 require_once("Models/FlightInfoModel.php");
 require_once("Helpers/ApiController.php");
-require_once("LoggingController.php");
+require_once("Helpers/LogHelper.php");
 
 //[RoutePrefix("api/flights")]
 class FlightController extends ApiController
@@ -52,7 +52,7 @@ class FlightController extends ApiController
 		$requestContentType = $_SERVER['HTTP_ACCEPT'];
 		$this->setHttpHeaders($requestContentType, $statusCode);
         
-        LoggingController::Log("FlightTable", "show flights");
+        LogHelper::Log("FlightTable", "show flights");
 		echo json_encode($model);
     }
 }
