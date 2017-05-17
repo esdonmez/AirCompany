@@ -21,48 +21,61 @@ class CheckinController extends ApiController
 
     //[HttpPost]
     public function AddCheckin($flightid, $pnr){
-        $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ('$flightid', '$pnr', 'A0', '0')");
+        try{
+            $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ('$flightid', '$pnr', 'A0', '0')");
 
-        $model = new ResultModel();
-        if($response == true){
-            $model->IsSuccess = true;
-            $model->Message = "check is added.";
-        } else{
-            $model->IsSuccess = false;
-            $model->Message = "check is not added.";
+            $model = new ResultModel();
+            if($response == true){
+                $model->IsSuccess = true;
+                $model->Message = "check is added.";
+                LogHelper::Log("CheckinTable", "add checkin");
+            } else{
+                $model->IsSuccess = false;
+                $model->Message = "check is not added.";
+                LogHelper::Log("CheckinTable", "is not add checkin");
+            }
+
+            $requestContentType = $_SERVER['HTTP_ACCEPT'];
+            $this->setHttpHeaders($requestContentType, $statusCode);
+
+            echo json_encode($model);
         }
 
-        $requestContentType = $_SERVER['HTTP_ACCEPT'];
-		$this->setHttpHeaders($requestContentType, $statusCode);
-
-        LogHelper::Log("CheckinTable", "add checkin");
-		echo json_encode($model);
+        catch(Exception $e){
+            LogHelper::Log("CheckinTable", "is not add checkin");
+        }
     }
 
     //[HttpPost]
     public function Checkin($pnr){
-        $seat;
-        
-        while(true){
-            $seat = SeatHelper::GetSeat();
-            $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
-            $data = $result->fetch_assoc();
+        try{
+            $seat;
+            
+            while(true){
+                $seat = SeatHelper::GetSeat();
+                $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
+                $data = $result->fetch_assoc();
 
-            if($data["Count"] == 0){
-                break;
+                if($data["Count"] == 0){
+                    break;
+                }
             }
+
+            $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
+
+            $model = new CheckinModel();
+            $model->Seat = $seat;
+            $model->PNR = $pnr;
+
+            $requestContentType = $_SERVER['HTTP_ACCEPT'];
+            $this->setHttpHeaders($requestContentType, $statusCode);
+
+            LogHelper::Log("CheckinTable", "assign seat");
+            echo json_encode($model);
         }
 
-        $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
-
-        $model = new CheckinModel();
-        $model->Seat = $seat;
-        $model->PNR = $pnr;
-
-        $requestContentType = $_SERVER['HTTP_ACCEPT'];
-		$this->setHttpHeaders($requestContentType, $statusCode);
-
-        LogHelper::Log("CheckinTable", "assign seat");
-		echo json_encode($model);
+        catch(Exception $e){
+            LogHelper::Log("CheckinTable", "not assign seat");
+        }    
     }
 }
