@@ -5,6 +5,7 @@ require_once("Helpers/ApiController.php");
 require_once("Models/CheckinModel.php");
 require_once("Models/ResultModel.php");
 require_once("Helpers/SeatHelper.php");
+require_once("LoggingController.php");
 
 //[RoutePrefix("api/checkins")]
 class CheckinController extends ApiController
@@ -34,6 +35,7 @@ class CheckinController extends ApiController
         $requestContentType = $_SERVER['HTTP_ACCEPT'];
 		$this->setHttpHeaders($requestContentType, $statusCode);
 
+        LoggingController::Log("CheckinTable", "add checkin");
 		echo json_encode($model);
     }
 
@@ -60,6 +62,7 @@ class CheckinController extends ApiController
         $requestContentType = $_SERVER['HTTP_ACCEPT'];
 		$this->setHttpHeaders($requestContentType, $statusCode);
 
+        LoggingController::Log("CheckinTable", "assign seat");
 		echo json_encode($model);
     }
 }
