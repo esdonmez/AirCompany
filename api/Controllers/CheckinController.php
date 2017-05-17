@@ -48,7 +48,6 @@ class CheckinController extends ApiController
 
             if($data["Count"] == 0){
                 break;
-                return false;
             }
         }
 
