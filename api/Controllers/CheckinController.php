@@ -28,11 +28,11 @@ class CheckinController extends ApiController
             if($response == true){
                 $model->IsSuccess = true;
                 $model->Message = "check is added.";
-                LogHelper::Log("CheckinTable", "add checkin");
+                LogHelper::Log("CheckinTable", "add a checkin");
             } else{
                 $model->IsSuccess = false;
                 $model->Message = "check is not added.";
-                LogHelper::Log("CheckinTable", "is not add checkin");
+                LogHelper::Log("CheckinTable", "cannot add the checkin");
             }
 
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
@@ -42,7 +42,7 @@ class CheckinController extends ApiController
         }
 
         catch(Exception $e){
-            LogHelper::Log("CheckinTable", "is not add checkin");
+            LogHelper::Log("CheckinTable", $e);
         }
     }
 
@@ -70,12 +70,12 @@ class CheckinController extends ApiController
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
             $this->setHttpHeaders($requestContentType, $statusCode);
 
-            LogHelper::Log("CheckinTable", "assign seat");
+            LogHelper::Log("CheckinTable", "assign a seat");
             echo json_encode($model);
         }
 
         catch(Exception $e){
-            LogHelper::Log("CheckinTable", "not assign seat");
+            LogHelper::Log("CheckinTable", $e);
         }    
     }
 }

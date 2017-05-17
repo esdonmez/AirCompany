@@ -58,7 +58,7 @@ class FlightController extends ApiController
         }
         
         catch(Exception $e){
-            LogHelper::Log("FlightTable", "dont show flights");
+            LogHelper::Log("FlightTable", $e);
         }
     }
 }

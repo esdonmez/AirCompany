@@ -41,7 +41,7 @@ class AirportController extends ApiController
         } 
         
         catch(Exception $e){
-            LogHelper::Log("AirportTable", "bir hata oluştu");
+            LogHelper::Log("AirportTable", $e);
         }  
     }
 }
