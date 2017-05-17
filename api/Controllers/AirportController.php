@@ -19,24 +19,29 @@ class AirportController extends ApiController
 
     //[HttpGet]
     public function GetAirports(){
-        $response = $this->dbConnect->get("SELECT Id, Name, City FROM AirportTable");
-        $airports = array();
+        try{
+            $response = $this->dbConnect->get("SELECT Id, Name, City FROM AirportTable");
+            $airports = array();
         
-        while($data = $response->fetch_assoc()) 
-        {
-            $model = new AirportModel();
-            $model->Id = $data["Id"];
-            $model->Name = $data["Name"];
-            $model->City = $data["City"];
+            while($data = $response->fetch_assoc()) 
+            {
+                $model = new AirportModel();
+                $model->Id = $data["Id"];
+                $model->Name = $data["Name"];
+                $model->City = $data["City"];
 
-            array_push($airports, $model);
-        }
+                array_push($airports, $model);
+            }
 
-		$requestContentType = $_SERVER['HTTP_ACCEPT'];
-		$this->setHttpHeaders($requestContentType, $statusCode);
+            $requestContentType = $_SERVER['HTTP_ACCEPT'];
+            $this->setHttpHeaders($requestContentType, $statusCode);
 
-        LoggingController::Log("AirportTable", "show airports");
-		echo json_encode($airports);
-
+            LoggingController::Log("AirportTable", "show airports");
+            echo json_encode($airports);
+        } 
+        
+        catch(Exception $e){
+            LoggingController::Log("AirportTable", "bir hata oluştu");
+        }  
     }
 }
