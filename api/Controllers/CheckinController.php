@@ -41,13 +41,14 @@ class CheckinController extends ApiController
     public function Checkin($pnr){
         $seat;
         
-        while(false){
+        while(true){
             $seat = SeatHelper::GetSeat();
             $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
             $data = $result->fetch_assoc();
 
             if($data["Count"] == 0){
-                return true;
+                break;
+                return false;
             }
         }
 
