@@ -39,7 +39,18 @@ class CheckinController extends ApiController
 
     //[HttpPost]
     public function Checkin($pnr){
-        $seat = SeatHelper::GetSeat();
+        $seat;
+        
+        while(false){
+            $seat = SeatHelper::GetSeat();
+            $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
+            $data = $result->fetch_assoc();
+
+            if($data["Count"] == 0){
+                return true;
+            }
+        }
+
         $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
 
         $model = new CheckinModel();
