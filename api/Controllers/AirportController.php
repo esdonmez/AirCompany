@@ -3,7 +3,7 @@
 require_once("../Core/DBConnect.php");
 require_once("Models/AirportModel.php");
 require_once("Helpers/ApiController.php");
-require_once("LoggingController.php");
+require_once("Helpers/LogHelper.php");
 
 //[RoutePrefix("api/airports")]
 class AirportController extends ApiController
@@ -36,12 +36,12 @@ class AirportController extends ApiController
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
             $this->setHttpHeaders($requestContentType, $statusCode);
 
-            LoggingController::Log("AirportTable", "show airports");
+            LogHelper::Log("AirportTable", "show airports");
             echo json_encode($airports);
         } 
         
         catch(Exception $e){
-            LoggingController::Log("AirportTable", "bir hata oluştu");
+            LogHelper::Log("AirportTable", "bir hata oluştu");
         }  
     }
 }
