@@ -290,6 +290,7 @@
                             <th>Price</th>
                             <th>Gate</th>
                             <th>IsActive</th>
+                            <th>Weather</th>
                             </tr>
                             <?php 
                             $model = new FlightController();
@@ -305,6 +306,7 @@
                                     <td><?php echo $data->getPrice(); ?></td>
                                     <td><?php echo $data->getGate(); ?></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
+                                    <td></td>
                                 </tr>
                             <?php endforeach; ?>   
                         </table>

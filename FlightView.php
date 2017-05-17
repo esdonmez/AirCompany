@@ -33,7 +33,6 @@
         $departureTime = $model->getDepartureDateTime();
         $arrivalTime = $model->getArrivalDateTime();
         $price = $model->getPrice();
-        $gate = $model->getGate();
         $isActive = $model->getIsActive();
     }
     else if(!isset($_GET['id']))
@@ -51,7 +50,7 @@
     {
         if(!isset($_GET['id']) && !empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
             && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
-            && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
+            && !empty($_POST["price"]) && !empty($_POST["isActive"])) 
         {
             $Id = 0;
             $FlightNumber = trim($_POST["flightNumber"]);
@@ -61,7 +60,6 @@
             $DepartureDateTime = trim($_POST["departureTime"]);
             $ArrivalDateTime = trim($_POST["arrivalTime"]);
             $Price = trim($_POST["price"]);
-            $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
             $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
@@ -73,7 +71,7 @@
 
         else if(!empty($_POST["flightNumber"]) && !empty($_POST["planeId"]) && !empty($_POST["departureId"]) 
             && !empty($_POST["destinationId"]) && !empty($_POST["departureTime"]) && !empty($_POST["arrivalTime"]) 
-            && !empty($_POST["price"]) && !empty($_POST["gate"]) && !empty($_POST["isActive"])) 
+            && !empty($_POST["price"]) && !empty($_POST["isActive"])) 
         {
             $Id = $id;
             $FlightNumber = trim($_POST["flightNumber"]);
@@ -83,7 +81,6 @@
             $DepartureDateTime = trim($_POST["departureTime"]);
             $ArrivalDateTime = trim($_POST["arrivalTime"]);
             $Price = trim($_POST["price"]);
-            $Gate = trim($_POST["gate"]);
             $IsActive = trim($_POST["isActive"]);
 
             $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
@@ -220,11 +217,7 @@
                             <div class="form-group">
                                 <label>Price</label>
                                 <input type="text" name="price" class="form-control" placeholder="Enter ..." value="<?php echo $price; ?>">
-                            </div>    
-                            <div class="form-group">
-                                <label>Gate</label>
-                                <input type="text" name="gate" class="form-control" placeholder="Enter ..." value="<?php echo $gate; ?>">
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label>IsActive</label>
                                 <input type="text" name="isActive" class="form-control" placeholder="Enter ..." value="<?php echo $isActive; ?>">
