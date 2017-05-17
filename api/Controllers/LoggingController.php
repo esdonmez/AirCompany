@@ -4,7 +4,7 @@ require_once("../Core/DBConnect.php");
 require_once("Models/LoggingModel.php");
 require_once("Helpers/ApiController.php");
 
-class LoggingController
+class LoggingController extends ApiController
 {
     private $dbConnect;
 
@@ -27,12 +27,13 @@ class LoggingController
         return $logs;
     }
 
-    public static function AddLog($entity, $operation){
+    public static function Log($entity, $operation){
         $dt = new DateTime();
         $createdate = $dt->format('Y-m-d H:i:s');
+        
         $dbConnect = new DBConnect();
-        $response = $this->dbConnect->execute("INSERT INTO LoggingTable (Entity, Operation, CreateDate) VALUES ('$entity', '$operation', '$createdate')");
-      
+        $response = $dbConnect->execute("INSERT INTO LoggingTable (Entity, Operation, CreateDate) VALUES ('$entity', '$operation', '$createdate')");
+
         return $response;
     }
 }
