@@ -3,6 +3,7 @@
 require_once("../Core/DBConnect.php");
 require_once("Models/AirportModel.php");
 require_once("Helpers/ApiController.php");
+require_once("LoggingController.php");
 
 //[RoutePrefix("api/airports")]
 class AirportController extends ApiController
@@ -35,5 +36,7 @@ class AirportController extends ApiController
 		$this->setHttpHeaders($requestContentType, $statusCode);
 
 		echo json_encode($airports);
+
+        LoggingController::AddLog("AirportTable", "show airports");
     }
 }
