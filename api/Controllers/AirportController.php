@@ -36,7 +36,7 @@ class AirportController extends ApiController
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
             $this->setHttpHeaders($requestContentType, $statusCode);
 
-            LogHelper::Log("AirportTable", $_SERVER['HTTP_CLIENT_IP'], "show airports");
+            LogHelper::Log("AirportTable", $_SERVER['HTTP_X_FORWARDED_FOR'], "show airports");
             echo json_encode($airports);
         } 
         
