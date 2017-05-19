@@ -5,12 +5,14 @@ require_once("Models/LoggingModel.php");
 
 class LogHelper
 {
-    public static function Log($entity, $ip, $operation){
+    public static function Log($entity, $operation, $isSuccess){
         $dt = new DateTime();
         $createdate = $dt->format('Y-m-d H:i:s');
         
+        $ip = $_SERVER['REMOTE_ADDR'];
+
         $dbConnect = new DBConnect();
-        $response = $dbConnect->execute("INSERT INTO LoggingTable (Entity, Operation, IpAddress, CreateDate) VALUES ('$entity', '$ip', '$operation', '$createdate')");
+        $response = $dbConnect->execute("INSERT INTO LoggingTable (CreateDate, IpAddress, Entity, Operation, IsSuccess) VALUES ('$createdate', '$ip', '$entity', '$operation', '$isSuccess')");
 
         return $response;
     }

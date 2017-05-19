@@ -36,12 +36,12 @@ class AirportController extends ApiController
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
             $this->setHttpHeaders($requestContentType, $statusCode);
 
-            LogHelper::Log("AirportTable", $_SERVER['REMOTE_ADDR'], "show airports");
+            LogHelper::Log("AirportTable", "show airports", "true");
             echo json_encode($airports);
-        } 
+        }
         
         catch(Exception $e){
-            LogHelper::Log("AirportTable", $_SERVER['REMOTE_ADDR'], $e);
+            LogHelper::Log("AirportTable", $e, "false");
         }  
     }
 }

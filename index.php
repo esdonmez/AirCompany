@@ -291,7 +291,7 @@
                             <th>Arrival Time</th>
                             <th>Price</th>
                             <th>Gate</th>
-                            <th>IsActive</th>
+                            <th>Is Active</th>
                             <th>Weather</th>
                             </tr>
                             <?php 
@@ -333,7 +333,7 @@
                             <th>Flight ID</th>
                             <th>PNR</th>
                             <th>Seat</th>
-                            <th>IsChecked</th>
+                            <th>Is Checked</th>
                             </tr>
                             <?php 
                             $model = new CheckinController();
@@ -365,18 +365,22 @@
                         <table class="table table-hover">
                             <tr>
                             <th>ID</th>
+                            <th>Create Date</th>
                             <th>Entity</th>
                             <th>Operation</th>
-                            <th>Create Date</th>
+                            <th>Ip Address</th>
+                            <th>Is Success</th>
                             </tr>
                             <?php 
                             $model = new LoggingController();
                             foreach($model->GetLogs() as $data): ?>
                                 <tr>
+                                    <td><?php echo $data->getCreateDate(); ?></td>
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getEntity(); ?></td>
                                     <td><?php echo $data->getOperation(); ?></td>
-                                    <td><?php echo $data->getCreateDate(); ?></td>
+                                    <td><?php echo $data->getIpAddress(); ?></td>
+                                    <td><?php echo $data->getIsSuccess(); ?></td>
                                 </tr>
                             <?php endforeach; ?> 
                         </table>
