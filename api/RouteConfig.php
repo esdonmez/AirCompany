@@ -13,10 +13,6 @@ switch($request_method)
 				$controller->GetAirports();
 			}
 
-			else if($_GET["view"] == "docs"){
-				header('Location: /api/docs.html');
-			}
-
 		case 'POST':
 			if($_GET["view"] == "checkins" && isset($_POST["FlightId"]) && isset($_POST["PNR"])){
 				$controller = new CheckinController();
