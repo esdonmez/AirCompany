@@ -3,7 +3,7 @@
 require_once("Controllers/AirportController.php");	
 require_once("Controllers/CheckinController.php");	
 require_once("Controllers/FlightController.php");
-require_once("docs.php");
+
 $request_method=$_SERVER["REQUEST_METHOD"];
 switch($request_method)
 	{
@@ -14,7 +14,7 @@ switch($request_method)
 			}
 
 			else if($_GET["view"] == "docs"){
-				header('Location: /api/docs.php');
+				header('Location: /api/docs.html');
 			}
 
 		case 'POST':
