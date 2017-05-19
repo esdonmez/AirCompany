@@ -375,8 +375,8 @@
                             $model = new LoggingController();
                             foreach($model->GetLogs() as $data): ?>
                                 <tr>
-                                    <td><?php echo $data->getCreateDate(); ?></td>
                                     <td><?php echo $data->getId(); ?></td>
+                                    <td><?php echo $data->getCreateDate(); ?></td>
                                     <td><?php echo $data->getEntity(); ?></td>
                                     <td><?php echo $data->getOperation(); ?></td>
                                     <td><?php echo $data->getIpAddress(); ?></td>
