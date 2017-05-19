@@ -14,7 +14,7 @@ switch($request_method)
 			}
 
 			else if($_GET["view"] == "docs"){
-				header('Location: /docs.php');
+				header('Location: /api/docs.php');
 			}
 
 		case 'POST':
