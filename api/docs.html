@@ -23,11 +23,11 @@ Url : http://178.62.4.241/api/flights
 Summary : get all flights
 Method : POST
 Request Body : x-www-form-urlencoded
-BODY : 
+Body : 
 {
-    "DepartureAirportCode" : "ADB",
-    "DepartureDateTime" : "2017-05-08",
-    "ArrivalAirportCode" : "IST"
+  "DepartureAirportCode" : "ADB",
+  "DepartureDateTime" : "2017-05-08",
+  "ArrivalAirportCode" : "IST"
 }
 Response:
 {
@@ -55,13 +55,13 @@ Response:
 
 
 Url : http://178.62.4.241/api/checkins
-Summary : buy ticket
+Summary : reservation seat
 Method : POST
 Request Body : x-www-form-urlencoded
-BODY : 
+Body : 
 {
-    "FlightId" : "4",
-    "PNR" : "ER5644"
+  "FlightId" : "4",
+  "PNR" : "ER5644"
 }
 Response:
 {
@@ -74,13 +74,14 @@ Url : http://178.62.4.241/api/checkins
 Summary : checkin your ticket
 Method : POST
 Request Body : x-www-form-urlencoded
-BODY : 
+Body : 
 {
-    "PNR" : "ER5644"
+  "PNR" : "ER5644"
 }
 Response:
 {
   "PNR": "ER5644",
   "Seat": "C2"
 }
+
 </pre></body>
