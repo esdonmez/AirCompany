@@ -1,0 +1,8 @@
+{
+  "DepartureCity": "Izmir",
+  "DepartureDate": "2017-05-08 22:40:00",
+  "ArrivalCity": "Istanbul",
+  "ArrivalDate": "2017-05-08 23:50:00",
+  "Departure_Weather" : "Sunny / 30",
+  "Arrival_Weather" : "Sunny / 24"
+}
