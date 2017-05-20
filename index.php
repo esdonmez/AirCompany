@@ -292,7 +292,8 @@
                             <th>Price</th>
                             <th>Gate</th>
                             <th>Is Active</th>
-                            <th>Weather</th>
+                            <th>Departure Weather</th>
+                            <th>Arrival Weather</th>
                             </tr>
                             <?php 
                             $model = new FlightController();
