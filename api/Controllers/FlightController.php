@@ -53,12 +53,12 @@ class FlightController extends ApiController
             $requestContentType = $_SERVER['HTTP_ACCEPT'];
             $this->setHttpHeaders($requestContentType, $statusCode);
             
-            LogHelper::Log("FlightTable", "show flights");
+            LogHelper::Log("FlightTable", "show flights", "true");
             echo json_encode($model);
         }
         
         catch(Exception $e){
-            LogHelper::Log("FlightTable", $e);
+            LogHelper::Log("FlightTable", $e, "false");
         }
     }
 }

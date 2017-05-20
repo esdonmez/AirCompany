@@ -15,11 +15,11 @@ class LoggingController
 
 
     public function GetLogs(){
-        $response = $this->dbConnect->get("SELECT Id, Entity, Operation, CreateDate FROM LoggingTable");
+        $response = $this->dbConnect->get("SELECT Id, Entity, Operation, CreateDate, IpAddress, IsSuccess FROM LoggingTable");
         $logs = array();
 
         while($data = $response->fetch_assoc()) {
-            $model = new LoggingModel($data["Id"], $data["Entity"], $data["Operation"], $data["CreateDate"]);
+            $model = new LoggingModel($data["Id"], $data["Entity"], $data["Operation"], $data["CreateDate"], $data["IpAddress"], $data["IsSuccess"]);
             array_push($logs, $model);
         }
 

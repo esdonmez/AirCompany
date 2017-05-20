@@ -1,0 +1,88 @@
+<title>AdamAir API DOCUMENTS </title>
+<body><pre style="word-wrap: break-word; white-space: pre-wrap;">
+AdamAir API DOCUMENTS
+
+Url : http://178.62.4.241/api/airports
+Summary : get all airports
+Method : GET
+Response:
+[
+  {
+    "Id": "3",
+    "Name": "Adnan Menderes",
+    "City": "Izmir"
+  },
+  {
+    "Id": "4",
+    "Name": "Ataturk",
+    "City": "Istanbul"
+  }
+]
+
+
+Url : http://178.62.4.241/api/flights
+Summary : get all flights
+Method : POST
+Request Body : x-www-form-urlencoded
+Body : 
+{
+  "DepartureAirportCode" : "ADB",
+  "DepartureDateTime" : "2017-05-08",
+  "ArrivalAirportCode" : "IST"
+}
+Response:
+{
+  "DepartureCity": "Izmir",
+  "DepartureAirportCode": "ADB",
+  "ArrivalCity": "Istanbul",
+  "ArrivalAirportCode": "IST",
+  "Flights": [
+    {
+      "Id": "3",
+      "FlightNumber": "AA1234",
+      "DepartureDateTime": "2017-05-08 22:40:00",
+      "ArrivalDateTime": "2017-05-08 23:50:00",
+      "Price": "80"
+    },
+    {
+      "Id": "4",
+      "FlightNumber": "AA1235",
+      "DepartureDateTime": "2017-05-08 18:40:00",
+      "ArrivalDateTime": "2017-05-08 19:50:00",
+      "Price": "104"
+    }
+  ]
+}
+
+
+Url : http://178.62.4.241/api/checkins
+Summary : reservation seat
+Method : POST
+Request Body : x-www-form-urlencoded
+Body : 
+{
+  "FlightId" : "4",
+  "PNR" : "ER5644"
+}
+Response:
+{
+  "IsSuccess": true,
+  "Message": "check is added."
+}
+
+
+Url : http://178.62.4.241/api/checkins
+Summary : checkin your ticket
+Method : POST
+Request Body : x-www-form-urlencoded
+Body : 
+{
+  "PNR" : "ER5644"
+}
+Response:
+{
+  "PNR": "ER5644",
+  "Seat": "C2"
+}
+
+</pre></body>
