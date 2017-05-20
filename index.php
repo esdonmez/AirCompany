@@ -307,8 +307,9 @@
                                     <td><?php echo $data->getDepartureDateTime(); ?></td>
                                     <td><?php echo $data->getArrivalDateTime(); ?></td>
                                     <td><?php echo $data->getPrice(); ?></td>
-                                    <td><?php echo $data->getGate(); ?></td>
+                                    <td></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                             <?php endforeach; ?>   
