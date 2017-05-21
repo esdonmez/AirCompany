@@ -52,7 +52,7 @@ class CheckinController extends ApiController
             $response = $this->dbConnect->get("SELECT IsChecked FROM CheckinTable WHERE '$pnr'=PNR");
             $data = $response->fetch_assoc();
 
-            if($data["IsChecked"] == false){
+            if($data["IsChecked"] == 0){
                 $seat;
             
                 while(true){
