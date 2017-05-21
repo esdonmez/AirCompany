@@ -2,7 +2,7 @@
 
 class AirportModel
 {
-    public $Id;
+    public $Code;
 
     public $Name;
     

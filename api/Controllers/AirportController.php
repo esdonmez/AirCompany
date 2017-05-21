@@ -20,13 +20,13 @@ class AirportController extends ApiController
     //[HttpGet]
     public function GetAirports(){
         try{
-            $response = $this->dbConnect->get("SELECT Id, Name, City FROM AirportTable");
+            $response = $this->dbConnect->get("SELECT Code, Name, City FROM AirportTable");
             $airports = array();
         
             while($data = $response->fetch_assoc()) 
             {
                 $model = new AirportModel();
-                $model->Id = $data["Id"];
+                $model->Code = $data["Code"];
                 $model->Name = $data["Name"];
                 $model->City = $data["City"];
 
