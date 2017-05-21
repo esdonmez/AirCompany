@@ -79,10 +79,19 @@ Body :
 {
   "PNR" : "ER5644"
 }
-Response:
+Response: 200
 {
-  "PNR": "ER5644",
-  "Seat": "C2"
+  "IsSuccess": false,
+  "Message": "already checked in",
+  "PNR": null,
+  "Seat": null
+}
+Response: 400
+{
+  "IsSuccess": true,
+  "Message": "checkin is complated",
+  "PNR": "AS2324",
+  "Seat": "A1"
 }
 
 </pre></body>

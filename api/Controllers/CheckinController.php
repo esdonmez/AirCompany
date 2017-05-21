@@ -83,12 +83,12 @@ class CheckinController extends ApiController
                 $model->Seat = null;
                 $model->PNR = null;
                 $model->IsSuccess = false;
-                $model->Message = "checkin zaten yapıldı.";
+                $model->Message = "already checked in";
                 
                 $requestContentType = $_SERVER['HTTP_ACCEPT'];
                 $this->setHttpHeaders($requestContentType, $statusCode);
 
-                LogHelper::Log("CheckinTable", "zaten checkin yapılmıştı", "false");
+                LogHelper::Log("CheckinTable", "already checked in", "false");
                 echo json_encode($model);
             }       
         }
