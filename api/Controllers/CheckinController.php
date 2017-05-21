@@ -49,29 +49,48 @@ class CheckinController extends ApiController
     //[HttpPost]
     public function Checkin($pnr){
         try{
-            $seat;
+            $response = $this->dbConnect->get("SELECT IsChecked FROM CheckinTable WHERE '$pnr'=PNR");
+            $data = $response->fetch_assoc();
+
+            if($data["IsChecked"] == "0"){
+                $seat;
             
-            while(true){
-                $seat = SeatHelper::GetSeat();
-                $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
-                $data = $result->fetch_assoc();
+                while(true){
+                    $seat = SeatHelper::GetSeat();
+                    $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE Seat='$seat'");
+                    $data = $result->fetch_assoc();
 
-                if($data["Count"] == 0){
-                    break;
+                    if($data["Count"] == 0){
+                        break;
+                    }
                 }
-            }
 
-            $response = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
+                $response1 = $this->dbConnect->execute("UPDATE CheckinTable SET Seat='$seat', IsChecked='1' WHERE '$pnr'=PNR");
 
-            $model = new CheckinModel();
-            $model->Seat = $seat;
-            $model->PNR = $pnr;
+                $model = new CheckinModel();
+                $model->Seat = $seat;
+                $model->PNR = $pnr;
+                $model->IsSuccess = true;
+                $model->Message = "checkin is complated";
 
-            $requestContentType = $_SERVER['HTTP_ACCEPT'];
-            $this->setHttpHeaders($requestContentType, $statusCode);
+                $requestContentType = $_SERVER['HTTP_ACCEPT'];
+                $this->setHttpHeaders($requestContentType, $statusCode);
 
-            LogHelper::Log("CheckinTable", "assign a seat", "true");
-            echo json_encode($model);
+                LogHelper::Log("CheckinTable", "assign a seat", "true");
+                echo json_encode($model);
+            } else{
+                $model = new CheckinModel();
+                $model->Seat = null;
+                $model->PNR = null;
+                $model->IsSuccess = false;
+                $model->Message = "checkin zaten yapıldı.";
+                
+                $requestContentType = $_SERVER['HTTP_ACCEPT'];
+                $this->setHttpHeaders($requestContentType, $statusCode);
+
+                LogHelper::Log("CheckinTable", "zaten checkin yapılmıştı", "false");
+                echo json_encode($model);
+            }       
         }
 
         catch(Exception $e){
