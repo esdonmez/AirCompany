@@ -25,4 +25,9 @@ class LoggingController
 
         return $logs;
     }
+
+    public function DeleteLogs(){
+        $response = $this->dbConnect->execute("DELETE FROM LoggingTable");
+        return $response;
+    }
 }

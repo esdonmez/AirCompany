@@ -66,17 +66,6 @@
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label class="">
-                                    <div class="icheckbox_square-red" aria-checked="false" aria-disabled="false" style="position: relative;">
-                                        <input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                                        <ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
-                                    </div> Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
                         <div class="col-xs-4">
                             <input type="submit" class="btn btn-danger btn-block btn-flat" name="submit" value="Sign In"></button>
                         </div>
@@ -84,7 +73,7 @@
                     </div>
                 </form>
                 
-                <a href="#">I forgot my password</a><br>
+                <!--a href="/AirCompany/RegisterView.php">Still not registered?</a><br-->
 
             </div>
             <!-- /.login-box-body -->
@@ -95,16 +84,5 @@
         <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <!-- iCheck -->
-        <script src="plugins/iCheck/icheck.min.js"></script>
-        <script>
-        $(function () {
-            $('input').iCheck({
-            checkboxClass: 'icheckbox_square-red',
-            radioClass: 'iradio_square-red',
-            increaseArea: '20%' // optional
-            });
-        });
-        </script>
     </body>
 </html>

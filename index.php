@@ -24,6 +24,11 @@
         header("location: LoginView.php");
         exit();
     }
+
+    if($_POST["submit"] == "Clear") {
+        $log = new LoggingController();
+        $result = $log->DeleteLogs();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -361,6 +366,11 @@
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title"><b>Loggings</b></h3>
+                            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                                <div class="box-tools">
+                                    <input type="submit" class="btn btn-sm btn-danger pull-right" name="submit" value="Clear">
+                                </div>
+                            </form>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">

@@ -150,7 +150,9 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <form method="post">
+                                            <input type="submit" class="btn btn-default btn-flat" name="submit" value="Sign out">
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
