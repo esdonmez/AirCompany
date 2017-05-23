@@ -30,10 +30,10 @@ class CheckinController extends ApiController
                                 
                 $model = new ResultModel();
                 if($response == true){
-                    $passangerSizeQuery = $this->dbConnect->get("SELECT Passanger FROM FlightTable WHERE FlightId='$flightid'");
+                    $passangerSizeQuery = $this->dbConnect->get("SELECT Passanger FROM FlightTable WHERE Id='$flightid'");
                     $passangerSizeData = $passangerSizeQuery->fetch_assoc();
                     $newSize = $passangerSizeData["Passanger"] + 1;
-                    $updatePassangerSize = $this->dbConnect->execute("UPDATE FlightTable SET Passanger='$newSize' WHERE FlightId='$flightid'"); 
+                    $updatePassangerSize = $this->dbConnect->execute("UPDATE FlightTable SET Passanger='$newSize' WHERE Id='$flightid'"); 
 
                     $model->IsSuccess = true;
                     $model->Message = "check is added.";
