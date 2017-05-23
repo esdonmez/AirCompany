@@ -295,6 +295,7 @@
                             <th>Departure Time</th>
                             <th>Arrival Time</th>
                             <th>Price</th>
+                            <th>Passenger</th>
                             <th>Gate</th>
                             <th>Is Active</th>
                             <th>Departure Weather</th>
@@ -312,6 +313,7 @@
                                     <td><?php echo $data->getDepartureDateTime(); ?></td>
                                     <td><?php echo $data->getArrivalDateTime(); ?></td>
                                     <td><?php echo $data->getPrice(); ?></td>
+                                    <td><?php echo $data->getPassenger(); ?></td>
                                     <td></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
                                     <td></td>
