@@ -22,14 +22,19 @@ class CheckinController extends ApiController
     //[HttpPost]
     public function AddCheckin($flightid, $pnr){
         try{
-            $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE '$pnr'=PNR && '$flightid'=FlightId");
+            $result = $this->dbConnect->get("SELECT count(*) as Count FROM CheckinTable WHERE PNR='$pnr' && FlightId='$flightid'");
             $data = $result->fetch_assoc();
 
             if($data["Count"] == 0){
                 $response = $this->dbConnect->execute("INSERT INTO CheckinTable (FlightId, PNR, Seat, IsChecked) VALUES ('$flightid', '$pnr', 'A0', '0')");
-
+                                
                 $model = new ResultModel();
                 if($response == true){
+                    $passangerSizeQuery = $this->dbConnect->get("SELECT Passanger FROM FlightTable WHERE FlightId='$flightid'");
+                    $passangerSizeData = $passangerSizeQuery->fetch_assoc();
+                    $newSize = $passangerSizeData["Passanger"] + 1;
+                    $updatePassangerSize = $this->dbConnect->execute("UPDATE FlightTable SET Passanger='$newSize' WHERE FlightId='$flightid'"); 
+
                     $model->IsSuccess = true;
                     $model->Message = "check is added.";
                     LogHelper::Log("CheckinTable", "add a checkin", "true");

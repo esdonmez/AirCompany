@@ -10,5 +10,7 @@ class FlightModel
 
     public $ArrivalDateTime;
 
+    public $Passanger;
+
     public $Price;
 }
