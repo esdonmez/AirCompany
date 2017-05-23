@@ -313,7 +313,7 @@
                                     <td><?php echo $data->getDepartureDateTime(); ?></td>
                                     <td><?php echo $data->getArrivalDateTime(); ?></td>
                                     <td><?php echo $data->getPrice(); ?></td>
-                                    <td><?php echo $data->getPassenger(); ?></td>
+                                    <td><?php echo $data->getPassanger(); ?></td>
                                     <td></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
                                     <td></td>
