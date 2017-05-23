@@ -27,10 +27,10 @@ class FlightController
     }
 
     public function GetFlight($id){
-        $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive FROM FlightTable WHERE Id=$id");
+        $response = $this->dbConnect->get("SELECT Id, FlightNumber, PlaneId, DepartureId, DestinationId, DepartureDateTime, ArrivalDateTime, Price, Gate, IsActive, Passanger FROM FlightTable WHERE Id=$id");
         
         $data = $response->fetch_assoc();
-        $model = new FlightModel($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"]);
+        $model = new FlightModel($data["Id"], $data["FlightNumber"], $data["PlaneId"], $data["DepartureId"], $data["DestinationId"], $data["DepartureDateTime"], $data["ArrivalDateTime"], $data["Price"], $data["Gate"], $data["IsActive"], $data["Passanger"]);
 
         return $model;
     }

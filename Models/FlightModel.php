@@ -12,9 +12,10 @@ class FlightModel
     private $Price;
     private $Gate;
     private $IsActive;
+    private $passanger;
 
 
-    public function __construct($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive){
+    public function __construct($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive, $Passanger){
         $this->Id = $Id;
         $this->FlightNumber = $FlightNumber;
         $this->PlaneId = $PlaneId;
@@ -25,6 +26,7 @@ class FlightModel
         $this->Price = $Price;
         $this->Gate = $Gate;
         $this->IsActive = $IsActive;
+        $this->Passanger = $Passanger;
     }
 
 
@@ -66,5 +68,9 @@ class FlightModel
 
     public function getIsActive(){
         return $this->IsActive;
+    }
+
+    public function getPassanger(){
+        return $this->Passanger;
     }
 }
