@@ -314,7 +314,7 @@
                                     <td><?php echo $data->getArrivalDateTime(); ?></td>
                                     <td><?php echo $data->getPrice(); ?></td>
                                     <td><?php echo $data->getPassanger(); ?></td>
-                                    <td></td>
+                                    <td><?php echo $data->getGate(); ?></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
                                     <td></td>
                                     <td></td>

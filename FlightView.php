@@ -1,6 +1,7 @@
 <?php 
 	require_once("Controllers/FlightController.php");            
     require_once("Models/FlightModel.php");
+    require_once("Services/DataClient.php");
 
     session_start();
 	$user = "User";
@@ -63,6 +64,11 @@
             $ArrivalDateTime = trim($_POST["arrivalTime"]);
             $Price = trim($_POST["price"]);
             $IsActive = trim($_POST["isActive"]);
+
+            $client = new DataClient();
+            $result = $client->getGate();
+
+            $Gate = $result->{'Gate'};
 
             $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
             $flight = new FlightController();
