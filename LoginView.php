@@ -72,9 +72,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                
-                <!--a href="/AirCompany/RegisterView.php">Still not registered?</a><br-->
-
             </div>
             <!-- /.login-box-body -->
         </div>
