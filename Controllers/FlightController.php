@@ -65,10 +65,9 @@ class FlightController
         $departuredatetime = $model->getDepartureDateTime();
         $arrivaldatetime = $model->getArrivalDateTime();
         $price = $model->getPrice();
-        $gate = $model->getGate();
         $isactive = $model->getIsActive();
 
-        $response = $this->dbConnect->execute("UPDATE FlightTable SET FlightNumber='$flightnumber', PlaneId='$planeid', DepartureId='$departureid', DestinationId='$destinationid', DepartureDateTime='$departuredatetime', ArrivalDateTime='$arrivaldatetime', Price='$price', Gate='$gate', IsActive='$isactive' WHERE Id='$id'"); 
+        $response = $this->dbConnect->execute("UPDATE FlightTable SET FlightNumber='$flightnumber', PlaneId='$planeid', DepartureId='$departureid', DestinationId='$destinationid', DepartureDateTime='$departuredatetime', ArrivalDateTime='$arrivaldatetime', Price='$price', IsActive='$isactive' WHERE Id='$id'"); 
         return $response;
     }
 
