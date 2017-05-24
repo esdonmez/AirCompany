@@ -1,7 +1,7 @@
 <?php
+
 require_once("Models/WeatherModel.php");
 require_once("Core/DBConnect.php");
-
 
 class DataClient
 {
