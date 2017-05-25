@@ -66,9 +66,9 @@
             $IsActive = trim($_POST["isActive"]);
 
             $client = new DataClient();
-            $result = $client->getGate();
+            $gateModel = $client->getGate($FlightNumber, $DepartureDateTime);
 
-            $Gate = $result->{'Gate'};
+            $Gate = $gateModel->{'Gate'};
 
             $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
             $flight = new FlightController();
@@ -90,6 +90,11 @@
             $ArrivalDateTime = trim($_POST["arrivalTime"]);
             $Price = trim($_POST["price"]);
             $IsActive = trim($_POST["isActive"]);
+
+            $client = new DataClient();
+            $gateModel = $client->getGate($FlightNumber, $DepartureDateTime);
+            
+            $Gate = $gateModel->{'Gate'};
 
             $model = new FlightModel($Id, $FlightNumber, $PlaneId, $DepartureId, $DestinationId, $DepartureDateTime, $ArrivalDateTime, $Price, $Gate, $IsActive);
             $flight = new FlightController();

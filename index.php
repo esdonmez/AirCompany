@@ -4,6 +4,7 @@
     include("Controllers/FlightController.php");
     include("Controllers/CheckinController.php");
     include("Controllers/LoggingController.php");
+    include("Services/DataClient.php");
 
 	session_start();
 	$user = "User";
@@ -303,7 +304,11 @@
                             </tr>
                             <?php 
                             $model = new FlightController();
-                            foreach($model->GetFlights() as $data): ?>
+                            $client = new DataClient();
+                            
+                            foreach($model->GetFlights() as $data):
+                                $airportModel = new AirportController();
+                                $weatherModel = $client->getWeather($airportModel->GetAirport($data->getDepartureId()), $data->getDepartureDateTime(), $airportModel->GetAirport($data->getDestinationId()), $data->getArrivalDateTime()); ?>
                                 <tr onClick="window.open('FlightView.php?id=<?php echo $data->getId(); ?>', '_self');">
                                     <td><?php echo $data->getId(); ?></td>
                                     <td><?php echo $data->getFlightNumber(); ?></td>
@@ -316,8 +321,8 @@
                                     <td><?php echo $data->getPassanger(); ?></td>
                                     <td><?php echo $data->getGate(); ?></td>
                                     <td><?php echo $data->getIsActive(); ?></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?php echo $weatherModel->{'Departure_Weather'} ?></td>
+                                    <td><?php echo $weatherModel->{'Arrival_Weather'} ?></td>
                                 </tr>
                             <?php endforeach; ?>   
                         </table>
