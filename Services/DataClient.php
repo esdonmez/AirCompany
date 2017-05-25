@@ -1,14 +1,13 @@
 <?php
 
 require_once("Models/WeatherModel.php");
-require_once("Core/DBConnect.php");
 
 class DataClient
 {
 
     
     public function __construct($type) {
-        $this->dbConnect = new DBConnect();
+        
     }
 
 
