@@ -211,7 +211,7 @@
         <footer class="main-footer">
             <strong>Copyright &copy; 2017 <a href="index.php">AdamAir</a>.</strong> All rights reserved.
             <div class="pull-right">
-                    <a href='http://178.62.4.241/api/docs.html'>http://178.62.4.241/api/docs.html<a/>
+                    <a href='http://178.62.4.241/api/docs.html'>API<a/>
             </div>
         </footer>
     </div>
