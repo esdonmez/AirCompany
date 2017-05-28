@@ -18,12 +18,12 @@ class FlightController extends ApiController
         $this->dbConnect = new DBConnect();
     }
 
-    public function GetFlightDetails($Id){
+    public function GetFlightDetails($FlightId){
         $response = $this->dbConnect->get("SELECT F.Id, F.FlightNumber, F.Gate, F.Price, F.DepartureDateTime, F.ArrivalDateTime, F.Passanger,
                                             A1.City as DepartureCity, A1.Code as DepartureAirportCode,
                                             A2.City as ArrivalCity, A2.Code as ArrivalAirportCode
                                             FROM FlightTable AS F LEFT JOIN AirportTable AS A1 ON F.DepartureId = A1.Id LEFT JOIN AirportTable AS A2 ON F.DestinationId = A2.Id
-                                            WHERE F.Id='$Id'");
+                                            WHERE F.Id='$FlightId'");
         $data = $response->fetch_assoc();
 
         $model = new FlightDetailModel();
