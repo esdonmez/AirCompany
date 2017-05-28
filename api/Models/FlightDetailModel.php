@@ -21,6 +21,4 @@ class FlightDetailModel
     public $ArrivalCity;
 
     public $ArrivalAirportCode;
-
-    public $Flights;
 }
