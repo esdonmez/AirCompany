@@ -29,6 +29,11 @@ switch($request_method)
 				$controller->GetFlights($_POST["DepartureAirportCode"], $_POST["DepartureDateTime"], $_POST["ArrivalAirportCode"]);
 			}
 
+			if($_GET["view"] == "flights"){
+				$controller = new FlightController();
+				$controller->GetFlightDetails($_POST["FlightId"]);
+			}
+
 			break;
 
 		default:
